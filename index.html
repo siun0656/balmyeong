@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>세종과 장영실: 시간을 만드는 사람들</title>
+<style>
+:root{color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--gold:#d9b45a;--gold2:#b58a32;--ink:#0a1024;--paper:#f3ead2;--red:#b33a2b;--celadon:#7fb4d6}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%}
+body{position:relative;background:#04060d;overflow:hidden;color:var(--paper);font-family:"Noto Serif KR","Nanum Myeongjo","Apple SD Gothic Neo","Malgun Gothic",serif;user-select:none;-webkit-user-select:none}
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;transform-origin:center;overflow:hidden;background:var(--ink);box-shadow:0 0 60px #000}
+#cv{position:absolute;left:0;top:0;width:1280px;height:720px;touch-action:none;display:block}
+#top,#scr,#mission,#panel,#tools,#dlg,#modal,#toast,#coach{position:absolute}
+#coach{left:372px;bottom:12px;width:560px;min-height:44px;display:none;padding:9px 16px;background:linear-gradient(#3a2a10ee,#241808ee);border:2px solid #ffd45a;border-radius:14px;font-size:18px;line-height:1.4;text-align:center;box-shadow:0 4px 18px #000a;z-index:15;pointer-events:none}
+#scr{inset:0;pointer-events:none}#scr>*{pointer-events:auto}
+#top{left:0;right:0;top:0;height:52px;display:none;align-items:center;justify-content:space-between;padding:0 16px;background:linear-gradient(#050816ee,#05081600);pointer-events:none}
+#top>*{pointer-events:auto}
+#top .lg{font-size:17px;letter-spacing:.08em;color:var(--gold)}
+.btn{display:inline-block;padding:9px 16px;margin:4px 3px;background:linear-gradient(#e6c36e,#b58a32);color:#2a1a08;border:1px solid #6e4e12;border-radius:8px;font:700 15px/1.2 inherit;font-family:inherit;cursor:pointer;box-shadow:0 2px 6px #0008}
+.btn:hover{filter:brightness(1.12)}.btn:active{transform:translateY(1px)}
+.btn.sec{background:linear-gradient(#3a4a72,#26335a);color:var(--paper);border-color:#7a8ab8}
+.btn.red{background:linear-gradient(#d4553f,#962a1b);color:#fff;border-color:#5c140a}
+.btn.sm{padding:5px 10px;font-size:13px}.btn.on{outline:3px solid #fff9}.btn.big{font-size:21px;padding:14px 34px;margin:8px}
+.btn:disabled{opacity:.4;cursor:default}
+#mission{left:16px;top:62px;width:318px;background:rgba(10,16,36,.82);border:1px solid #b9964a;border-radius:10px;padding:10px 12px;display:none;font-size:14px;line-height:1.45}
+#mission h3{font-size:16px;color:var(--gold);margin-bottom:5px}
+#mission .tk{padding:3px 0 3px 22px;position:relative;opacity:.92}
+#mission .tk:before{content:"○";position:absolute;left:2px;color:var(--gold)}
+#mission .tk.d{color:#9fe0a0;text-decoration:line-through;opacity:.8}#mission .tk.d:before{content:"✔";color:#9fe0a0}
+#panel{right:14px;top:62px;width:312px;max-height:640px;overflow:auto;background:rgba(10,16,36,.86);border:1px solid #b9964a;border-radius:10px;padding:10px 12px;display:none;font-size:14px;line-height:1.5}
+.sl label{display:flex;justify-content:space-between;font-size:13px;margin-top:8px}.sl b{color:var(--gold)}.sl input{width:100%;accent-color:var(--gold);height:26px}
+.note{font-size:13px;line-height:1.5;padding:6px 8px;margin:5px 0;background:#ffffff10;border-radius:6px}.note.g{background:#3a5a2a55}.note.r{background:#6a2a2a66}
+.row{display:flex;flex-wrap:wrap}
+.num{display:flex;align-items:center;justify-content:space-between;margin:4px 0;font-size:14px}.num input{width:70px;padding:4px;font:inherit;background:#0006;color:var(--paper);border:1px solid #b9964a;border-radius:5px;text-align:center}
+#tools{left:16px;bottom:14px;display:none;gap:4px}
+#dlg{left:70px;right:70px;bottom:20px;height:190px;display:none;gap:16px;align-items:center;padding:10px 20px;background:linear-gradient(rgba(26,18,12,.96),rgba(44,30,16,.96));border:2px solid var(--gold);border-radius:14px;box-shadow:0 8px 40px #000c;cursor:pointer;z-index:20}
+#dlg .pt{width:150px;height:170px;flex:none;margin-top:-34px;filter:drop-shadow(0 4px 8px #000a)}
+#dlg .tx{flex:1;position:relative;height:100%}#dlg .nm{color:var(--gold);font-size:17px;margin-top:8px}
+#dlg .ln{font-size:21px;line-height:1.55;margin-top:6px}#dlg .nx{position:absolute;right:4px;bottom:2px;font-size:13px;color:#cdbb8a}
+#dlg .sk{margin-left:14px;text-decoration:underline;color:#9ab}
+#modal{inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,4,12,.72);z-index:30}
+#modal .box{width:820px;max-height:640px;overflow:auto;background:linear-gradient(#1c2342,#10162e);border:2px solid var(--gold);border-radius:14px;padding:22px 30px;font-size:17px;line-height:1.65;box-shadow:0 10px 60px #000}
+#modal .gd{font-size:18px;line-height:1.75}#modal .gd ul,#modal .gd ol{padding-left:24px;margin:4px 0 8px}#modal .gd li{margin:6px 0}#modal .gd b{color:#ffe9a0}.ch{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:6px;vertical-align:-2px;border:1px solid #fff8}
+#tour{position:absolute;inset:0;pointer-events:none;display:none;z-index:18}#tc{position:absolute;left:350px;width:580px;background:linear-gradient(#241808f4,#160f06f4);border:2px solid #ffd45a;border-radius:14px;padding:10px 16px 12px;pointer-events:auto;box-shadow:0 6px 30px #000}#tc h3{color:#ffd45a;font-size:21px;margin-top:4px}#tc p{font-size:18px;line-height:1.55;margin:4px 0 8px}.chip{display:inline-block;padding:3px 9px;margin:2px;border-radius:12px;background:#ffffff18;font-size:13px;cursor:pointer;border:1px solid #fff4}.chip.on{background:#ffd45a;color:#2a1a08;font-weight:700}
+#modal h2{color:var(--gold);font-size:26px;margin-bottom:8px}#modal b{color:var(--celadon)}#modal p{margin:2px 0 10px}#modal .hs{color:#e8c98a}.mb{text-align:right;margin-top:8px}
+#toast{left:50%;top:70px;transform:translateX(-50%);max-width:760px;padding:10px 20px;background:rgba(12,18,40,.94);border:1px solid var(--gold);border-radius:30px;font-size:16px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:40;text-align:center}
+.ttl{position:absolute;left:0;right:0;top:120px;text-align:center}
+.ttl .sub{font-size:22px;letter-spacing:.3em;color:#cfe0f5;text-shadow:0 2px 12px #000}
+.ttl h1{font-size:92px;font-weight:900;letter-spacing:.12em;color:var(--paper);text-shadow:0 0 30px #d9b45a88,0 4px 0 #6e4e12;margin:10px 0 0}
+.ttl h2{font-size:34px;font-weight:400;letter-spacing:.35em;color:var(--gold);margin-bottom:46px}
+.lb{position:absolute;width:250px;text-align:center;padding:12px;background:rgba(10,16,36,.84);border:2px solid var(--gold);border-radius:12px;cursor:pointer;transition:transform .15s}
+.lb:hover{transform:scale(1.05)}.lb.lock{filter:grayscale(1) brightness(.6);cursor:not-allowed}.lb h4{color:var(--gold);font-size:19px}.lb p{font-size:14px;margin-top:2px}.lb .pg{margin-top:6px;font-size:15px;color:#9fe0a0}
+.card{position:absolute;width:250px;text-align:center;padding:10px;background:rgba(10,16,36,.88);border:2px solid var(--gold);border-radius:12px;cursor:pointer;transition:transform .15s}
+.card:hover{transform:translateY(-6px)}.card canvas{display:block;margin:0 auto 4px;background:#0006;border-radius:8px}.card h4{font-size:22px;color:var(--gold)}.card p{font-size:13px;color:#cfd8ee}.card .st{margin-top:4px;font-size:14px}
+.rec{position:absolute;inset:50px 40px 30px 40px;background:rgba(8,12,28,.95);border:2px solid var(--gold);border-radius:14px;display:flex;gap:18px;padding:18px}
+.rec .gl{width:330px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start}
+.rec .gi{background:#ffffff10;border:1px solid #7a6a3a;border-radius:10px;padding:6px;text-align:center;cursor:pointer;font-size:15px}.rec .gi.sel{outline:3px solid var(--gold)}.rec .gi.lk{opacity:.4}
+.rec .dt{flex:1;overflow:auto;font-size:16px;line-height:1.65}.rec .dt h2{color:var(--gold);font-size:28px}.rec .dt b{color:var(--celadon)}.rec .dt p{margin:2px 0 10px}
+.fin{position:absolute;left:0;right:0;bottom:70px;text-align:center;font-size:30px;line-height:1.8;text-shadow:0 2px 14px #000}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="stage">
+<canvas id="cv" width="1280" height="720"></canvas>
+<div id="scr"></div><div id="top"></div><div id="mission"></div><div id="panel"></div><div id="tools"></div><div id="dlg"></div><div id="modal"></div><div id="toast"></div><div id="coach"></div><div id="tour"></div>
+</div>
+<script>
+'use strict';
+const $=s=>document.querySelector(s),TAU=Math.PI*2,R=Math.PI/180;
+const cl=(v,a,b)=>Math.max(a,Math.min(b,v)),dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+const cv=$('#cv'),C=cv.getContext('2d'),W=1280,H=720;
+let S={done:{},snd:true,seen:{}},T=0,scene={draw(){}},mdev=null,sims={};
+const KEY='sejong_jang_save_v1';
+function load(){try{const j=localStorage.getItem(KEY);if(j)S=Object.assign(S,JSON.parse(j))}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function fit(){const b=document.body,s=Math.min(b.clientWidth/W,b.clientHeight/H);$('#stage').style.transform='translate(-50%,-50%) scale('+s+')'}
+addEventListener('resize',fit);fit();
+
+/* ---------- 소리 ---------- */
+let AC=null;
+function ac(){if(!S.snd)return null;try{if(!AC)AC=new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC}catch(e){return null}}
+function tone(f,d,type,v,delay,slide){const a=ac();if(!a)return;const t=a.currentTime+(delay||0),o=a.createOscillator(),g=a.createGain();o.type=type||'sine';o.frequency.setValueAtTime(f,t);if(slide)o.frequency.exponentialRampToValueAtTime(slide,t+d);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v||.2,t+.012);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+d+.05)}
+function bell(){tone(660,1.6,'sine',.25);tone(1320,1.2,'sine',.1);tone(1980,.8,'sine',.05)}
+function drum(){tone(150,.4,'triangle',.45,0,45)}
+function gong(){tone(220,1.8,'sawtooth',.06);tone(330,1.6,'sine',.12);tone(442,1.4,'sine',.06)}
+function okS(){tone(660,.15,'sine',.14);tone(880,.28,'sine',.14,.12)}
+function badS(){tone(190,.3,'square',.06)}
+let musicT=null;
+function music(on){clearInterval(musicT);musicT=null;if(!on)return;const N=[293.66,329.63,392,440,493.88,587.33],mel=[0,2,3,4,3,2,1,0,2,3,5,4,3,2,1,2],pad=[[146.8,220,293.7],[130.8,196,261.6],[110,164.8,220],[123.5,185,246.9]];let i=0;
+ const play=()=>{if(!S.snd)return;tone(N[mel[i%16]],1.4,'sine',.13);if(i%4===0){pad[(i/4|0)%4].forEach(f=>tone(f,3.2,'triangle',.05))}i++};play();musicT=setInterval(play,700)}
+
+/* ---------- UI 도우미 ---------- */
+function mk(html,cls,par){const d=document.createElement('div');if(cls)d.className=cls;d.innerHTML=html;(par||document.body).appendChild(d);return d}
+let toastT;function toast(t,ms){const e=$('#toast');e.innerHTML=t;e.style.opacity=1;clearTimeout(toastT);toastT=setTimeout(()=>e.style.opacity=0,ms||2800)}
+function modal(html,btns){const m=$('#modal');m.style.display='flex';m.innerHTML='<div class="box">'+html+'<div class="mb"></div></div>';const mb=m.querySelector('.mb');(btns||[]).forEach(b=>{const e=document.createElement('button');e.className='btn '+(b[2]||'');e.innerHTML=b[0];e.onclick=b[1];mb.appendChild(e)})}
+function closeModal(){$('#modal').style.display='none'}
+let dq=[],dcb=null,di=0;
+function say(lines,cb){dq=lines;dcb=cb;di=0;$('#dlg').style.display='flex';sayShow()}
+function sayShow(){const l=dq[di];if(!l){$('#dlg').style.display='none';const f=dcb;dcb=null;if(f)f();return}
+ $('#dlg').innerHTML='<div class="pt">'+portrait(l.w,l.e||'n')+'</div><div class="tx"><div class="nm">'+(l.w==='s'?'세종대왕':'장영실')+'</div><div class="ln">'+l.t+'</div><div class="nx">'+(di+1)+'/'+dq.length+' · 클릭하여 계속 ▶<span class="sk">건너뛰기</span></div></div>'}
+$('#dlg').addEventListener('click',e=>{if(e.target.classList&&e.target.classList.contains('sk'))di=dq.length;else di++;sayShow()});
+const hintSay=t=>say([{w:'j',e:'think',t}]);
+
+/* ---------- 인물(세종·장영실) : 외형 고정 ---------- */
+function portrait(w,e){
+ const eye=e==='smile'?'<path d="M60 79q8-8 16 0M94 79q8-8 16 0" stroke="#2a1a12" stroke-width="3.2" fill="none" stroke-linecap="round"/>':e==='surprise'?'<circle cx="68" cy="79" r="6.5" fill="#fff"/><circle cx="102" cy="79" r="6.5" fill="#fff"/><circle cx="68" cy="79" r="3.4" fill="#2a1a12"/><circle cx="102" cy="79" r="3.4" fill="#2a1a12"/>':'<ellipse cx="68" cy="79" rx="6.5" ry="3.8" fill="#fff"/><ellipse cx="102" cy="79" rx="6.5" ry="3.8" fill="#fff"/><circle cx="68" cy="79" r="2.8" fill="#2a1a12"/><circle cx="102" cy="79" r="2.8" fill="#2a1a12"/>';
+ const brow=e==='think'?'<path d="M57 68l17-5M96 63l17 5" stroke="#2a1a12" stroke-width="3.4" fill="none" stroke-linecap="round"/>':e==='surprise'?'<path d="M58 64q10-8 18-1M94 63q8-7 18 1" stroke="#2a1a12" stroke-width="3" fill="none" stroke-linecap="round"/>':'<path d="M58 67q10-5 18-1M94 66q8-4 18 1" stroke="#2a1a12" stroke-width="3.2" fill="none" stroke-linecap="round"/>';
+ const mouth=e==='smile'?'<path d="M71 104q14 13 28 0" stroke="#7a2a22" stroke-width="3.2" fill="#a8433a" stroke-linecap="round"/>':e==='surprise'?'<ellipse cx="85" cy="107" rx="5.5" ry="7" fill="#7a2a22"/>':e==='think'?'<path d="M76 107h18" stroke="#7a2a22" stroke-width="3.2" stroke-linecap="round"/>':'<path d="M74 106q11 5 22 0" stroke="#7a2a22" stroke-width="3.2" fill="none" stroke-linecap="round"/>';
+ let body,hat,hair='';
+ if(w==='s'){
+  body='<path d="M10 190Q16 126 58 120L112 120Q154 126 160 190Z" fill="#a8231f"/><path d="M62 120L85 152L108 120Z" fill="#f4efe0"/><circle cx="85" cy="168" r="15" fill="none" stroke="#d9b45a" stroke-width="3"/><path d="M78 168q7-10 14 0q-7 10-14 0" fill="#d9b45a"/><rect x="20" y="150" width="130" height="5" fill="#d9b45a" opacity=".5"/>';
+  hat='<path d="M50 60Q85 10 120 60L113 64Q85 34 57 64Z" fill="#15131a"/><path d="M118 44q26-30 32-6q-8 16-28 20Z M52 44q-26-30-32-6q8 16 28 20Z" fill="#15131a"/><path d="M52 62Q85 40 118 62" stroke="#d9b45a" stroke-width="2.5" fill="none"/>';
+  hair='<path d="M58 98Q85 152 112 98Q98 122 85 124Q72 122 58 98Z" fill="#3a3238"/><path d="M68 100Q85 93 102 100Q85 106 68 100Z" fill="#3a3238"/>';
+ }else{
+  body='<path d="M10 190Q16 126 58 120L112 120Q154 126 160 190Z" fill="#2b4a73"/><path d="M62 120L85 154L108 120Z" fill="#e8e4d2"/><path d="M85 154v36" stroke="#1a2f4f" stroke-width="3"/><circle cx="85" cy="150" r="3" fill="#d9b45a"/>';
+  hat='<path d="M52 66Q85 14 118 66L118 74Q85 60 52 74Z" fill="#3a2a1a"/><path d="M52 70Q85 58 118 70" stroke="#8a6a3a" stroke-width="3" fill="none"/>';
+  hair='<path d="M72 101Q85 96 98 101Q85 105 72 101Z" fill="#5a4a40"/><path d="M80 120q5 14 10 0" stroke="#5a4a40" stroke-width="3" fill="none"/>';
+ }
+ return '<svg viewBox="0 0 170 190" xmlns="http://www.w3.org/2000/svg">'+body+'<rect x="75" y="104" width="20" height="20" fill="#e2b78c"/><ellipse cx="85" cy="80" rx="35" ry="41" fill="#f0cba5"/><ellipse cx="50" cy="82" rx="5" ry="10" fill="#e6b98f"/><ellipse cx="120" cy="82" rx="5" ry="10" fill="#e6b98f"/>'+hat+eye+brow+'<path d="M85 84v12" stroke="#c9996e" stroke-width="2.5" stroke-linecap="round"/>'+mouth+hair+'</svg>'}
+
+/* ---------- 데이터 ---------- */
+const STARS=[['북극성',37.95,89.26],['직녀성',279.23,38.78],['견우성',297.7,8.87],['천랑성',101.29,-16.72],['대화성',247.35,-26.43]];
+const JG=['춘분','청명','곡우','입하','소만','망종','하지','소서','대서','입추','처서','백로','추분','한로','상강','입동','소설','대설','동지','소한','대한','입춘','우수','경칩'];
+const LATD=37.5,LAT=LATD*R,EPS=23.44*R;
+const DECL=i=>Math.asin(Math.sin(EPS)*Math.sin(i*15*R))/R;
+function EQV(Hd,dd){const Hh=Hd*R,d=dd*R;return[-Math.cos(d)*Math.sin(Hh),Math.sin(d)*Math.cos(LAT)-Math.cos(d)*Math.cos(Hh)*Math.sin(LAT),Math.sin(d)*Math.sin(LAT)+Math.cos(d)*Math.cos(Hh)*Math.cos(LAT)]}
+const SUNV=(i,hr)=>EQV((hr-12)*15,DECL(i));
+const DEV=[
+{id:'hon',kid:'혼천의는 둥근 고리 여러 개로 별이 있는 방향을 가리키는 하늘 지도 도구예요. 별의 방향을 각도 숫자로 알려 줘요.',go:'오른쪽 슬라이더 두 개(사유환, 규형)를 움직여 흰 막대 끝을 금빛 별 쪽으로 향하게 해요. 별에 가까워지면 아래에 알려 줄게요!',n:'혼천의',h:'渾天儀',lab:1,
+ intro:[{w:'s',e:'n',t:'하늘의 움직임을 알아야 백성에게 때를 알려 줄 수 있느니라. 여기 혼천의를 보거라.'},{w:'j',e:'smile',t:'혼천의는 여러 개의 고리로 이루어져 있어요. 고리마다 맡은 일이 달라서, 직접 돌려 보면 하늘의 좌표가 눈에 들어올 거예요!'}],
+ hist:'혼천의는 세종 때(1433년 무렵) 정초·이천 등이 중심이 되어 만든 천문 관측 기구로 전해집니다. 장영실도 이 시기 천문 기구 제작 사업에 참여한 것으로 알려져 있지만, 장영실 혼자 만든 발명품은 아니에요. 여러 학자와 기술자가 함께한 국가 사업이었습니다.',
+ use:'천체의 위치와 움직임을 관측하고, 하늘의 좌표를 이해하는 기구',
+ how:'여러 고리가 각각 지평·남북선·적도 같은 기준 방향을 나타내요. 사유환을 돌려 적경(입수도)을 맞추고, 규형(관측통)을 기울여 적위(거극도)를 맞추면 별 쪽을 정확히 가리킬 수 있어요.',
+ help:'별의 위치를 숫자로 기록할 수 있게 되어, 달력(역법)을 만들고 농사 때를 알리는 데 쓰였어요.',
+ did:'삼신의·사유환·규형을 돌려 관측통을 별 방향에 맞추었어요.'},
+{id:'gan',kid:'간의는 별을 겨눠서 별이 얼마나 높이 떠 있는지를 재는 도구예요. 북극성의 높이를 재면 내가 서 있는 곳의 위도도 알 수 있어요.',go:'방위 슬라이더로 별이 있는 쪽을 보고, 고도 슬라이더로 별을 동그란 관측창 한가운데에 놓은 뒤 측정 기록을 눌러요.',n:'간의',h:'簡儀',lab:1,
+ intro:[{w:'j',e:'n',t:'간의는 혼천의를 간단하게 줄여 만든 관측 기구예요. 별에 맞춰 놓고 눈금을 읽으면 돼요.'},{w:'s',e:'think',t:'별이 하늘 어디쯤 떠 있는지, 몇 도나 높은지 정확히 재어 보거라.'}],
+ hist:'간의는 1432~1434년 무렵 경회루 북쪽 간의대에 설치된 관측 기구로, 이천·정초 등이 중심이 된 사업이에요. 장영실이 관여했다는 기록은 확실하지 않아 단정하지 않습니다. (원래 간의는 적도 좌표 중심이고, 이 게임에서는 학습을 위해 방위·고도 눈금으로 단순화했어요.)',
+ use:'천체의 위치와 높이(고도)를 정밀하게 측정하는 기구',
+ how:'관측통을 좌우(방위)와 위아래(고도)로 돌려 별을 조준선 한가운데 놓고, 고리의 눈금을 읽어요. 북극성의 고도는 관측하는 곳의 위도와 거의 같아요.',
+ help:'나라의 기준이 되는 한양에서 별의 위치를 재어, 믿을 수 있는 천문 기록을 만들 수 있었어요.',
+ did:'방위와 고도를 돌려 별을 조준하고 고도 눈금을 읽어 기록했어요.'},
+{id:'gyu',kid:'막대 그림자가 짧으면 해가 높이 뜬 여름, 길면 해가 낮은 겨울이에요. 정오 그림자 길이로 계절을 알 수 있어요.',go:'시각을 12시로, 절기를 하지·춘분·동지로 바꿔 가며 기록을 눌러요. 그림자 길이를 비교해 봐요!',n:'규표',h:'圭表',lab:1,
+ intro:[{w:'s',e:'n',t:'해가 남중할 때 그림자가 가장 짧다. 그 길이로 계절의 흐름을 알 수 있지.'},{w:'j',e:'smile',t:'막대 하나와 눈금자뿐이지만, 일 년의 흐름을 재는 아주 똑똑한 도구랍니다!'}],
+ hist:'규표는 수직 막대(표)와 남북으로 놓은 눈금자(규)로 이루어진 도구예요. 세종 때 간의대 곁에 설치해 절기를 정확히 따지는 데 썼다고 전해집니다. 장영실 한 사람의 발명품이라고 단정하지 않아요. (게임 속 길이 단위는 학습용입니다.)',
+ use:'그림자 길이로 태양의 움직임과 절기를 알아내는 도구',
+ how:'태양 고도가 높을수록 그림자가 짧아요. 정오(남중) 그림자는 하지에 가장 짧고 동지에 가장 길어서, 그 길이로 절기를 구분해요.',
+ help:'절기를 정확히 알아야 씨 뿌리고 거두는 때를 정할 수 있어서 농사와 달력에 큰 도움이 되었어요.',
+ did:'시각과 절기를 바꾸며 그림자 길이를 재고, 정오 그림자로 계절을 맞혔어요.'},
+{id:'ang',kid:'솥 모양 해시계예요. 바늘 그림자 끝이 놓인 세로선이 지금 시각이고, 가로선은 계절을 알려 줘요.',go:'슬라이더로 시각과 계절을 바꿔 보며 검은 그림자가 어디로 움직이는지 살펴봐요. 그다음 문제를 풀어요.',n:'앙부일구',h:'仰釜日晷',lab:2,
+ intro:[{w:'s',e:'n',t:'이제 시간을 재는 곳으로 가 보자꾸나. 백성이 오가는 길에 둘 해시계를 만들었느니라.'},{w:'j',e:'smile',t:'솥처럼 오목한 해시계, 앙부일구예요. 그림자가 놓인 선만 보면 누구나 시각을 알 수 있어요!'}],
+ hist:'앙부일구는 1434년(세종 16) 장영실·이천·김조 등이 만든 것으로 『세종실록』에 전해져요. 혜정교와 종묘 앞 같은 번화한 곳에 두어 백성도 시각을 알 수 있게 했다고 합니다.',
+ use:'그림자의 위치로 시각과 절기를 읽는 오목한 해시계',
+ how:'영침(바늘) 끝의 그림자가 반구 안쪽에 떨어져요. 그 위치가 시각선(세로선)과 절기선(가로선) 중 어디에 놓이는지 보고 시각과 절기를 함께 읽어요.',
+ help:'글자를 모르는 백성도 시각선만 보고 시간을 알 수 있도록 지지(12지) 그림 등을 함께 새기기도 했어요.',
+ did:'태양의 시각과 절기를 바꿔 그림자를 관찰하고, 시각선과 절기선을 읽었어요.'},
+{id:'ja',kid:'물이 일정한 속도로 흘러 물 높이가 정해진 곳까지 오르면, 인형이 종과 북을 쳐서 시각을 알려 주는 자동 물시계예요.',go:'1번 물 채우기 버튼을 누르고, 2번 밸브를 조절한 뒤, 3번 시보 시작을 눌러 종이 울리는 시간을 맞춰요.',n:'자격루',h:'自擊漏',lab:2,
+ intro:[{w:'s',e:'n',t:'해가 없는 밤이나 흐린 날에도 시각을 알려 줄 장치가 필요했느니라.'},{w:'j',e:'surprise',t:'제가 만든 자격루예요! 물이 흐르다 정해진 높이가 되면 구슬이 굴러서 인형이 스스로 종과 북을 울려요.'}],
+ hist:'자격루는 1434년(세종 16) 장영실이 김조·이천 등과 함께 완성한 자동 물시계예요. 장영실이 제작에 참여한 대표적인 발명품으로 소개됩니다. 이 게임의 구조는 이해를 돕기 위해 단순화한 것이고, 실제 장치는 더 많은 항아리와 정교한 장치로 이루어져 있었어요.',
+ use:'물의 흐름으로 시간을 재고, 정해진 시각에 스스로 종·북·징을 울리는 물시계',
+ how:'위쪽 항아리에서 아래 항아리로 물이 흘러요. 마지막 항아리의 수위를 일정하게 유지하면 물이 일정한 속도로 수수호에 들어가고, 떠오른 잣대가 구슬을 풀어 인형 장치를 움직여요.',
+ help:'하늘을 보지 않아도 정확한 시각을 알 수 있어, 궁궐의 시각 제도와 백성에게 알리는 종소리가 훨씬 정확해졌어요.',
+ did:'수위를 맞추고 밸브로 물의 흐름을 조절해서 정해진 시각에 시보 장치가 울리게 했어요.'},
+{id:'il',kid:'낮에는 해, 밤에는 별을 겨눠서 시각을 알아내는 시계예요. 밤에는 날짜에 맞게 눈금판을 조금 돌려 주어야 해요.',go:'관측통을 해(밤에는 별) 쪽으로 돌려 빛이 통과하게 하고, 가운데 시각을 읽어 기록해요.',n:'일성정시의',h:'日星定時儀',lab:2,
+ intro:[{w:'s',e:'think',t:'낮에는 해가 보이나 밤에는 해가 보이지 않으니, 별로 시각을 아는 법도 필요하지 않겠느냐.'},{w:'j',e:'n',t:'일성정시의는 낮엔 해를, 밤엔 별을 겨눠서 시각을 알아내요. 밤에는 날짜에 맞춰 눈금을 돌려 주는 게 핵심이에요.'}],
+ hist:'일성정시의는 1437년(세종 19) 무렵 세종 때 만들어진 천문 시계예요. 제작에 참여한 사람은 자료마다 다르게 소개되어서, 이 게임에서는 장영실의 직접 발명품으로 단정하지 않아요.',
+ use:'낮에는 태양, 밤에는 별을 이용해 시각을 측정하는 천문 시계',
+ how:'태양이나 별은 하루에 한 바퀴 돌아요. 관측통을 천체에 맞추면 각도를 알 수 있고, 밤에는 별과 태양의 위치 차이(적경 차)만큼 시각환을 돌려 보정해서 시각을 읽어요.',
+ help:'밤에도 별을 보고 시각을 잴 수 있어서 시각을 하루 종일 이어서 확인할 수 있었어요.',
+ did:'관측통을 해와 별에 맞추고, 밤에는 시각환을 보정해 시각을 읽었어요.'},
+{id:'chu',kid:'비를 같은 모양의 통에 받아서 물 높이로 비가 얼마나 왔는지 재는 도구예요. 높을수록 비가 많이 온 거예요.',go:'비 내리기 버튼을 누르고, 비가 그치면 통 속 물이 닿은 눈금 숫자를 읽어 적어요.',n:'측우기',h:'測雨器',lab:3,
+ intro:[{w:'s',e:'n',t:'가뭄과 홍수는 백성의 농사를 좌우한다. 비가 얼마나 왔는지 똑같은 그릇으로 재어 보자.'},{w:'j',e:'smile',t:'같은 모양의 그릇이면 지역마다 비를 공정하게 비교할 수 있어요. 직접 재어 보세요!'}],
+ hist:'측우기는 1441년(세종 23) 무렵 만들어져 이듬해 전국에 설치하도록 했다고 전해져요. 만든 과정에는 세자(훗날 문종)의 역할이 크다고 알려져 있어요. 장영실의 발명품이라고 말하는 것은 정확하지 않으니, 이 게임에서는 장영실과 직접 연결하지 않았어요.',
+ use:'내린 비의 양(강수량)을 재고 기록하는 기구',
+ how:'같은 크기의 원통형 그릇에 빗물을 받으면, 고인 물의 높이가 곧 강수량이에요. 규격이 같으면 지역끼리 비교할 수 있어요.',
+ help:'지역별 강수량을 기록·비교해 가뭄과 홍수에 대비하고 농사 계획을 세우는 데 도움이 되었어요.',
+ did:'비의 양과 시간을 바꾸어 빗물이 차오르는 것을 보고, 눈금을 읽어 지역별 강수량을 비교했어요.'},
+{id:'su',kid:'강물 속에 세운 눈금 기둥이에요. 물이 눈금 어디까지 올라왔는지 보고 홍수가 날지 미리 알 수 있어요.',go:'비의 양 슬라이더를 올려 물이 불어나는 것을 보고, 눈금으로 안전·주의·위험을 판단해요.',n:'수표',h:'水標',lab:3,
+ intro:[{w:'s',e:'think',t:'강물이 불어나는 것을 미리 알아야 백성을 지킬 수 있지 않겠느냐.'},{w:'j',e:'n',t:'강 속에 눈금 새긴 돌기둥을 세워 두고 수위를 읽어요. 위험 수위를 넘으면 미리 알릴 수 있어요.'}],
+ hist:'수표는 1441년(세종 23) 청계천 마전교 서쪽 물속에 세운 눈금 기둥으로 전해져요. 하천의 수위를 재어 홍수에 대비하는 데 쓰였어요. 만든 사람이 누구인지는 분명하지 않아서 장영실의 발명품이라고 단정하지 않아요.',
+ use:'하천의 물높이(수위)를 재고 홍수 위험을 판단하는 눈금 기둥',
+ how:'기둥에 새긴 눈금을 보고 물높이를 읽어요. 비가 오면 물이 불어나고, 수문을 열면 물이 빠져 수위가 내려가요.',
+ help:'수위가 오르는 것을 미리 보고 제방을 살피고 사람들을 대피시켜 피해를 줄일 수 있었어요.',
+ did:'비의 양과 수문을 조절해 수위 변화를 관찰하고, 눈금으로 위험 수위를 판단했어요.'}];
+const DEVm={};DEV.forEach(d=>DEVm[d.id]=d);
+const LABS=[
+{n:'연구소 1',t:'하늘을 읽는 사람들',sub:'천문 관측',devs:['hon','gan','gyu'],x:110,y:260},
+{n:'연구소 2',t:'시간을 측정하는 사람들',sub:'시간 측정',devs:['ang','ja','il'],x:515,y:300},
+{n:'연구소 3',t:'비와 땅을 관찰하는 사람들',sub:'기상과 측량',devs:['chu','su'],x:920,y:260}];
+const labOpen=n=>true;
+const labDone=n=>LABS[n].devs.every(d=>S.done[d]);
+
+/* ---------- 그리기 도우미 ---------- */
+const SF=[];for(let i=0;i<170;i++)SF.push([Math.random()*W,Math.random()*H*.7,Math.random()*1.6+.4,Math.random()*6]);
+function txt(s,x,y,sz,col,al,wt){C.font=(wt||'700')+' '+sz+'px "Noto Serif KR","Nanum Myeongjo","Malgun Gothic",serif';C.fillStyle=col||'#f3ead2';C.textAlign=al||'center';C.textBaseline='middle';C.fillText(s,x,y)}
+function mountains(c,y,a,ph){C.fillStyle=c;C.beginPath();C.moveTo(0,H);for(let x=0;x<=W;x+=20)C.lineTo(x,y-(a||60)*(Math.sin(x*.004+(ph||1))*.5+Math.sin(x*.011+(ph||1))*.3+.8));C.lineTo(W,H);C.fill()}
+function roof(x,y,w,h,c1,c2){C.fillStyle=c1;C.beginPath();C.moveTo(x-w/2-30,y+h*.5);C.quadraticCurveTo(x-w/2+10,y+h*.42,x-w*.3,y);C.lineTo(x+w*.3,y);C.quadraticCurveTo(x+w/2-10,y+h*.42,x+w/2+30,y+h*.5);C.lineTo(x+w/2,y+h*.62);C.lineTo(x-w/2,y+h*.62);C.closePath();C.fill();C.fillStyle=c2;C.fillRect(x-w/2+8,y+h*.6,w-16,h*.75)}
+function palaceRow(c1,c2,y){roof(210,y-90,260,70,c1,c2);roof(640,y-130,380,90,c1,c2);roof(1070,y-90,240,70,c1,c2);C.fillStyle=c2;C.fillRect(0,y+30,W,H)}
+function bgNight(){const g=C.createLinearGradient(0,0,0,H);g.addColorStop(0,'#040818');g.addColorStop(.6,'#101c46');g.addColorStop(1,'#2a2a5a');C.fillStyle=g;C.fillRect(0,0,W,H);
+ SF.forEach(s=>{C.globalAlpha=.45+.5*Math.sin(T*1.5+s[3]);C.fillStyle='#fff';C.beginPath();C.arc(s[0],s[1],s[2],0,TAU);C.fill()});C.globalAlpha=1;
+ const mg=C.createRadialGradient(1120,110,5,1120,110,80);mg.addColorStop(0,'#fffbe0');mg.addColorStop(.3,'#f6ecb8');mg.addColorStop(1,'rgba(246,236,184,0)');C.fillStyle=mg;C.beginPath();C.arc(1120,110,80,0,TAU);C.fill();
+ mountains('#0d1334',H-110,70);palaceRow('#05081a','#060a1c',H-50)}
+function bgDay(){const g=C.createLinearGradient(0,0,0,H);g.addColorStop(0,'#5f9fd6');g.addColorStop(.65,'#cfe4ee');g.addColorStop(1,'#f2e2b0');C.fillStyle=g;C.fillRect(0,0,W,H);
+ const sg=C.createRadialGradient(1100,110,5,1100,110,120);sg.addColorStop(0,'#fff8d0');sg.addColorStop(1,'rgba(255,240,170,0)');C.fillStyle=sg;C.beginPath();C.arc(1100,110,120,0,TAU);C.fill();
+ mountains('#6f8f9a',H-150,80,2);mountains('#4d6a6c',H-100,50,4);palaceRow('#3a4a52','#a8432f',H-40)}
+function bgRain(){const g=C.createLinearGradient(0,0,0,H);g.addColorStop(0,'#2a3445');g.addColorStop(.7,'#56667a');g.addColorStop(1,'#7b8a96');C.fillStyle=g;C.fillRect(0,0,W,H);
+ for(let i=0;i<7;i++){C.fillStyle='rgba(30,38,52,.55)';C.beginPath();C.ellipse(100+i*190+Math.sin(T*.3+i)*20,60+(i%2)*30,150,50,0,0,TAU);C.fill()}
+ mountains('#3b4a5a',H-140,70,3)}
+function ptc(x,y,r,col){C.fillStyle=col;C.beginPath();C.arc(x,y,r,0,TAU);C.fill()}
+function ellipseStroke(x,y,rx,ry,rot,col,lw){C.strokeStyle=col;C.lineWidth=lw;C.beginPath();C.ellipse(x,y,rx,ry,rot||0,0,TAU);C.stroke()}
+function icon(x,id,w,h){x.save();x.clearRect(0,0,w,h);x.translate(w/2,h/2);const s=Math.min(w,h)/100;x.scale(s,s);x.lineWidth=3.5;x.lineCap='round';
+ const G='#e0b95a',B='#7fb4d6',Rd='#e0654d',ell=(rx,ry,rot,col)=>{x.strokeStyle=col;x.beginPath();x.ellipse(0,0,rx,ry,rot,0,TAU);x.stroke()};
+ if(id==='hon'){ell(40,40,0,'#a8703a');ell(40,13,0,G);ell(13,40,0,B);ell(36,22,.6,Rd);ell(30,30,1.3,'#ddd');x.strokeStyle='#fff';x.beginPath();x.moveTo(-30,32);x.lineTo(30,-32);x.stroke()}
+ else if(id==='gan'){ell(42,12,0,'#a8703a');ell(26,36,0,G);x.strokeStyle='#eee';x.lineWidth=8;x.beginPath();x.moveTo(-26,26);x.lineTo(30,-30);x.stroke();x.lineWidth=3;x.strokeStyle=Rd;x.beginPath();x.moveTo(-30,0);x.lineTo(30,0);x.stroke()}
+ else if(id==='gyu'){x.strokeStyle='#bbb';x.lineWidth=8;x.beginPath();x.moveTo(-30,25);x.lineTo(-30,-35);x.stroke();x.fillStyle='#8a7a5a';x.fillRect(-34,25,92,12);x.strokeStyle='#222';x.lineWidth=1.5;for(let i=0;i<10;i++){x.beginPath();x.moveTo(-26+i*8,25);x.lineTo(-26+i*8,i%5?31:37);x.stroke()}x.strokeStyle='rgba(0,0,0,.5)';x.lineWidth=6;x.beginPath();x.moveTo(-30,25);x.lineTo(30,25);x.stroke()}
+ else if(id==='ang'){x.fillStyle='#a8703a';x.beginPath();x.ellipse(0,5,42,14,0,0,TAU);x.fill();x.fillStyle='#6a4a22';x.beginPath();x.ellipse(0,5,42,40,0,0,Math.PI);x.fill();x.strokeStyle=G;x.lineWidth=3;x.beginPath();x.ellipse(0,5,42,14,0,0,TAU);x.stroke();x.strokeStyle='#ddd';x.lineWidth=4;x.beginPath();x.moveTo(-14,38);x.lineTo(0,5);x.stroke();x.strokeStyle='rgba(0,0,0,.6)';x.lineWidth=5;x.beginPath();x.moveTo(0,5);x.lineTo(24,22);x.stroke()}
+ else if(id==='ja'){x.fillStyle='#6a8aa8';[[-38,-32,24,30],[-8,-6,24,30],[22,18,24,30]].forEach(a=>{x.fillRect(a[0],a[1],a[2],a[3]);x.fillStyle='#8fbbe0';x.fillRect(a[0]+2,a[1]+12,a[2]-4,a[3]-14);x.fillStyle='#6a8aa8'});x.strokeStyle=B;x.lineWidth=3;x.beginPath();x.moveTo(-14,-6);x.lineTo(-4,-6);x.moveTo(16,18);x.lineTo(24,18);x.stroke();x.fillStyle='#e0b95a';x.beginPath();x.moveTo(36,-30);x.lineTo(44,-14);x.lineTo(28,-14);x.fill()}
+ else if(id==='il'){ell(40,40,0,G);ell(28,28,0,B);x.fillStyle='#ffd060';x.beginPath();x.arc(-18,-18,9,0,TAU);x.fill();x.fillStyle='#fff';x.beginPath();x.moveTo(22,22);x.lineTo(25,28);x.lineTo(32,29);x.lineTo(26,33);x.lineTo(28,40);x.lineTo(22,36);x.lineTo(16,40);x.lineTo(18,33);x.lineTo(12,29);x.lineTo(19,28);x.fill();x.strokeStyle=Rd;x.lineWidth=5;x.beginPath();x.moveTo(0,0);x.lineTo(-16,-16);x.stroke()}
+ else if(id==='chu'){x.fillStyle='#6a6a72';x.fillRect(-22,-34,44,70);x.fillStyle='#6fb0e0';x.fillRect(-20,2,40,32);x.strokeStyle='#ddd';x.lineWidth=2;for(let i=0;i<7;i++){x.beginPath();x.moveTo(-22,-30+i*9);x.lineTo(i%2?-12:-6,-30+i*9);x.stroke()}x.fillStyle='#8a8a90';x.fillRect(-32,36,64,8);x.strokeStyle='#9cc8ff';for(let i=0;i<4;i++){x.beginPath();x.moveTo(-30+i*20,-44);x.lineTo(-34+i*20,-34);x.stroke()}}
+ else if(id==='su'){x.fillStyle='#bdb6a2';x.fillRect(-10,-40,20,78);x.strokeStyle='#333';x.lineWidth=1.5;for(let i=0;i<9;i++){x.beginPath();x.moveTo(-10,-34+i*8);x.lineTo(i%3?-3:4,-34+i*8);x.stroke()}x.fillStyle='rgba(80,140,200,.75)';x.fillRect(-44,8,88,32);x.strokeStyle='#cfe8ff';x.lineWidth=2;x.beginPath();x.moveTo(-44,8);for(let i=0;i<=8;i++)x.lineTo(-44+i*11,8+(i%2?3:-3));x.stroke()}
+ x.restore()}
+function skyBox(x,y,w,hh,si,hr){C.save();C.fillStyle='rgba(8,14,34,.78)';C.strokeStyle='#b9964a';C.lineWidth=1.5;C.beginPath();C.rect(x,y,w,hh);C.fill();C.stroke();C.beginPath();C.rect(x,y,w,hh);C.clip();
+ const g=C.createLinearGradient(0,y,0,y+hh);g.addColorStop(0,'#3a6aa8');g.addColorStop(1,'#cfe0ee');C.fillStyle=g;C.fillRect(x,y,w,hh);C.fillStyle='#4a5a40';C.fillRect(x,y+hh-16,w,16);
+ const pt=(hh2)=>{const v=SUNV(si,hh2),az=(Math.atan2(v[0],v[1])/R+360)%360,al=Math.asin(v[2])/R;return[x+(az-50)/260*w,y+hh-16-Math.max(al,-4)/90*(hh-30)]};
+ C.strokeStyle='rgba(255,255,255,.5)';C.setLineDash([4,4]);C.beginPath();for(let t=5;t<=19;t+=.25){const p=pt(t);t===5?C.moveTo(p[0],p[1]):C.lineTo(p[0],p[1])}C.stroke();C.setLineDash([]);
+ const p=pt(hr),v=SUNV(si,hr);if(v[2]>0){ptc(p[0],p[1],14,'rgba(255,230,120,.35)');ptc(p[0],p[1],8,'#ffd84a')}
+ C.restore();txt('동',x+10,y+hh-8,12,'#fff');txt('남',x+w/2,y+hh-8,12,'#fff');txt('서',x+w-10,y+hh-8,12,'#fff');txt('태양의 위치',x+w/2,y+11,12,'#fff')}
+
+/* ---------- 미션·도구·패널 ---------- */
+let tasks=[],mtitle='',finished=false;
+function setMission(title,list){mtitle=title;tasks=list.map(t=>({t,d:false}));finished=false;renderMission()}
+function renderMission(){const m=$('#mission');m.style.display='block';m.innerHTML='<h3>🎯 '+mtitle+'</h3>'+tasks.map(k=>'<div class="tk'+(k.d?' d':'')+'">'+k.t+'</div>').join('')}
+function taskDone(i){if(!tasks[i]||tasks[i].d)return;tasks[i].d=true;renderMission();okS();toast('✔ 미션 달성! '+tasks[i].t);if(tasks.every(x=>x.d)&&!finished){finished=true;const id=mdev;setTimeout(()=>{if(mdev===id)finishDev(id)},1600)}}
+function pclear(){const p=$('#panel');p.innerHTML='';p.style.display='block';p.scrollTop=0}
+function psl(lab,min,max,step,val,fn,fmt){const d=mk('<label><span>'+lab+'</span><b></b></label><input type="range" min="'+min+'" max="'+max+'" step="'+step+'" value="'+val+'">','sl',$('#panel'));const i=d.querySelector('input'),b=d.querySelector('b'),f=fmt||(v=>v);const upd=()=>{b.textContent=f(+i.value)};i.oninput=()=>{upd();fn(+i.value)};upd();return{i,d,set(v){i.value=v;upd()},get:()=>+i.value,dis(x){i.disabled=x;d.style.opacity=x?.4:1}}}
+function pbtn(t,fn,cls,par){const b=document.createElement('button');b.className='btn '+(cls||'');b.innerHTML=t;b.onclick=fn;(par||$('#panel')).appendChild(b);return b}
+function pnote(t,cls){return mk(t,'note '+(cls||''),$('#panel'))}
+function prow(){return mk('','row',$('#panel'))}
+function hideAll(){['#mission','#panel','#tools','#dlg','#modal','#coach','#tour'].forEach(s=>$(s).style.display='none');coachTxt='';$('#scr').innerHTML='';$('#top').style.display='none'}
+function renderTools(){const t=$('#tools');t.style.display='flex';t.innerHTML='';pbtn('💡 힌트',()=>{const s=sims[mdev];s&&s.hint&&s.hint()},'sec sm',t);pbtn('🔍 가리키며 설명',()=>startTour(mdev),'sec sm',t);if(0)pbtn('📖 원리',()=>{const d=DEVm[mdev];modal('<h2>'+d.n+' <small style="font-size:16px;color:#bbb">'+d.h+'</small></h2><p style="background:#ffffff14;padding:8px 12px;border-radius:8px">💡 <b>쉽게 말하면</b> '+d.kid+'</p><p><b>무엇에 쓰였나요?</b><br>'+d.use+'</p><p><b>작동 원리</b><br>'+d.how+'</p><p class="hs"><b>📜 역사 확인</b><br>'+d.hist+'</p>',[['닫기',closeModal]])},'sec sm',t);pbtn('🤝 도움',()=>{const s=sims[mdev];s&&s.assist?s.assist():hintSay('직접 해 보면 금방 할 수 있어요! 힌트 버튼도 눌러 봐요.')},'sec sm',t);pbtn('⬅ 나가기',leaveDev,'sec sm',t)}
+function renderTop(){const t=$('#top');t.style.display='flex';t.innerHTML='<div class="lg">세종과 장영실 · 시간을 만드는 사람들</div><div></div>';const r=t.lastChild;pbtn('🗺 지도',goMap,'sec sm',r);pbtn('📜 연구 기록',showRecords,'sec sm',r);pbtn(S.snd?'🔊':'🔇',function(){S.snd=!S.snd;this.innerHTML=S.snd?'🔊':'🔇';save();if(!S.snd)music(false)},'sec sm',r);pbtn('💾 자동저장',()=>{save();toast('연구 진행 상황이 저장되어 있어요.')},'sec sm',r)}
+
+/* ---------- 화면 흐름 ---------- */
+function stopScene(){if(tour){tour=null;const o=$('#tour');o.style.display='none';o.innerHTML=''}if(scene.exit)scene.exit();scene={draw(){}}}
+function goMap(){stopScene();mdev=null;music(false);showMap()}
+function leaveDev(){const id=mdev,l=DEVm[id].lab-1;stopScene();mdev=null;showLab(l)}
+const titleScene={draw(){bgNight();for(let i=0;i<6;i++){const x=(i*230+T*14)%1400-60,y=560+Math.sin(T+i)*14;ptc(x,y,3,'rgba(255,210,120,.6)')}}};
+function showTitle(){stopScene();hideAll();scene=titleScene;const has=Object.keys(S.done).length>0;
+ mk('<div class="sub">조선의 하늘과 시간을 완성하라!</div><h1>세종과 장영실</h1><h2>시간을 만드는 사람들</h2><div id="tb"></div><div style="margin-top:14px;font-size:14px;color:#aab">PC·태블릿 · 마우스/터치 · 진행 상황 자동 저장</div>','ttl',$('#scr'));
+ const tb=$('#tb');pbtn('▶ '+(has?'이어하기':'시작하기'),()=>{ac();has?showMap():startNew()},'big',tb);
+ if(has)pbtn('새로 시작',()=>modal('<h2>새로 시작할까요?</h2><p>지금까지의 연구 기록이 모두 지워져요.</p>',[['취소',closeModal,'sec'],['새로 시작',()=>{closeModal();startNew()},'red']]),'sec',tb);
+ pbtn('📜 연구 기록',showRecords,'sec',tb)}
+function startNew(){S.done={};S.seen={};save();hideAll();scene=titleScene;
+ say([{w:'s',e:'n',t:'어서 오게, 젊은 과학자여. 나는 조선의 임금 세종이니라.'},{w:'s',e:'think',t:'백성이 농사짓고 살아가는 데 하늘과 시간, 비와 강물을 아는 일이 무엇보다 중요하다. 그래서 여러 관측 기구와 측정 도구를 만들려 한다.'},{w:'j',e:'smile',t:'저는 장영실이에요! 앞으로 제가 기구의 원리를 알려 드릴게요. 직접 조작하고 문제를 풀어 보면 금방 이해할 수 있어요.'},{w:'s',e:'n',t:'먼저 하늘을 읽는 연구소부터 가 보거라. 그대들의 연구가 조선의 하늘과 시간을 완성할 것이니라.'}],showMap)}
+const mapScene={draw(){bgNight();const y=H-110;
+ roof(210,y-210,230,70,'#0a0f2a','#0c1230');C.fillStyle='#0c1230';C.fillRect(180,y-130,60,130);ptc(210,y-215,5,'#ffd060');
+ roof(640,y-130,360,90,'#0a0f2a','#8a2f22');for(let i=0;i<6;i++){C.fillStyle='#5a1f18';C.fillRect(500+i*55,y-60,12,70)}
+ C.fillStyle='#1b3a5a';C.beginPath();C.moveTo(880,H);C.lineTo(960,y);C.lineTo(1280,y-20);C.lineTo(1280,H);C.fill();C.fillStyle='rgba(120,180,230,.4)';for(let i=0;i<5;i++){C.fillRect(960+i*50+Math.sin(T*2+i)*6,y+12+i*10,40,3)}
+ txt('간의대',210,y-248,14,'#e8d6a0');txt('보루각(자격루)',640,y-148,14,'#e8d6a0');txt('청계천 수표',1090,y-12,14,'#e8d6a0')}};
+function showMap(){stopScene();hideAll();scene=mapScene;renderTop();
+ LABS.forEach((l,i)=>{const open=labOpen(i),c=l.devs.filter(d=>S.done[d]).length;
+  const b=mk('<h4>'+l.n+' · '+l.sub+'</h4><p>'+l.t+'</p><div class="pg">'+(open?(c===l.devs.length?'✔ 연구 완료':'진행 '+c+'/'+l.devs.length):'🔒 이전 연구소를 먼저 완료')+'</div>','lb'+(open?'':' lock'),$('#scr'));b.style.left=l.x+'px';b.style.top=l.y+'px';b.style.left=(l.x+(i===1?0:0))+'px';
+  b.onclick=()=>{if(!open){toast('이전 연구소의 연구를 모두 끝내면 열려요.');return}showLab(i)}});
+ if(LABS.every((_,i)=>labDone(i))){const b=pbtn('🌟 최종 엔딩 보기',startEnding,'big');b.style.cssText='position:absolute;left:470px;top:560px';$('#scr').appendChild(b)}
+ const nd=LABS.findIndex((_,i)=>!labDone(i));if(nd>=0&&!S.seen.mfree){S.seen.mfree=1;save();setTimeout(()=>{if(scene===mapScene)say([{w:'j',e:'smile',t:'원하는 연구소부터 골라서 들어가 봐요! 순서는 상관없어요.'}])},400)}}
+const LABSTORY=[
+ [{w:'s',e:'n',t:'하늘을 읽는 사람들의 연구소다. 별과 해의 움직임을 알아야 달력을 바르게 만들 수 있지.'}],
+ [{w:'s',e:'n',t:'시간을 재는 연구소다. 백성 모두가 같은 시각을 쓰게 하고 싶구나.'}],
+ [{w:'s',e:'n',t:'땅 위의 비와 강물을 살피는 연구소다. 농사와 홍수 대비에 꼭 필요하지.'}]];
+function showLab(n){stopScene();hideAll();mdev=null;const bg=n===0?bgNight:n===1?bgDay:bgRain;scene={draw(){bg();if(n===2){C.strokeStyle='rgba(190,210,235,.5)';C.lineWidth=1.5;for(let i=0;i<90;i++){const x=(i*47+T*180)%W,y=(i*83+T*620)%H;C.beginPath();C.moveTo(x,y);C.lineTo(x-4,y+16);C.stroke()}}}};renderTop();
+ const l=LABS[n];mk('<div style="position:absolute;left:0;right:0;top:70px;text-align:center"><div style="font-size:18px;color:#cfe0f5;letter-spacing:.2em;text-shadow:0 2px 8px #000">'+l.n+' · '+l.sub+'</div><div style="font-size:44px;font-weight:900;color:#f3ead2;text-shadow:0 3px 12px #000;margin-top:6px">'+l.t+'</div></div>','',$('#scr'));
+ const cnt=l.devs.length,gap=290,x0=640-(cnt*gap-40)/2;
+ l.devs.forEach((id,i)=>{const d=DEVm[id],c=mk('<canvas width="230" height="130"></canvas><h4>'+d.n+'</h4><p>'+d.use.slice(0,22)+'…</p><div class="st">'+(S.done[id]?'<span style="color:#9fe0a0">✔ 연구 완료</span>':'체험하기 ▶')+'</div>','card',$('#scr'));c.style.left=(x0+i*gap)+'px';c.style.top='250px';icon(c.querySelector('canvas').getContext('2d'),id,230,130);c.onclick=()=>{ac();openDevice(id)}});
+ pbtn('🗺 지도로',goMap,'sec',$('#scr')).style.cssText='position:absolute;left:30px;bottom:30px';
+ if(!S.seen['l'+n]){S.seen['l'+n]=1;save();say(LABSTORY[n])}}
+function openDevice(id){stopScene();hideAll();mdev=id;scene=sims[id];renderTop();renderTools();sims[id].init();const f=!S.seen['d'+id];S.seen['d'+id]=1;const g=!S.seen['t'+id];S.seen['t'+id]=1;save();const go=()=>say([{w:'j',e:'smile',t:'🎮 이제 직접 해 봐요! '+DEVm[id].go}],()=>{if(f&&sims[id].first)sims[id].first()});if(g)startTour(id,go,true);else go()}
+function finishDev(id){const d=DEVm[id];music(false);
+ modal('<h2>🎉 '+d.n+' 연구 완료!</h2><p style="font-size:19px;background:#ffffff14;padding:8px 12px;border-radius:8px">💡 <b>쉽게 말하면</b> '+d.kid+'</p><b>① 내가 무엇을 조작했는가?</b><p>'+d.did+'</p><b>② 어떤 원리로 작동했는가?</b><p>'+d.how+'</p><b>③ 이 발명품이 당시 사람들에게 어떤 도움을 주었는가?</b><p>'+d.help+'</p><p class="hs"><b>📜 역사 확인</b><br>'+d.hist+'</p>',
+ [['연구 기록에 남기기 ▶',()=>{S.done[id]=1;save();closeModal();afterDone(id)}]])}
+function afterDone(id){const l=DEVm[id].lab-1;stopScene();mdev=null;
+ if(LABS.every((_,i)=>labDone(i))){showMap();say([{w:'s',e:'smile',t:'모든 연구소의 연구가 끝났구나. 참으로 수고 많았다!'},{w:'j',e:'smile',t:'이제 우리가 함께 이룬 일을 돌아볼 시간이에요.'}],startEnding);return}
+ showLab(l);if(labDone(l)){say([{w:'s',e:'smile',t:'이 연구소의 연구를 모두 마쳤구나. 훌륭하다!'},{w:'j',e:'smile',t:'다른 연구소도 둘러볼까요? 지도로 가요!'}],goMap)}}
+
+/* ---------- 입력·루프 ---------- */
+let drag=null;
+function pos(e){const r=cv.getBoundingClientRect();return[(e.clientX-r.left)*W/r.width,(e.clientY-r.top)*H/r.height]}
+cv.addEventListener('pointerdown',e=>{try{cv.setPointerCapture(e.pointerId)}catch(x){}ac();const p=pos(e);drag={x:p[0],y:p[1]};scene.ptr&&scene.ptr('down',p[0],p[1],0,0)});
+cv.addEventListener('pointermove',e=>{const p=pos(e);if(drag){const dx=p[0]-drag.x,dy=p[1]-drag.y;drag.x=p[0];drag.y=p[1];scene.ptr&&scene.ptr('move',p[0],p[1],dx,dy)}});
+addEventListener('pointerup',()=>{if(drag){drag=null;scene.ptr&&scene.ptr('up',0,0,0,0)}});
+cv.addEventListener('wheel',e=>{if(scene.wheel){e.preventDefault();scene.wheel(e.deltaY)}},{passive:false});
+let last=performance.now();
+let coachTxt='';
+function updCoach(){const s=sims[mdev];let t='';if(mdev&&s&&scene===s&&s.coach&&$('#dlg').style.display!=='flex'&&$('#modal').style.display!=='flex'&&!tour){try{t=s.coach()||''}catch(e){}}if(t!==coachTxt){coachTxt=t;const el=$('#coach');el.innerHTML=t;el.style.display=t?'block':'none'}}
+function loop(n){updCoach();updTour();const dt=Math.min(.05,(n-last)/1000);last=n;T+=dt;try{C.clearRect(0,0,W,H);scene.draw&&scene.draw(dt)}catch(e){console.error(e)}requestAnimationFrame(loop)}
+
+/* ================= 부품별 설명서 ================= */
+const CH=c=>'<i class="ch" style="background:'+c+'"></i>';
+const SVG_RA=`<svg viewBox="0 0 520 235" width="100%" style="max-width:640px;background:#0007;border-radius:10px;margin:6px 0">
+<g transform="translate(130,106)"><circle r="70" fill="none" stroke="#8aa" stroke-width="2"/><line x1="-70" y1="0" x2="70" y2="0" stroke="#e0b95a" stroke-width="3"/><line x1="0" y1="-84" x2="0" y2="84" stroke="#7fb4d6" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="53.6" cy="-45" r="7" fill="#ffe27a"/><path d="M 70 0 A 70 70 0 0 0 53.6 -45" fill="none" stroke="#ff7a5a" stroke-width="4"/>
+<text x="0" y="-92" fill="#fff" font-size="13" text-anchor="middle">북극 (북극성 쪽)</text><text x="-66" y="22" fill="#e0b95a" font-size="13">하늘 적도(0°)</text><text x="76" y="-24" fill="#ff9a7a" font-size="15" font-weight="700">적위 40°</text><text x="0" y="104" fill="#cdd" font-size="13" text-anchor="middle">옆에서 본 하늘 = 위아래 높이</text></g>
+<g transform="translate(390,106)"><circle r="70" fill="none" stroke="#8aa" stroke-width="2"/><line x1="0" y1="0" x2="70" y2="0" stroke="#e0b95a" stroke-width="3"/><circle r="4" fill="#fff"/>
+<circle cx="45" cy="-53.6" r="7" fill="#ffe27a"/><line x1="0" y1="0" x2="45" y2="-53.6" stroke="#ffe27a" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M 32 0 A 32 32 0 0 0 20.6 -24.5" fill="none" stroke="#ff7a5a" stroke-width="4"/>
+<text x="76" y="4" fill="#e0b95a" font-size="13">0° 기준</text><text x="46" y="-24" fill="#ff9a7a" font-size="15" font-weight="700">적경 50°</text><text x="0" y="-84" fill="#fff" font-size="13" text-anchor="middle">북극 위에서 내려다봄</text><text x="0" y="104" fill="#cdd" font-size="13" text-anchor="middle">한 바퀴(360°) 중 가로 위치</text></g></svg>`;
+const GUIDE={
+hon:[
+['🌌 혼천의는 뭐예요?',`<p>혼천의는 <b>둥근 고리 여러 개</b>를 겹쳐 만든 <b>하늘 지도 도구</b>예요. 별이 하늘의 어느 방향에 있는지를 <b>숫자(각도)</b>로 알아내는 데 썼어요.</p><p>이 게임에서 할 일은 간단해요. <b>흰 막대(관측통)</b>를 하늘의 <b>금빛 별★</b> 쪽으로 향하게 맞추는 거예요!</p><p>하늘이 크고 둥근 공이고 우리가 그 한가운데에 있다고 상상해 보세요. 별은 그 공의 안쪽 벽에 붙어 있어요. 혼천의는 그 <b>작은 공 모형</b>이에요.</p>`],
+['📍 어려운 말 ① 적경과 적위',`<p>하늘의 별 위치도 <b>지구본의 주소</b>처럼 숫자 두 개로 말해요.</p><ul><li><b>적위</b> = 지구본의 <b>위도</b>처럼 <b>위아래 높이</b>예요. 하늘 적도(가운데 선)가 0°, 위로 갈수록 +, 북극이 +90°예요.</li><li><b>적경</b> = 지구본의 <b>경도</b>처럼 <b>가로 위치</b>예요. 기준선에서 시작해 한 바퀴(360°)를 돌아요.</li></ul>${SVG_RA}<p>그러니까 별의 위치 = <b>(적경, 적위)</b> 두 숫자! 영화관 좌석표의 <b>가로줄 번호, 세로줄 번호</b>와 같아요.</p>`],
+['📍 어려운 말 ② 거극도·극축·천구',`<ul><li><b>천구</b> : 하늘을 커다란 공처럼 생각한 것이에요.</li><li><b>극축</b> : 하늘이 빙글 도는 <b>회전 막대</b>예요. 북극성 근처를 가리켜요. 팽이의 심지를 떠올려요.</li><li><b>거극도</b> : 별이 <b>북극에서 몇 도 떨어져 있나</b>예요. (거극도 = 90° − 적위) 북극에 가까울수록 작아요.</li><li><b>입수도</b> : 옛 사람이 쓴 적경과 비슷한 말이에요. 이 게임에서는 적경이라고 불러요.</li></ul><p>오른쪽 아래 <b>성도(별자리 지도)</b>는 북극 위에서 내려다본 지도예요. <b>가운데가 북극</b>, 가운데에서 멀수록 거극도가 커요, <b>바깥 숫자가 적경</b>이에요.</p>`],
+['🔧 부품 ① 바깥 틀 (움직이지 않아요)',`<ul><li>${CH('#8a5a30')}<b>지평환</b> (아래쪽 큰 수평 고리) : 땅의 <b>수평선</b>이에요. 땅 위에 서서 하늘을 본다는 기준이에요.</li><li>${CH('#a8703a')}<b>자오환</b> (세로 고리) : 정남쪽과 정북쪽 하늘을 지나는 선이에요. 별이 가장 높이 뜨는 길(남중)이 이 선을 지나가요.</li><li>${CH('#b08a3a')}<b>천상환</b> (청동 고리) : 하늘의 <b>적도 위치</b>를 표시한 고정 고리예요.</li><li><b>기둥과 받침</b> : 전체를 단단히 버텨 줘요.</li></ul>`],
+['🔧 부품 ② 삼신의의 고리들 (돌아가요)',`<p>삼신의는 <b>해·달·별</b> 세 가지를 살피는 고리 묶음이에요. 슬라이더로 따로따로 돌려 볼 수 있어요.</p><ul><li>${CH('#e0b95a')}<b>적도환</b> (금색) : 하늘 적도를 나타내요. 눈금 표시가 돌아가요.</li><li>${CH('#d9533f')}<b>황도환</b> (붉은색) : <b>태양이 1년 동안 지나가는 길</b>이에요. 노란 구슬이 태양이에요.</li><li>${CH('#cfd6ea')}<b>백도환</b> (은색) : <b>달이 지나가는 길</b>이에요. 흰 구슬이 달이에요.</li></ul><p>이 세 고리는 모두 <b>극축</b>(회색 막대)을 따라 돌아요.</p>`],
+['🔧 부품 ③ 사유환과 규형 (내 손으로 맞출 부분!)',`<ul><li>${CH('#4fb0c8')}<b>사유환</b> (청록색 고리) : 극축을 따라 돌려서 별의 <b>가로 위치(적경)</b>를 맞춰요.</li><li>${CH('#efe6c6')}<b>규형</b> (흰 막대 = 관측통) : 사유환 안에서 위아래로 기울여 별의 <b>높낮이(적위)</b>를 맞춰요. 끝에 작은 흰 구멍이 있어요. 이 구멍으로 별을 바라본다고 생각해요.</li><li>${CH('#666')}<b>극축</b> (회색 막대) : 모든 고리가 이것을 중심으로 돌아요.</li></ul><p>👉 <b>사유환으로 가로 위치, 규형으로 높낮이</b>. 이 두 가지만 맞추면 돼요!</p>`],
+['🎮 이렇게 조작해요',`<ol><li>화면 위의 <b>금빛 ★</b>이 오늘의 별이에요. 성도 지도에서도 같은 별이 보여요.</li><li>오른쪽 <b>사유환 슬라이더</b>를 움직여 성도의 <b>흰 동그라미</b>를 별의 <b>각도 방향</b>으로 보내요.</li><li><b>규형 슬라이더</b>를 움직여 흰 동그라미를 별에 <b>거리</b>까지 맞춰요.</li><li>흰 막대 끝이 별을 향하면 <b>✨관측하기</b>를 눌러요!</li></ol><p>🖱 고리 버튼을 누른 뒤 화면을 <b>드래그</b>해도 돌아가요. <b>🔭 시점</b>을 고르면 혼천의 전체를 돌려 볼 수 있어요. 어려우면 <b>🤝 도움</b> 버튼을 눌러요!</p>`]],
+gan:[
+['🔭 간의는 뭐예요?',`<p>간의는 별을 겨눠서 <b>별이 얼마나 높이 떠 있는지</b>를 재는 도구예요. 혼천의를 <b>간단하게 줄인 것</b>이라서 이름이 간의(簡儀, 간단한 기구)예요.</p><p>이 게임에서는 <b>별을 조준해서 고도를 기록</b>하는 일을 해요.</p>`],
+['📍 어려운 말 : 방위와 고도',`<ul><li><b>방위</b> : <b>나침반 방향</b>이에요. 북쪽 0°, 동쪽 90°, 남쪽 180°, 서쪽 270°. 시계처럼 한 바퀴가 360°예요.</li><li><b>고도</b> : 땅(수평선)에서 <b>얼마나 위로 올려다봤나</b>를 각도로 나타낸 거예요. 수평선 0°, 바로 머리 위 90°예요. 팔을 땅과 나란히 뻗었다가 하늘 쪽으로 들어 올린 각도!</li></ul><p>별 찾기 = <b>방위(어느 쪽?) + 고도(얼마나 높이?)</b></p>`],
+['🔧 부품 소개',`<ul><li>${CH('#8a5a30')}<b>지평환</b> (갈색 큰 수평 고리) : 땅의 수평선이에요. 15°마다 눈금, 동·서·남·북 글자가 있어요.</li><li>${CH('#4fb0c8')}<b>사유환</b> (청록색 세로 고리) : 지평환 위에서 빙글 돌며 <b>방위</b>를 정해요. 이 고리에 <b>고도 눈금</b>이 새겨져 있어요.</li><li>${CH('#efe6c6')}<b>규형(관측통)</b> (흰 막대) : 고리 안에서 위아래로 기울어요. 별을 향하게 해요.</li><li><b>기둥</b> : 가운데 세로 막대로 사유환이 돌 수 있게 받쳐 줘요.</li></ul>`],
+['🔧 화면의 관측창과 눈금판',`<ul><li><b>관측창</b> (오른쪽 위 둥근 창) : 관측통 속을 들여다본 모습이에요. 별이 <b>빨간 십자 한가운데</b>에 오도록 해요. 빨간 작은 동그라미 안에 들어오면 성공 범위예요!</li><li><b>고도 눈금판</b> (오른쪽 아래 부채꼴 각도기) : 빨간 바늘이 가리키는 숫자가 지금 <b>고도</b>예요.</li></ul>`],
+['🎮 이렇게 조작해요',`<ol><li>위쪽 안내 글에서 <b>별이 있는 방향(방위)</b>을 확인해요. (처음부터 가까운 방향으로 맞춰 놨어요.)</li><li><b>방위 슬라이더</b>로 좌우를, <b>고도 슬라이더</b>로 위아래를 움직여 별을 관측창 한가운데로 보내요.</li><li><b>📝 측정 기록</b>을 누르면 고도가 기록돼요!</li></ol><p>💡 <b>북극성 팁</b> : 북극성의 고도는 내가 서 있는 곳의 위도와 거의 같아요. 서울(한양)에서 북극성은 약 37~38° 높이에 있어요.</p>`]],
+gyu:[
+['📏 규표는 뭐예요?',`<p>규표는 <b>막대 하나와 눈금자 하나</b>로 만든 도구예요. 해가 만드는 <b>그림자 길이</b>를 재서 <b>지금이 어느 계절인지</b> 알아내요.</p><p>해가 높이 뜬 여름엔 그림자가 <b>짧고</b>, 낮게 뜬 겨울엔 <b>길어요</b>. 낮 12시쯤 그림자 길이만 재도 계절을 알 수 있어요!</p>`],
+['📍 어려운 말',`<ul><li><b>절기</b> : 1년을 24조각으로 나눈 달력의 이름이에요. 대표는 <b>춘분(봄 한가운데)·하지(1년 중 낮이 가장 긴 날, 여름)·추분(가을 한가운데)·동지(1년 중 밤이 가장 긴 날, 겨울)</b>예요.</li><li><b>정오(남중)</b> : 해가 하루 중 <b>가장 높이 뜨는 때</b>(낮 12시쯤)예요. 이때 그림자가 가장 짧아요.</li><li><b>태양 고도</b> : 해를 올려다본 각도예요. 높을수록 그림자가 짧아요.</li><li><b>칸</b> : 이 게임에서 그림자 길이를 재는 단위예요.</li></ul>`],
+['🔧 부품 소개',`<ul><li>${CH('#c8ccd6')}<b>표</b> (세워 둔 은색 막대) : 그림자를 만드는 막대예요.</li><li>${CH('#6f6246')}<b>규</b> (바닥에 놓인 갈색 눈금자) : 북쪽으로 길게 놓인 자예요. 2칸마다 숫자가 써 있어요.</li><li>${CH('#222')}<b>그림자</b> : 표에서 시작하는 검은 띠예요. 끝에 노란 동그라미가 있어요.</li><li><b>태양의 위치 창</b> (위쪽 상자) : 지금 해가 하늘 어디에 있는지 보여 줘요.</li></ul>`],
+['🎮 이렇게 조작해요',`<ol><li><b>시각 슬라이더</b>로 아침~저녁 그림자가 움직이는 걸 구경해요. 그림자는 해의 반대쪽으로 생겨요.</li><li><b>🕛 정오로</b> 버튼으로 12:00에 맞춰요.</li><li><b>절기</b>를 ☀하지, 🍂춘분, ❄동지로 바꾸며 <b>📏 정오 그림자 기록</b>을 눌러요.</li><li>세 번 기록하면 <b>수수께끼</b>가 나와요. 오늘 정오 그림자 길이만 보고 어느 계절인지 맞혀요!</li></ol>`]],
+ang:[
+['🕐 앙부일구는 뭐예요?',`<p>이름을 풀면 <b>앙(올려다보다) + 부(솥) + 일구(해시계)</b>, 곧 <b>하늘을 올려다보는 솥 모양 해시계</b>예요. 솥처럼 오목한 그릇 안쪽에 그림자가 생겨요.</p><p>글자를 몰라도 <b>그림자가 닿은 선만 보면 시각을 알 수 있게</b> 만들어서, 사람이 많은 길가에 두었어요.</p>`],
+['🔧 부품 소개',`<ul><li>${CH('#caa66a')}<b>오목한 반구(솥)</b> : 둥글게 파인 그릇이에요. 그림자가 이 안쪽 면에 생겨요.</li><li>${CH('#d9b45a')}<b>영침</b> (금색 바늘) : 그릇 가운데를 가로지르는 막대예요. <b>북극성 쪽</b>을 향해 비스듬히 세워져 있어요. 이 바늘의 <b>그림자 끝</b>(검은 점)이 시각을 알려 줘요.</li><li>${CH('#6e1a14')}<b>시각선</b> (세로로 그어진 선) : 한 시간(15°)마다 한 줄이에요. 선 옆에 시각이 써 있어요. 子·丑·寅 같은 한자는 옛날 시간 이름(12지)이에요. 午는 낮 12시쯤이에요.</li><li>${CH('#7a3a1a')}<b>절기선</b> (가로로 둥근 선) : 계절을 알려 줘요. <b>하지선</b>은 영침 쪽에 가깝고, <b>동지선</b>은 가장 멀어요. 가운데 붉은 선이 <b>춘분·추분선</b>이에요.</li></ul>`],
+['👀 어떻게 읽어요?',`<ol><li>바늘 그림자의 <b>끝(검은 점)</b>을 찾아요.</li><li>그 점에서 가장 가까운 <b>세로선(시각선)</b>의 숫자 = <b>지금 시각</b>이에요.</li><li>그 점이 놓인 <b>가로선(절기선)</b> = <b>지금 계절</b>이에요.</li></ol><p>같은 시각이어도 계절에 따라 점이 가로선을 따라 위아래로 움직여요. 시각은 세로선, 계절은 가로선!</p>`],
+['🎮 이렇게 조작해요',`<ol><li>먼저 <b>탐구</b> : 시각 슬라이더와 절기 슬라이더로 그림자가 움직이는 걸 관찰해요.</li><li>그다음 <b>시각 문제</b> : 그림자 끝에서 가까운 세로선의 시각을 골라요. 틀리면 힌트(노란 선)가 나와요.</li><li>마지막 <b>절기 문제</b> : 점이 놓인 가로선이 어느 계절인지 골라요.</li></ol>`]],
+ja:[
+['⏳ 자격루는 뭐예요?',`<p>자격루는 <b>물로 시간을 재는 자동 물시계</b>예요. 이름이 <b>스스로(자) 친다(격)</b>는 뜻이라서, 정해진 시각이 되면 <b>인형이 스스로 종·북·징을 쳐서</b> 시각을 알려 줘요.</p><p>해가 안 보이는 밤이나 흐린 날에도 시간을 알 수 있어요. 이 게임에서는 <b>정확한 시각에 종이 울리게</b> 만드는 게 목표예요!</p>`],
+['🔧 부품 ① 물 항아리들 (왼쪽 3개)',`<ul><li>${CH('#6fb4e8')}<b>대파수호 · 중파수호 · 소파수호</b> : 위에서 아래로 계단처럼 놓인 큰 항아리 3개예요. 물이 위에서 아래로 차례로 흘러내려요.</li><li><b>왜 3개나 있을까요?</b> 맨 위 항아리의 물이 줄면 흐르는 힘이 약해져요. 그래서 <b>아래 항아리를 거쳐 물 높이를 일정하게 만드는 것</b>이에요. 물총을 가득 채웠을 때와 조금 남았을 때 물줄기 세기가 다른 것과 같아요.</li><li>${CH('#9fe0a0')}<b>정수위(초록 점선)</b> : 알맞은 물 높이예요. 소파수호는 이 높이가 되면 넘치는 물을 따로 빼요(넘치는 물 관). 그러면 물 높이가 늘 같아서 <b>흐르는 속도도 일정</b>해요.</li></ul>`],
+['🔧 부품 ② 수수호와 시보 장치',`<ul><li>${CH('#6fb4e8')}<b>수수호</b> (가운데 길쭉한 통) : 물을 받는 통이에요. 물이 차오를수록 높이가 올라가요. 옆 눈금은 0~100이에요.</li><li>${CH('#e0b95a')}<b>잣대(살대)</b> : 수수호 물에 <b>둥둥 뜨는 막대</b>예요. 물이 차면 같이 올라가요.</li><li>${CH('#d9b45a')}<b>지렛대</b> : 잣대가 맨 위(100)에 닿으면 기울어져서 구슬을 풀어 줘요.</li><li>⚫<b>구슬</b> : 굴러가며 인형들을 차례로 건드려요.</li><li>🔔<b>종·북·징 인형</b> : 구슬이 닿으면 팔을 휘둘러 종, 북, 징을 쳐요. 소리로 시각을 알려 줘요.</li><li>🎚<b>밸브</b> (오른쪽 슬라이더) : 수수호로 들어가는 <b>물의 양</b>을 조절해요. 열수록 물이 빨리 차올라 종이 빨리 울려요.</li></ul>`],
+['🎮 이렇게 조작해요',`<ol><li><b>1단계 물 채우기</b> : <b>🪣 대파수호 물 채우기</b>를 눌러요. 물이 아래 항아리로 내려가 <b>소파수호가 초록 점선</b>까지 차면 성공!</li><li><b>2단계 시각 맞추기</b> : <b>밸브</b>를 정하고 <b>⏱ 시보 시작</b>을 눌러요. 살대가 100에 닿는 순간 종이 울려요.</li><li>목표는 <b>20초 뒤에 종이 울리게</b> 하는 거예요(±3초 OK). 화면의 <b>"약 몇 초 뒤"</b> 계산이 도와줘요. 밸브를 줄이면 느려지고, 늘리면 빨라져요.</li></ol><p>🔍 <b>실제 vs 연출</b> : 진짜 자격루는 더 많은 항아리와 정교한 장치로 이루어졌어요. 이 게임은 원리를 쉽게 보려고 단순하게 표현했어요.</p>`]],
+il:[
+['☀🌙 일성정시의는 뭐예요?',`<p>이름은 <b>일(해) + 성(별) + 정시(시각을 정함) + 의(기구)</b>예요. <b>낮에는 해, 밤에는 별</b>을 겨눠서 시각을 알아내는 <b>하늘 시계</b>예요.</p><p>해도 별도 하루에 한 바퀴(360°)씩 돌아요. 그래서 <b>천체의 각도 = 시각</b>이에요!</p>`],
+['🔧 부품 소개 (화면의 둥근 시계)',`<ul><li>${CH('#8a5a30')}<b>주천도분환</b> (바깥 갈색 고리) : 각도(°) 눈금이 새겨진 고리예요. 한 바퀴 360°예요.</li><li>${CH('#f3ead2')}<b>시각환</b> (하얀 고리) : 1~24시 숫자가 써 있어요. <b>돌릴 수 있어요</b>(밤에 보정할 때 써요). 맨 위가 정오(12시)예요.</li><li>${CH('#efe6c6')}<b>규형(관측통)</b> (가운데서 뻗은 막대) : 해나 별 쪽으로 돌려요. 끝에 작은 구멍이 있어서 <b>빛이 구멍을 통과하면 맞은 거예요</b>.</li><li>🔴<b>빨간 삼각형</b> : 지금 시각환에서 읽는 위치를 가리켜요.</li><li><b>가운데 글자</b> : 지금 시각이에요.</li></ul>`],
+['☀ 낮 원리',`<p>해는 <b>1시간에 15°</b>씩 돌아요 (360° ÷ 24시간). 정오에는 맨 위에 있고, 오전에는 왼쪽, 오후에는 오른쪽으로 이동해요.</p><p>👉 <b>관측통을 해 쪽으로 돌린 각도 ÷ 15 = 정오에서 몇 시간 떨어졌나</b>! 시각환이 계산해서 보여 주니, 해를 맞추고 시각을 읽기만 하면 돼요.</p>`],
+['🌙 밤 원리 (조금 어려워요!)',`<p>별도 하루에 한 바퀴 돌지만, 별은 <b>날짜에 따라 출발 위치가 달라져요</b>. 그래서 밤에는 눈금판(시각환)을 <b>날짜에 맞게 돌려서 보정</b>해야 해요.</p><ul><li><b>적경</b> : 하늘의 <b>가로 위치</b>예요 (혼천의 설명서 참고). 별마다, 그리고 계절마다 태양마다 달라요.</li><li><b>보정각</b> = <b>태양의 적경 − 별의 적경</b> (음수면 360°를 더해요).</li></ul><p>게임에서 <b>별의 적경</b>과 <b>오늘 태양의 적경</b>을 알려 줘요. 계산이 어려우면 <b>🤝 도움</b> 버튼이 맞춰 줘요. 화면 아래 안내 글에서도 보정각을 알려 줘요!</p>`],
+['🎮 이렇게 조작해요',`<ol><li><b>낮</b> : 관측통을 해 쪽으로 돌려요(화면 드래그 또는 슬라이더). 빛이 통과하면 가운데 시각을 확인하고 <b>📝 시각 기록</b>!</li><li><b>밤</b> : 별 쪽으로 돌린 뒤, <b>시각환 보정</b> 슬라이더를 보정각 근처로 돌려요. 그다음 <b>📝 시각 기록</b>!</li></ol>`]],
+chu:[
+['🌧 측우기는 뭐예요?',`<p>측우기는 <b>비가 얼마나 왔는지</b> 재는 <b>빗물 받이 통</b>이에요. 같은 모양, 같은 크기의 통에 비를 받으면 <b>물의 높이</b>가 곧 <b>비의 양(강수량)</b>이에요. 통이 모두 같기 때문에 <b>지역끼리 비교</b>할 수 있어요.</p>`],
+['📍 어려운 말',`<ul><li><b>강수량</b> : 내린 비의 양이에요. 통에 고인 <b>물의 높이</b>(mm)로 나타내요.</li><li><b>mm(밀리미터)</b> : 1cm의 10분의 1이에요. 10mm = 1cm. 비가 30mm 왔다 = 통에 3cm 높이로 물이 찼다.</li><li><b>비의 세기</b> : 1시간에 몇 mm가 오는가예요 (mm/시).</li><li><b>강수량 = 비의 세기 × 비가 온 시간</b> (예: 10mm/시 × 3시간 = 30mm)</li><li><b>촌·푼</b> : 옛날 길이 단위예요 (1촌=10푼). 옛 사람들은 이 단위로 기록했어요.</li></ul>`],
+['🔧 부품 소개',`<ul><li>${CH('#6a6a72')}<b>측우기 통</b> : 원통 모양 그릇이에요. 투명하게 그려서 물이 보여요.</li><li>${CH('#fff')}<b>눈금</b> : 통 옆에 10mm마다 숫자가 있어요. 물 표면에서 점선이 눈금까지 이어져요.</li><li>${CH('#8a8a92')}<b>측우대</b> : 통을 올려 두는 돌받침이에요. 바닥이 평평해야 정확해요.</li><li>☁<b>구름과 빗방울</b> : 비의 세기가 클수록 빗방울이 많아요.</li></ul>`],
+['🎮 이렇게 조작해요',`<ol><li><b>☔ 6시간 동안 비 내리기</b>를 눌러요. 세 지역(한양·평양·동래)에 서로 다른 비가 와요.</li><li>비가 그치면 각 통의 <b>물 표면 눈금 숫자</b>를 읽어 칸에 적고 <b>✅ 측정값 확인</b>!</li><li>다음엔 <b>가장 비가 많이 온 지역</b>을 골라요.</li><li>마지막은 <b>직접 만들기</b> : 비의 세기와 시간을 정해서 목표 mm를 맞춰 보아요.</li></ol>`]],
+su:[
+['🌊 수표는 뭐예요?',`<p>수표는 <b>강물 속에 세운 눈금 기둥</b>이에요. 물이 <b>눈금의 어디까지</b> 올라왔는지 보고 <b>홍수가 날지 미리</b> 알 수 있어요. 비가 많이 오면 물이 불어나니까, 수표를 보면서 사람들에게 미리 알려요.</p>`],
+['🔧 부품 소개',`<ul><li>${CH('#b8b0a0')}<b>수표 기둥</b> (가운데 돌기둥) : 강 한가운데 세워진 눈금 기둥이에요. 숫자는 <b>척(尺)</b>이라는 옛 길이 단위예요. (게임 속 눈금)</li><li>${CH('#ffd45a')}<b>주의선 6척</b> (노란 점선) : 물이 여기까지 오면 조심해야 해요.</li><li>${CH('#ff4a3a')}<b>위험선 9척</b> (빨간 점선) : 홍수 위험! 사람들을 대피시켜야 해요.</li><li>${CH('#ff2a2a')}<b>범람 10척</b> : 물이 둑을 넘쳐 마을로 들어와요.</li><li>🔼<b>초록/노란 화살표</b> : 지금 수위를 가리켜요.</li><li>🚪<b>수문</b> : 강물을 빼내는 문이에요. 더 열수록 물이 빨리 빠져요. 하지만 너무 열면 아래 마을이 잠겨요!</li></ul>`],
+['🎮 이렇게 조작해요',`<ol><li><b>탐구</b> : 비의 양 슬라이더를 올려 물이 불어나 <b>빨간 선</b>을 넘는 모습을 봐요.</li><li><b>수위 판단</b> : 폭풍우 중 질문이 나와요. 눈금을 보고 6척 미만은 <b>안전</b>, 6~9척은 <b>주의</b>, 9척 이상은 <b>위험</b>을 골라요.</li><li><b>홍수 막기</b> : 수문 슬라이더를 1.6~2.0쯤으로 열어 30초 동안 9척을 넘지 않게 해요!</li></ol>`]]};
+DEV.forEach(d=>d.guide=GUIDE[d.id]);
+function showGuide(id,cb){const d=DEVm[id],pg=d.guide.concat([['📜 역사 확인',`<p>${d.hist}</p><p>💡 <b>쉽게 말하면</b> ${d.kid}</p>`]]);let i=0;
+ function render(){const p=pg[i];const btns=[];if(i>0)btns.push(['◀ 이전',()=>{i--;render()},'sec']);btns.push(['건너뛰기',()=>{closeModal();cb&&cb()},'sec']);
+  btns.push(i<pg.length-1?['다음 ▶',()=>{i++;render()}]:['🎮 시작하기!',()=>{closeModal();cb&&cb()},'red']);
+  modal('<div style="font-size:14px;color:#9ab">'+d.n+' 설명서 · '+(i+1)+' / '+pg.length+'</div><h2>'+p[0]+'</h2><div class="gd">'+p[1]+'</div>',btns);$('#modal .box').scrollTop=0}
+ render()}
+
+/* ================= 시뮬레이션 투어: 실제 화면을 가리키며 설명 ================= */
+let tour=null;
+function domRect(el){const sr=$('#stage').getBoundingClientRect(),r=el.getBoundingClientRect(),k=sr.width/W;return{x:(r.left-sr.left)/k,y:(r.top-sr.top)/k,w:r.width/k,h:r.height/k}}
+const PNL=i=>()=>{const e=document.querySelectorAll('#panel input[type=range]')[i];return e?domRect(e.parentElement):null};
+const PNLALL=()=>domRect($('#panel'));
+function startTour(id,cb,noinit){const sm=sims[id];if(!sm||!sm.tour){cb&&cb();return}
+ if(!noinit)sm.init();closeModal();$('#dlg').style.display='none';
+ tour={id,steps:sm.tour(),i:0,cb,t0:T};
+ const o=$('#tour');o.style.display='block';
+ o.innerHTML='<svg width="1280" height="720" viewBox="0 0 1280 720" style="position:absolute;left:0;top:0"><defs><marker id="ah" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ffd45a"/></marker></defs><line id="tl" stroke="#ffd45a" stroke-width="4" stroke-dasharray="10 6" marker-end="url(#ah)"/><circle id="tcir" fill="rgba(255,212,90,.12)" stroke="#ffd45a" stroke-width="5"/><rect id="trc" rx="10" fill="rgba(255,212,90,.12)" stroke="#ffd45a" stroke-width="5"/><g id="tlb"><rect rx="8" fill="#ffd45a" height="30"/><text font-size="18" font-weight="800" fill="#2a1a08" text-anchor="middle" font-family="inherit"></text></g></svg><div id="tc"></div>';
+ gotoStep(0)}
+function gotoStep(i){tour.i=i;tour.t0=T;const s=tour.steps[i],n=tour.steps.length;if(s.on)s.on();
+ const chips=tour.steps.map((x,k)=>'<span class="chip'+(k===i?' on':'')+'" data-k="'+k+'">'+x.chip+'</span>').join('');
+ $('#tc').innerHTML='<div style="font-size:13px;color:#cdb">👆 보고 싶은 부품을 눌러 보세요 ('+(i+1)+'/'+n+')</div><div>'+chips+'</div><h3>'+s.h+'</h3><p>'+s.t+'</p><div style="text-align:right" id="tcb"></div>';
+ const tb=$('#tcb');pbtn('📖 글로 보기',()=>showGuide(tour.id),'sec sm',tb);if(i>0)pbtn('◀ 이전',()=>gotoStep(i-1),'sec sm',tb);
+ pbtn(i<n-1?'다음 ▶':'🎮 직접 해 보기!',()=>{i<n-1?gotoStep(i+1):endTour()},i<n-1?'':'red',tb);pbtn('✖ 끝내기',endTour,'sec sm',tb);
+ $('#tc').querySelectorAll('.chip').forEach(c=>c.onclick=()=>gotoStep(+c.dataset.k))}
+function endTour(){if(!tour)return;const t=tour;tour=null;const o=$('#tour');o.style.display='none';o.innerHTML='';sims[t.id].init();t.cb&&t.cb()}
+function updTour(){if(!tour)return;const s=tour.steps[tour.i];if(!s)return;try{s.dm&&s.dm(T-tour.t0)}catch(e){}
+ let a=null;try{a=s.at&&s.at()}catch(e){}if(!a)a={x:640,y:360,r:6};
+ const cir=$('#tcir'),rc=$('#trc'),tc=$('#tc'),ln=$('#tl'),lb=$('#tlb');if(!cir)return;
+ let cx,cy,top,bot,rad;
+ if(a.w){rc.style.display='';cir.style.display='none';rc.setAttribute('x',a.x);rc.setAttribute('y',a.y);rc.setAttribute('width',a.w);rc.setAttribute('height',a.h);cx=a.x+a.w/2;cy=a.y+a.h/2;top=a.y;bot=a.y+a.h;rad=Math.min(a.w,a.h)/2}
+ else{const r=a.r+3*Math.sin(T*5);cir.style.display='';rc.style.display='none';cir.setAttribute('cx',a.x);cir.setAttribute('cy',a.y);cir.setAttribute('r',r);cx=a.x;cy=a.y;top=a.y-a.r;bot=a.y+a.r;rad=a.r}
+ const atBottom=cy<390;tc.style.top=atBottom?'auto':'66px';tc.style.bottom=atBottom?'12px':'auto';
+ const th=tc.offsetHeight,ay=atBottom?720-12-th:66+th,ax=cl(cx,390,890);
+ if(s.big){ln.style.display='none'}else{const dx=cx-ax,dy=cy-ay,d=Math.hypot(dx,dy)||1;if(d<rad+30){ln.style.display='none'}else{ln.style.display='';ln.setAttribute('x1',ax);ln.setAttribute('y1',ay);ln.setAttribute('x2',cx-dx/d*(rad+10));ln.setAttribute('y2',cy-dy/d*(rad+10))}}
+ const label=s.lab||s.chip,lw=label.length*18+26,lx=cl(cx-lw/2,8,1272-lw);let ly=top-44;if(ly<64)ly=bot+14;if(ly>684)ly=top-44;
+ const rr=lb.querySelector('rect'),tx=lb.querySelector('text');rr.setAttribute('x',lx);rr.setAttribute('y',ly);rr.setAttribute('width',lw);tx.setAttribute('x',lx+lw/2);tx.setAttribute('y',ly+22);tx.textContent=label}
+
+/* ================= 3D 도우미 ================= */
+let V={yaw:.5,pitch:.4,cx:540,cy:405,s:220};
+function P3(p){const cy=Math.cos(V.yaw),sy=Math.sin(V.yaw),cp=Math.cos(V.pitch),sp=Math.sin(V.pitch);const x1=p[0]*cy+p[2]*sy,z1=-p[0]*sy+p[2]*cy;return[V.cx+V.s*x1,V.cy-V.s*(p[1]*cp-z1*sp),p[1]*sp+z1*cp]}
+function ringD(pts,col,lw,glow){const q=pts.map(P3);C.lineCap='round';
+ for(let i=0;i<q.length-1;i++){const a=q[i],b=q[i+1];C.globalAlpha=cl(.6+(a[2]+b[2])*.25,.3,1);C.strokeStyle='rgba(0,0,0,.6)';C.lineWidth=lw+3;C.beginPath();C.moveTo(a[0],a[1]);C.lineTo(b[0],b[1]);C.stroke()}
+ if(glow){C.shadowColor=col;C.shadowBlur=18}
+ for(let i=0;i<q.length-1;i++){const a=q[i],b=q[i+1];C.globalAlpha=cl(.65+(a[2]+b[2])*.25,.35,1);C.strokeStyle=col;C.lineWidth=lw;C.beginPath();C.moveTo(a[0],a[1]);C.lineTo(b[0],b[1]);C.stroke()}
+ C.shadowBlur=0;C.globalAlpha=1}
+const circ=(fn,n)=>{const o=[];for(let i=0;i<=n;i++)o.push(fn(i/n*TAU));return o};
+const lineD=(a,b,col,lw,glow)=>ringD([a,b],col,lw,glow);
+function star4(x,y,r,col){C.save();C.shadowColor=col;C.shadowBlur=22;C.fillStyle=col;C.beginPath();for(let i=0;i<8;i++){const a=i*Math.PI/4,rr=i%2?r*.3:r;C.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr)}C.fill();C.restore()}
+const rc=(a,b,d)=>{const t=d*R;return[a*Math.cos(t)-b*Math.sin(t),a*Math.sin(t)+b*Math.cos(t)]};
+const Wq=(a,b,c)=>[a,b*Math.cos(LAT)+c*Math.sin(LAT),b*Math.sin(LAT)-c*Math.cos(LAT)];
+
+/* ================= ① 혼천의 ================= */
+sims.hon=(()=>{
+const TG=[0,1,3],ROLE={view:'화면을 드래그하면 혼천의 전체를 돌려서 볼 수 있어요. (휠로 확대·축소)',A1:'<b>삼신의의 적도환(금색)·황도환(붉은색)</b>: 극축을 따라 함께 도는 고리예요. 적도환은 하늘의 적도, 황도환은 태양이 지나가는 길이에요.',A3:'<b>백도환(은색)</b>: 달이 지나가는 길을 나타내는 고리예요. 독립적으로 돌아가요.',HA:'<b>사유환(청록색)</b>: 돌리면 별의 <b>가로 위치(적경)</b>가 바뀌어요.',DEC:'<b>규형(관측통)</b>: 기울이면 별의 <b>높낮이(적위)</b>가 바뀌어요.'};
+let sel,A1,A3,HA,DEC,ti,hn,hc,sA,sB,sH,sD,rd,role,btns;
+const sv=i=>{const s=STARS[i],d=s[2]*R,a=s[1]*R;return[Math.cos(d)*Math.cos(a),Math.cos(d)*Math.sin(a),Math.sin(d)]};
+const tv=()=>{const d=DEC*R,a=HA*R;return[Math.cos(d)*Math.cos(a),Math.cos(d)*Math.sin(a),Math.sin(d)]};
+function refresh(){btns.forEach(b=>b.classList.toggle('on',b.dataset.k===sel));role.innerHTML=ROLE[sel];
+ const nm=ti<3?STARS[TG[ti]][0]:'';$('#hn').innerHTML=ti<3?'🎯 지금 목표: <b>'+nm+'</b> — 금빛 별 쪽으로 관측통을 향하게 하세요.':'모든 별을 찾았어요!'}
+function obs(){if(ti>2)return;const i=TG[ti],ang=Math.acos(cl(dot(tv(),sv(i)),-1,1))/R,s=STARS[i];
+ if(ang<=8){const k=ti;ti++;hn=0;hc=0;okS();taskDone(k);refresh();say([{w:'j',e:'smile',t:s[0]+' 관측 성공! 이 별의 적경(하늘 가로 위치)은 약 '+Math.round(s[1])+'°, 적위(하늘 높낮이)는 약 '+Math.round(s[2])+'°예요. 북극에서 얼마나 떨어졌는지(거극도)로 말하면 '+(90-s[2]).toFixed(1)+'°죠. 이렇게 별 위치를 두 숫자로 기록해요!'}])}
+ else{hn++;badS();toast('조준이 '+ang.toFixed(0)+'° 어긋났어요. 성도의 흰 고리가 별 점과 겹치게 해 보세요.')}}
+function chart(cx,cy,rr){C.save();C.fillStyle='rgba(8,14,34,.85)';C.beginPath();C.arc(cx,cy,rr+22,0,TAU);C.fill();C.strokeStyle='#b9964a';C.lineWidth=1.5;C.stroke();
+ for(let d=30;d<=120;d+=30){C.strokeStyle=d===90?'#e0b95a':'rgba(200,210,240,.35)';C.lineWidth=d===90?1.6:1;C.beginPath();C.arc(cx,cy,d/120*rr,0,TAU);C.stroke();txt(d+'°',cx+4,cy-d/120*rr-6,10,'#cfd8ee','left','400')}
+ for(let a=0;a<360;a+=30){const t=a*R;C.strokeStyle='rgba(200,210,240,.25)';C.beginPath();C.moveTo(cx,cy);C.lineTo(cx+rr*Math.cos(t),cy-rr*Math.sin(t));C.stroke();txt(a+'°',cx+(rr+12)*Math.cos(t),cy-(rr+12)*Math.sin(t),10,'#e8d6a0','center','400')}
+ const pt=(ra,dec)=>[cx+(90-dec)/120*rr*Math.cos(ra*R),cy-(90-dec)/120*rr*Math.sin(ra*R)];
+ if(ti<3){const s=STARS[TG[ti]],p=pt(s[1],s[2]);star4(p[0],p[1],11,'#ffe27a');txt(s[0],p[0]+14,p[1]-10,12,'#ffe27a','left')}
+ const q=pt(HA,DEC);C.strokeStyle='#fff';C.lineWidth=2.5;C.beginPath();C.arc(q[0],q[1],8,0,TAU);C.stroke();
+ txt('성도(별자리 지도)',cx,cy+rr+34,13,'#e8d6a0');txt('가운데=북극 · 바깥 숫자=가로 위치(적경)',cx,cy+rr+50,11,'#aab','center','400');C.restore()}
+return{
+init(){V={yaw:.55,pitch:.38,cx:560,cy:400,s:225};sel='view';A1=20;A3=60;HA=100;DEC=30;ti=0;hn=0;hc=0;
+ setMission('하늘의 별을 찾아라!',['북극성 관측하기','직녀성 관측하기','천랑성 관측하기']);pclear();
+ pnote('<div id="hn"></div>');role=pnote('');const r=prow();btns=[];
+ [['view','🔭 시점'],['A1','삼신의'],['A3','백도환'],['HA','사유환'],['DEC','규형']].forEach(([k,t])=>{const b=pbtn(t,()=>{sel=k;refresh()},'sec sm',r);b.dataset.k=k;btns.push(b)});
+ sA=psl('삼신의(적도·황도환)',0,360,1,A1,v=>A1=v,v=>v+'°');sB=psl('백도환',0,360,1,A3,v=>A3=v,v=>v+'°');
+ sH=psl('사유환 ↔ 가로 위치 (적경)',0,360,1,HA,v=>{HA=v;sel='HA';refresh()},v=>v+'°');sD=psl('규형 ↕ 높낮이 (적위)',-90,90,1,DEC,v=>{DEC=v;sel='DEC';refresh()},v=>v+'°');
+ rd=pnote('');pbtn('✨ 관측하기',obs,'');pbtn('🔁 처음 자세로',()=>{HA=100;DEC=30;sH.set(HA);sD.set(DEC)},'sec sm');refresh()},
+ptr(t,x,y,dx,dy){if(t!=='move')return;
+ if(sel==='view'){V.yaw+=dx*.008;V.pitch=cl(V.pitch+dy*.006,-.25,1.2)}
+ else if(sel==='A1'){A1=(A1+dx*.7+360)%360;sA.set(Math.round(A1))}
+ else if(sel==='A3'){A3=(A3+dx*.7+360)%360;sB.set(Math.round(A3))}
+ else if(sel==='HA'){HA=(HA+dx*.7+360)%360;sH.set(Math.round(HA))}
+ else{DEC=cl(DEC-dy*.45,-90,90);sD.set(Math.round(DEC))}},
+wheel(d){V.s=cl(V.s*(d>0?.94:1.06),130,320)},
+tour(){const pt=(w,r)=>{const p=P3(w);return{x:p[0],y:p[1],r:r||38}};return[
+{chip:'전체',lab:'혼천의',h:'혼천의 = 하늘을 흉내 낸 모형',big:1,at:()=>({x:V.cx,y:V.cy,r:248}),dm:p=>{V.yaw=.55+Math.sin(p*.9)*.5},t:'하늘이 커다란 공이고 우리가 그 한가운데 있다고 상상해 보세요. 별은 공의 안쪽 벽에 붙어 있어요. 이 둥근 고리 모형으로 별이 있는 방향을 숫자로 알아내요. 부품을 하나씩 가리킬게요!'},
+{chip:'지평환',lab:'여기는 지평환!',h:'지평환 = 땅의 수평선',at:()=>pt([Math.cos(.9),0,Math.sin(.9)]),t:'아래쪽 큰 갈색 고리예요. 땅 위에 서서 하늘을 본다는 기준선이에요. 움직이지 않아요.'},
+{chip:'자오환',lab:'여기는 자오환!',h:'자오환 = 남북 하늘길',at:()=>pt([0,.97*Math.cos(1.1),.97*Math.sin(1.1)]),t:'정남쪽과 정북쪽 하늘을 지나는 세로 고리예요. 별은 가장 높이 뜰 때 이 길을 지나가요.'},
+{chip:'극축',lab:'여기는 극축!',h:'극축 = 하늘이 도는 막대',at:()=>pt(Wq(0,0,1.0),34),t:'북극성 쪽을 가리키는 회색 막대예요. 팽이의 심지처럼 모든 고리가 이 막대를 중심으로 빙글 돌아요.'},
+{chip:'적도환',lab:'여기는 적도환!',h:'적도환 = 하늘의 허리띠',at:()=>{const a=(A1+30)*R;return pt(Wq(.8*Math.cos(a),.8*Math.sin(a),0),34)},dm:p=>{sel='A1';A1=(20+p*60)%360;sA.set(Math.round(A1))},t:'금색 고리예요. 하늘의 가운데 줄(적도)이에요. 밝은 점 눈금이 빙글빙글 도는 걸 보세요. 이 줄 위가 위아래 높이(적위) 0°예요.'},
+{chip:'황도환',lab:'여기는 황도환! (노란 구슬=해)',h:'황도환 = 태양이 다니는 길',at:()=>{const p=rc(.76,0,A1);return pt(Wq(p[0],p[1],0),30)},dm:p=>{sel='A1';A1=(20+p*60)%360;sA.set(Math.round(A1))},t:'붉은 고리예요. 태양이 1년 동안 하늘에서 지나가는 길이에요. 노란 구슬이 태양이에요. 고리가 돌 때 같이 움직여요.'},
+{chip:'백도환',lab:'여기는 백도환! (흰 구슬=달)',h:'백도환 = 달이 다니는 길',at:()=>{const i2=EPS-5.1*R,p=rc(.72*Math.cos(1.2),.72*Math.sin(1.2)*Math.cos(i2),A3);return pt(Wq(p[0],p[1],.72*Math.sin(1.2)*Math.sin(i2)),30)},dm:p=>{sel='A3';A3=(60+p*60)%360;sB.set(Math.round(A3))},t:'은색 고리예요. 달이 지나가는 길이에요. 다른 고리와 따로따로 돌릴 수 있어요. 흰 구슬이 달이에요.'},
+{chip:'사유환',lab:'여기는 사유환!',h:'사유환 → 별의 가로 위치(적경)',at:()=>{const hr=HA*R;return pt(Wq(.62*Math.cos(.5)*Math.cos(hr),.62*Math.cos(.5)*Math.sin(hr),.62*Math.sin(.5)),36)},dm:p=>{sel='HA';HA=(100+p*45)%360;sH.set(Math.round(HA))},t:'청록색 고리예요. 돌리면 별의 <b>가로 위치(적경)</b>가 바뀌어요. 적경은 지구본의 <b>경도</b>처럼 한 바퀴(360°) 중 어디냐는 뜻이에요.'},
+{chip:'규형',lab:'여기는 규형(관측통)!',h:'규형 → 별의 높낮이(적위)',at:()=>{const d=tv();return pt(Wq(.64*d[0],.64*d[1],.64*d[2]),32)},dm:p=>{sel='DEC';DEC=30+40*Math.sin(p*1.2);sD.set(Math.round(DEC))},t:'흰 막대예요. 위아래로 기울이면 별의 <b>높낮이(적위)</b>가 바뀌어요. 적위는 지구본의 <b>위도</b>처럼 위아래 높이예요. 끝의 흰 점으로 별을 겨눠요.'},
+{chip:'성도',lab:'별 지도(성도)',h:'성도 = 북극 위에서 본 별 지도',at:()=>({x:180,y:560,r:128}),dm:p=>{HA=(100+p*45)%360;DEC=30+35*Math.sin(p*1.1);sH.set(Math.round(HA));sD.set(Math.round(DEC))},t:'가운데가 북극, 바깥 숫자가 적경이에요. <b>흰 동그라미</b>는 지금 관측통이 향한 곳이에요. 고리를 돌리면 같이 움직이는 걸 보세요!'},
+{chip:'오늘의 별',lab:'여기가 오늘의 별 ★',h:'미션: 별을 찾아라!',at:()=>{const s=sv(TG[0]);return pt(Wq(s[0]*1.16,s[1]*1.16,s[2]*1.16),40)},t:'금빛 별이에요. 흰 막대 끝을 이 별로 향하게 하면 성공! 성도에서도 같은 별이 보여요. 흰 동그라미를 별에 겹치면 돼요.'},
+{chip:'조작판',lab:'여기서 조작해요',h:'슬라이더로 직접 돌려 보세요',at:PNLALL,t:'사유환 슬라이더로 가로 위치, 규형 슬라이더로 높낮이를 맞춰요. 어려우면 왼쪽 아래 🤝 도움 버튼을 눌러요. 그럼 시작해 볼까요?'}]},
+coach(){if(ti>2)return'';const i=TG[ti],ang=Math.acos(cl(dot(tv(),sv(i)),-1,1))/R;return ang<=8?'🎉 딱 맞아요! 아래 ✨관측하기 버튼을 눌러요!':'🔭 금빛 ★ '+STARS[i][0]+'까지 '+ang.toFixed(0)+'° 남았어요. 사유환·규형 슬라이더를 움직여 보세요!'},
+assist(){if(ti>2)return;const s=STARS[TG[ti]];HA=s[1];DEC=s[2];sH.set(HA);sD.set(DEC);toast('장영실이 관측통을 별 쪽으로 맞춰 줬어요! ✨관측하기를 눌러요.')},
+hint(){hc++;const s=STARS[TG[Math.min(ti,2)]];if(hc<2)hintSay('왼쪽 아래 성도를 보세요. 별의 가로 위치(바깥 숫자)는 사유환, 중심에서 떨어진 거리는 규형 기울기로 맞춰요. 흰 고리가 금빛 별 위에 오면 돼요!');else hintSay('목표 값은 사유환 가로 위치(적경) 약 '+Math.round(s[1])+'°, 규형 높낮이(적위) 약 '+Math.round(s[2])+'°예요. 조금씩 맞춰 보세요!')},
+draw(){bgNight();
+ const bp=circ(t=>[1.14*Math.cos(t),-1.12,1.14*Math.sin(t)],48).map(P3);C.beginPath();bp.forEach((p,i)=>i?C.lineTo(p[0],p[1]):C.moveTo(p[0],p[1]));C.fillStyle='rgba(44,30,20,.92)';C.fill();C.strokeStyle='#8a6a38';C.lineWidth=3;C.stroke();
+ [45,135,225,315].forEach(a=>{const t=a*R;lineD([Math.cos(t),0,Math.sin(t)],[Math.cos(t)*1.06,-1.12,Math.sin(t)*1.06],'#6a4a28',10)});
+ ringD(circ(t=>[Math.cos(t),0,Math.sin(t)],72),'#8a5a30',9);
+ ringD(circ(t=>[0,.97*Math.cos(t),.97*Math.sin(t)],72),'#a8703a',8);
+ ringD(circ(t=>Wq(.9*Math.cos(t),.9*Math.sin(t),0),72),'#b08a3a',6);
+ const g1=sel==='A1',g3=sel==='A3',gh=sel==='HA',gd=sel==='DEC';
+ ringD(circ(t=>Wq(.8*Math.cos(t),.8*Math.sin(t),0),72),'#e0b95a',7,g1);
+ for(let k=0;k<12;k++){const a=(A1+k*30)*R;lineD(Wq(.74*Math.cos(a),.74*Math.sin(a),0),Wq(.86*Math.cos(a),.86*Math.sin(a),0),k?'#ffe9a0':'#fff',3)}
+ ringD(circ(t=>{const p=rc(.76*Math.cos(t),.76*Math.sin(t)*Math.cos(EPS),A1);return Wq(p[0],p[1],.76*Math.sin(t)*Math.sin(EPS))},72),'#d9533f',6,g1);
+ {const p=rc(.76,0,A1),q=P3(Wq(p[0],p[1],0));ptc(q[0],q[1],8,'#ffcf40')}
+ const i2=EPS-5.1*R;ringD(circ(t=>{const p=rc(.72*Math.cos(t),.72*Math.sin(t)*Math.cos(i2),A3);return Wq(p[0],p[1],.72*Math.sin(t)*Math.sin(i2))},72),'#cfd6ea',6,g3);
+ {const p=rc(.72*Math.cos(1.2),.72*Math.sin(1.2)*Math.cos(i2),A3),q=P3(Wq(p[0],p[1],.72*Math.sin(1.2)*Math.sin(i2)));ptc(q[0],q[1],6,'#f4f4ff')}
+ const hr=HA*R;ringD(circ(t=>Wq(.62*Math.cos(t)*Math.cos(hr),.62*Math.cos(t)*Math.sin(hr),.62*Math.sin(t)),72),'#4fb0c8',7,gh);
+ lineD(Wq(0,0,-1.08),Wq(0,0,1.08),'#666',4);
+ const d=tv();lineD(Wq(-.5*d[0],-.5*d[1],-.5*d[2]),Wq(.64*d[0],.64*d[1],.64*d[2]),'#efe6c6',11,gd);
+ {const e=P3(Wq(.64*d[0],.64*d[1],.64*d[2]));ptc(e[0],e[1],7,'#fff')}
+ if(ti<3){const s=sv(TG[ti]),p=P3(Wq(s[0]*1.16,s[1]*1.16,s[2]*1.16));
+  if(true){C.setLineDash([6,6]);C.strokeStyle='rgba(255,226,122,.6)';C.lineWidth=2;const o=P3([0,0,0]);C.beginPath();C.moveTo(o[0],o[1]);C.lineTo(p[0],p[1]);C.stroke();C.setLineDash([])}
+  star4(p[0],p[1],16+3*Math.sin(T*4),'#ffe27a');txt(STARS[TG[ti]][0],p[0]+22,p[1]-12,15,'#ffe27a','left')}
+ chart(180,560,100);
+ rd.innerHTML='가로 위치(적경) <b>'+HA.toFixed(0)+'°</b><br>높낮이(적위) <b>'+DEC.toFixed(0)+'°</b><br><small>북극에서 떨어진 정도(거극도) '+(90-DEC).toFixed(0)+'°</small>'}}})();
+
+/* ================= ② 간의 ================= */
+sims.gan=(()=>{
+const TG=[{s:0,ha:0},{s:1,ha:-30},{s:2,ha:30}],DIR=['북','북동','동','남동','남','남서','서','북서','북'];
+let az,alt,ti,hn,hc,sAz,sAl,bg,rd,recs,lst;
+const hv=(ra,dec,l)=>{const Hh=(l-ra)*R,d=dec*R;return[-Math.cos(d)*Math.sin(Hh),Math.sin(d)*Math.cos(LAT)-Math.cos(d)*Math.cos(Hh)*Math.sin(LAT),Math.sin(d)*Math.sin(LAT)+Math.cos(d)*Math.cos(Hh)*Math.cos(LAT)]};
+const fwd=(A,a)=>[Math.sin(A)*Math.cos(a),Math.cos(A)*Math.cos(a),Math.sin(a)];
+const tgt=()=>{const s=STARS[TG[ti].s];return hv(s[1],s[2],lst)};
+function setT(){const s=STARS[TG[ti].s];lst=s[1]+TG[ti].ha;const v=tgt(),a=(Math.atan2(v[0],v[1])/R+360)%360;
+ az=Math.round(a/10)*10;alt=20;if(sAz){sAz.set(az);sAl.set(alt)}$('#gn').innerHTML='🎯 목표: <b>'+s[0]+'</b>의 고도를 재세요.<br>별은 <b>'+DIR[Math.round(a/45)]+'쪽(방위 약 '+Math.round(a/10)*10+'°)</b> 하늘에 떠 있어요.'}
+const W3=v=>[v[0],v[2],-v[1]];
+function rec(){if(ti>2)return;const v=tgt(),f=fwd(az*R,alt*R),sep=Math.acos(cl(dot(v,f),-1,1))/R;
+ if(sep<=3){const k=ti,s=STARS[TG[ti].s];recs.push(s[0]+' '+alt.toFixed(1)+'°');ti++;hn=0;hc=0;taskDone(k);if(ti<3)setT();
+  say([{w:'j',e:'smile',t:s[0]+'의 고도를 '+alt.toFixed(1)+'°로 기록했어요!'+(k===0?' 북극성의 고도는 한양의 위도(약 37.5°)와 거의 같아요. 그래서 북극성 고도만 재도 내가 서 있는 위도를 알 수 있죠.':' 별의 고도는 시간에 따라 계속 달라져요.')}])}
+ else{hn++;badS();const e=sepDir(v,f);toast('아직 조준선 한가운데가 아니에요. '+e)}}
+function sepDir(v,f){const A=az*R,a=alt*R,r=[Math.cos(A),-Math.sin(A),0],u=[-Math.sin(A)*Math.sin(a),-Math.cos(A)*Math.sin(a),Math.cos(a)],d=dot(v,f);if(d<.2)return'별이 시야 밖에 있어요. 방위를 크게 돌려 보세요.';const x=dot(v,r)/d,y=dot(v,u)/d;return'별이 '+(Math.abs(x)>.012?(x>0?'오른쪽':'왼쪽')+' ':'')+(Math.abs(y)>.012?(y>0?'위':'아래')+'쪽 ':'')+'에 있어요.'}
+return{
+init(){V={yaw:.5,pitch:.42,cx:400,cy:470,s:185};az=200;alt=25;ti=0;hn=0;hc=0;recs=[];bg=[];for(let i=0;i<420;i++)bg.push([Math.random()*360,Math.asin(Math.random()*2-1)/R,Math.random()]);
+ setMission('세종이 지정한 별의 고도를 측정하라!',['북극성의 고도 측정·기록','직녀성의 고도 측정·기록','견우성의 고도 측정·기록']);pclear();
+ pnote('<div id="gn"></div>');pnote('오른쪽 위 <b>관측창</b>에 별이 들어오고 빨간 조준원 안에 오면 <b>측정 기록</b>! (화면을 드래그해도 돌아가요)');
+ sAz=psl('방위 (수평 회전)',0,360,.5,az,v=>az=v,v=>v.toFixed(1)+'°');sAl=psl('고도 (수직 기울기)',0,90,.5,alt,v=>alt=v,v=>v.toFixed(1)+'°');
+ const r=prow();[['방위 -0.5',()=>{az=(az+359.5)%360;sAz.set(az)}],['방위 +0.5',()=>{az=(az+.5)%360;sAz.set(az)}],['고도 -0.5',()=>{alt=cl(alt-.5,0,90);sAl.set(alt)}],['고도 +0.5',()=>{alt=cl(alt+.5,0,90);sAl.set(alt)}]].forEach(a=>pbtn(a[0],a[1],'sec sm',r));
+ rd=pnote('');pbtn('📝 측정 기록',rec,'');pnote('<div id="gr"></div>');setT()},
+ptr(t,x,y,dx,dy){if(t!=='move')return;az=(az+dx*.35+360)%360;alt=cl(alt-dy*.25,0,90);sAz.set(az);sAl.set(alt)},
+wheel(d){V.s=cl(V.s*(d>0?.94:1.06),130,260)},
+tour(){const pt=(w,r)=>{const p=P3(w);return{x:p[0],y:p[1],r:r||36}};
+const ang=()=>{const v=tgt();return[(Math.atan2(v[0],v[1])/R+360)%360,Math.asin(v[2])/R]};
+return[
+{chip:'전체',lab:'간의',h:'간의 = 별의 높이를 재는 도구',big:1,at:()=>({x:V.cx,y:V.cy-60,r:235}),dm:p=>{az=(200+p*25)%360;sAz.set(az)},t:'혼천의를 간단하게 줄인 도구(그래서 간의!)예요. 별을 겨눠서 <b>어느 쪽에, 얼마나 높이</b> 있는지 재요. 부품을 하나씩 가리킬게요!'},
+{chip:'지평환',lab:'여기는 지평환!',h:'지평환 = 땅의 수평선',at:()=>pt([Math.cos(1.3),0,Math.sin(1.3)]),t:'아래쪽 갈색 큰 고리예요. 15°마다 작은 눈금이 있어요. 땅 위에 서서 하늘을 본다는 기준이에요.'},
+{chip:'방위',lab:'동서남북 글자',h:'방위 = 나침반 방향',at:()=>pt([0,0,-1.2],28),t:'<b>북 0°, 동 90°, 남 180°, 서 270°</b>. 별이 어느 쪽에 있는지 알려 주는 숫자예요. 시계처럼 한 바퀴가 360°예요.'},
+{chip:'사유환',lab:'여기는 사유환!',h:'사유환 = 좌우 돌리개',at:()=>{const A=az*R;return pt([.8*Math.cos(1.2)*Math.sin(A),.8*Math.sin(1.2),-.8*Math.cos(1.2)*Math.cos(A)],34)},dm:p=>{az=(200+p*30)%360;sAz.set(az)},t:'청록색 세로 고리예요. 이 고리를 빙글 돌리면 <b>방위</b>가 바뀌어요. 지금 자동으로 돌아가고 있어요!'},
+{chip:'고도 눈금',lab:'고도 눈금(0~90°)',h:'고도 = 올려다본 각도',at:()=>{const A=az*R;return pt([.86*Math.cos(.4)*Math.sin(A),.86*Math.sin(.4),-.86*Math.cos(.4)*Math.cos(A)],34)},t:'고리의 작은 눈금은 수평선 0°부터 머리 위 90°까지예요. 팔을 땅과 나란히 뻗었다가 하늘로 들어 올린 각도를 떠올려 보세요.'},
+{chip:'관측통',lab:'여기는 관측통(규형)!',h:'규형 = 별을 겨누는 막대',at:()=>{const d=W3(fwd(az*R,alt*R));return pt([.88*d[0],.88*d[1],.88*d[2]],34)},dm:p=>{alt=cl(35+25*Math.sin(p*1.2),0,90);sAl.set(alt)},t:'흰 막대예요. 위아래로 기울여 별을 겨눠요. 기울어진 각도가 곧 <b>고도</b>예요. 막대가 오르락내리락하는 걸 보세요.'},
+{chip:'관측창',lab:'관측창',h:'관측창 = 통 속을 들여다본 모습',at:()=>({x:790,y:255,r:138}),on:()=>{const t=ang();az=(t[0]+25)%360;alt=cl(t[1]-14,0,90);sAz.set(az);sAl.set(alt)},dm:p=>{const t=ang();az=(az+(((t[0]-az+540)%360)-180)*.03+360)%360;alt+=(t[1]-alt)*.03;sAz.set(az);sAl.set(alt)},t:'관측통 속을 들여다본 모습이에요. 반짝이는 별이 <b>빨간 십자 한가운데</b>로 들어오죠? 작은 빨간 동그라미 안에 들어오면 기록할 수 있어요.'},
+{chip:'고도 눈금판',lab:'고도 눈금판',h:'바늘이 가리키는 숫자 = 고도',at:()=>({x:770,y:565,r:118}),dm:p=>{alt=cl(35+25*Math.sin(p*1.2),0,90);sAl.set(alt)},t:'빨간 바늘이 가리키는 숫자가 지금 고도예요. 별을 조준한 다음 이 숫자를 기록해요. 💡 북극성의 고도는 내가 사는 곳의 위도와 거의 같아요!'},
+{chip:'조작판',lab:'여기서 조작해요',h:'슬라이더로 별을 찾아요',at:PNLALL,t:'방위 슬라이더로 좌우, 고도 슬라이더로 위아래를 맞춰요. 별이 빨간 동그라미에 들어오면 <b>📝 측정 기록</b>! 어려우면 🤝 도움 버튼!'}]},
+coach(){if(ti>2)return'';const v=tgt(),f=fwd(az*R,alt*R),sep=Math.acos(cl(dot(v,f),-1,1))/R;return sep<=3?'🎯 별이 빨간 동그라미 안에 들어왔어요! 📝측정 기록을 눌러요!':'🔭 별을 찾아요! '+sepDir(v,f)+' (방위·고도 슬라이더)'},
+assist(){if(ti>2)return;const v=tgt();az=(Math.atan2(v[0],v[1])/R+360)%360;alt=Math.asin(v[2])/R;sAz.set(az);sAl.set(alt);toast('별을 조준해 줬어요! 📝측정 기록을 눌러요.')},
+hint(){hc++;const v=ti<3?tgt():[0,0,1],a=Math.atan2(v[0],v[1])/R,h=Math.asin(v[2])/R;if(hc<2)hintSay('방위 슬라이더로 별이 있는 방향부터 맞추고, 관측창에 별이 보이면 고도로 위아래를 맞춰요. 별이 조준원 한가운데 오면 기록!');else hintSay('방위는 약 '+((a+360)%360).toFixed(0)+'°, 고도는 약 '+h.toFixed(0)+'° 근처예요. 조금씩 조준해 보세요!')},
+draw(){bgNight();const A=az*R,a=alt*R,u=[Math.sin(A),0,-Math.cos(A)];
+ const bp=circ(t=>[1.12*Math.cos(t),-1,1.12*Math.sin(t)],48).map(P3);C.beginPath();bp.forEach((p,i)=>i?C.lineTo(p[0],p[1]):C.moveTo(p[0],p[1]));C.fillStyle='rgba(44,30,20,.92)';C.fill();C.strokeStyle='#8a6a38';C.lineWidth=3;C.stroke();
+ [45,135,225,315].forEach(g=>{const t=g*R;lineD([Math.cos(t),0,Math.sin(t)],[Math.cos(t)*1.05,-1,Math.sin(t)*1.05],'#6a4a28',9)});
+ ringD(circ(t=>[Math.cos(t),0,Math.sin(t)],72),'#8a5a30',9);
+ for(let g=0;g<360;g+=15){const t=g*R,x=Math.sin(t),z=-Math.cos(t);lineD([x*.97,0,z*.97],[x*1.05,0,z*1.05],g%90?'#c9a86a':'#fff',g%90?2:4)}
+ [['북',0],['동',90],['남',180],['서',270]].forEach(([n,g])=>{const p=P3([Math.sin(g*R)*1.2,0,-Math.cos(g*R)*1.2]);txt(n,p[0],p[1],18,'#ffe9a0')});
+ ringD(circ(t=>[.8*Math.cos(t)*u[0],.8*Math.sin(t),.8*Math.cos(t)*u[2]],72),'#4fb0c8',7,true);
+ for(let g=0;g<=90;g+=10){const t=g*R;lineD([.8*Math.cos(t)*u[0],.8*Math.sin(t),.8*Math.cos(t)*u[2]],[.9*Math.cos(t)*u[0],.9*Math.sin(t),.9*Math.cos(t)*u[2]],'#fff',2)}
+ lineD([0,-1,0],[0,.82,0],'#777',5);
+ const f=fwd(A,a),d=W3(f);lineD([-.3*d[0],-.3*d[1],-.3*d[2]],[.88*d[0],.88*d[1],.88*d[2]],'#efe6c6',12,true);{const e=P3([.88*d[0],.88*d[1],.88*d[2]]);ptc(e[0],e[1],7,'#fff')}
+ /* 관측창 */
+ const ex=790,ey=255,ER=128,K=ER/Math.tan(20*R);C.save();C.beginPath();C.arc(ex,ey,ER,0,TAU);C.clip();const gg=C.createRadialGradient(ex,ey,10,ex,ey,ER);gg.addColorStop(0,'#101a40');gg.addColorStop(1,'#050a1c');C.fillStyle=gg;C.fillRect(ex-ER,ey-ER,2*ER,2*ER);
+ const r=[Math.cos(A),-Math.sin(A),0],uu=[-Math.sin(A)*Math.sin(a),-Math.cos(A)*Math.sin(a),Math.cos(a)];
+ if(ti<3){const tv=tgt();bg.forEach(s=>{const v=hv(s[0],s[1],lst),dd=dot(v,f);if(dd<.4)return;const x=ex+dot(v,r)/dd*K,y=ey-dot(v,uu)/dd*K;ptc(x,y,.8+s[2]*1.6,'rgba(255,255,255,'+(.4+s[2]*.6)+')')});
+  const dd=dot(tv,f);if(dd>.3){const x=ex+dot(tv,r)/dd*K,y=ey-dot(tv,uu)/dd*K;star4(x,y,14+2*Math.sin(T*4),'#ffe27a')}}
+ C.restore();C.strokeStyle='#b9964a';C.lineWidth=4;C.beginPath();C.arc(ex,ey,ER,0,TAU);C.stroke();
+ C.strokeStyle='rgba(255,90,70,.9)';C.lineWidth=1.5;C.beginPath();C.moveTo(ex-ER,ey);C.lineTo(ex+ER,ey);C.moveTo(ex,ey-ER);C.lineTo(ex,ey+ER);C.stroke();C.beginPath();C.arc(ex,ey,Math.tan(3*R)*K,0,TAU);C.stroke();
+ txt('관측창 (시야 40°)',ex,ey+ER+20,13,'#e8d6a0');
+ /* 고도 눈금판 */
+ const px=700,py=640,pr=150;C.fillStyle='rgba(8,14,34,.82)';C.beginPath();C.moveTo(px,py);C.arc(px,py,pr+16,-Math.PI/2,0);C.closePath();C.fill();C.strokeStyle='#b9964a';C.lineWidth=1.5;C.stroke();
+ for(let g=0;g<=90;g+=5){const t=g*R,l=g%10?8:14;C.strokeStyle='#e8d6a0';C.lineWidth=g%10?1:2;C.beginPath();C.moveTo(px+pr*Math.cos(t),py-pr*Math.sin(t));C.lineTo(px+(pr-l)*Math.cos(t),py-(pr-l)*Math.sin(t));C.stroke();if(g%10===0)txt(g,px+(pr-28)*Math.cos(t),py-(pr-28)*Math.sin(t),12,'#fff','center','400')}
+ C.strokeStyle='#ff6a4a';C.lineWidth=3;C.beginPath();C.moveTo(px,py);C.lineTo(px+pr*Math.cos(a),py-pr*Math.sin(a));C.stroke();txt('고도 눈금',px+70,py-20,13,'#e8d6a0');
+ rd.innerHTML='방위 <b>'+az.toFixed(1)+'°</b> · 고도 눈금 <b>'+alt.toFixed(1)+'°</b>';$('#gr').innerHTML=recs.length?'<b>📒 측정 기록</b><br>'+recs.join('<br>'):''}}})();
+
+/* ================= ③ 규표 ================= */
+sims.gyu=(()=>{
+const HG=8,SC=19,sT=.62,cT=.79,OX=420,OY=598;
+let si,hr,mode,recs,mys,sSi,sHr,rd,hc;
+const PR=(e,n,u)=>[OX+SC*e,OY-SC*(n*sT+u*cT)];
+function shadow(i,h){const v=SUNV(i,h),alt=Math.asin(v[2]);if(alt<4*R)return null;const L=Math.min(HG/Math.tan(alt),22),m=Math.hypot(v[0],v[1])||1;return{L,e:-v[0]/m*L,n:-v[1]/m*L,alt:alt/R}}
+const bk=i=>{const d=DECL(i);return d>12?'sum':d<-12?'win':'eq'},BN={sum:'하지 무렵(여름)',eq:'춘분·추분 무렵(봄·가을)',win:'동지 무렵(겨울)'};
+const hh=h=>Math.floor(h)+':'+('0'+Math.round((h%1)*60)).slice(-2);
+function build(){pclear();
+ if(mode===0){pnote('시각과 절기를 바꿔 그림자를 관찰하고, <b>정오(남중)</b>에 그림자 길이를 <b>기록</b>하세요. 하지·춘/추분·동지 세 날을 모두 기록해야 해요.');
+  sHr=psl('시각',6,18,.25,hr,v=>hr=v,hh);sSi=psl('절기',0,23,1,si,v=>si=v,v=>JG[v]);
+  const q2=prow();pbtn('🕛 정오로',()=>{hr=12;sHr.set(12)},'sec sm',q2);[['☀ 하지',6],['🍂 춘분',0],['❄ 동지',18]].forEach(a=>pbtn(a[0],()=>{si=a[1];sSi.set(si)},'sec sm',q2));pbtn('📏 정오 그림자 기록',()=>{const s=shadow(si,hr);if(Math.abs(hr-12)>.5){badS();toast('그림자가 가장 짧은 때, 정오(12:00)에 재야 해요!');return}
+   const b=bk(si),d=DECL(si);if(!(Math.abs(d)>20||Math.abs(d)<4)){toast('하지·춘분/추분·동지 무렵의 날로 맞춰 보세요.');return}
+   recs[b]=s.L;okS();upd();toast(BN[b]+' 정오 그림자: '+s.L.toFixed(1)+'칸 기록!');if(recs.sum&&recs.eq&&recs.win){taskDone(0);mode=1;setTimeout(()=>{newMys();build()},1800)}},'');
+  rd=pnote('');pnote('<div id="gt"></div>')}
+ else{pnote('오늘은 어느 계절일까요? 정오(12시) 그림자 길이를 <b>내가 기록한 값</b>과 비교해 보세요.');rd=pnote('');pnote('<div id="gt"></div>');
+  [['sum','☀ 하지 무렵(여름)'],['eq','🍂 춘분·추분 무렵(봄·가을)'],['win','❄ 동지 무렵(겨울)']].forEach(([k,t])=>pbtn(t,()=>{if(k===bk(mys)){taskDone(1);say([{w:'j',e:'smile',t:'정답! 정오 그림자가 짧을수록 태양이 높이 떠 있어서 여름이에요. 그림자가 길수록 태양이 낮아 겨울이죠. 이렇게 그림자 길이로 절기를 알 수 있어요.'}])}else{badS();hc++;toast('다시 비교해 보세요. 기록한 길이 중 가장 가까운 것은?')}},'sec'))}
+ upd()}
+function upd(){const g=$('#gt');if(!g)return;g.innerHTML='<b>📒 정오 그림자 기록</b><br>☀ 하지 '+(recs.sum?recs.sum.toFixed(1):'-')+' / 🍂 춘·추분 '+(recs.eq?recs.eq.toFixed(1):'-')+' / ❄ 동지 '+(recs.win?recs.win.toFixed(1):'-')}
+function newMys(){mys=[0,5,6,7,12,17,18,19][Math.floor(Math.random()*8)];si=mys;hr=12}
+return{
+init(){si=18;hr=9;mode=0;recs={};hc=0;setMission('그림자의 길이로 계절을 알아내라!',['하지·춘/추분·동지의 정오 그림자 길이 기록하기','정오 그림자 길이로 오늘의 계절 맞히기']);build()},
+tour(){const tip=()=>{const s=shadow(si,hr);if(!s)return{x:OX,y:OY,r:24};const q=PR(s.e,s.n,0);return{x:q[0],y:q[1],r:30}};
+return[
+{chip:'전체',lab:'규표',h:'규표 = 막대 그림자로 계절 알기',big:1,at:()=>({x:40,y:300,w:880,h:340}),t:'<b>막대 하나와 눈금자 하나</b>로 만든 도구예요. 해가 만드는 그림자 길이를 재서 지금이 어느 계절인지 알아내요. 하나씩 가리킬게요!'},
+{chip:'표',lab:'여기는 표(막대)!',h:'표 = 그림자를 만드는 막대',at:()=>{const q=PR(0,0,HG/2);return{x:q[0],y:q[1],r:50}},t:'땅에 수직으로 세운 은색 막대예요. 높이는 언제나 똑같아요. 그림자가 길어지고 짧아지는 건 해 때문이에요.'},
+{chip:'규',lab:'여기는 규(눈금자)!',h:'규 = 북쪽으로 놓인 눈금자',at:()=>{const y=PR(0,20.5,0)[1];return{x:OX-50,y:y,w:100,h:OY-y}},t:'바닥에 놓인 갈색 눈금자예요. 2칸마다 숫자가 있어요. 그림자 끝이 어디까지 왔는지 이 숫자로 읽어요.'},
+{chip:'그림자',lab:'그림자 끝',h:'그림자는 해의 반대쪽!',at:tip,on:()=>{si=0;sSi.set(0)},dm:p=>{hr=8+((p*1.3)%8);sHr.set(hr)},t:'아침엔 그림자가 서쪽, 낮 12시엔 북쪽(눈금자 위), 저녁엔 동쪽으로 움직여요. 자동으로 해가 움직이고 있어요. 그림자 끝을 따라가 보세요!'},
+{chip:'해 위치창',lab:'해의 위치',h:'지금 해는 하늘 어디?',at:()=>({x:600,y:76,w:310,h:120}),dm:p=>{hr=8+((p*1.3)%8);sHr.set(hr)},t:'해가 하늘 어디에 떠 있는지 보여 줘요. 점선은 하루 동안 해가 지나는 길이에요. 해가 높을수록 그림자는 짧아져요.'},
+{chip:'여름vs겨울',lab:'정오 그림자',h:'정오 그림자: 여름은 짧게, 겨울은 길게',at:tip,dm:p=>{hr=12;sHr.set(12);si=Math.floor(p/2.5)%2?18:6;sSi.set(si)},t:'낮 12시에 <b>하지(여름)</b>와 <b>동지(겨울)</b>를 번갈아 보여 줄게요. 해가 높은 여름엔 그림자가 짧고, 낮은 겨울엔 길어요. 이 길이로 계절을 알아내는 거예요!'},
+{chip:'조작판',lab:'여기서 조작해요',h:'정오 그림자를 기록해요',at:PNLALL,t:'시각을 12:00으로, 절기를 하지·춘분·동지로 바꾸며 <b>📏 기록</b>을 눌러요. 세 번 기록하면 수수께끼가 나와요. 🤝 도움 버튼도 있어요!'}]},
+coach(){if(mode===0){const n=Object.keys(recs).length;if(Math.abs(hr-12)>.5)return'🕛 먼저 시각을 12:00(정오)로 맞춰요. (🕛 정오로 버튼)';const need=!recs.sum?'하지(☀)':!recs.eq?'춘분(🍂)':!recs.win?'동지(❄)':'';return need?'📏 절기를 '+need+'로 바꾸고 정오 그림자 기록을 눌러요! ('+n+'/3)':''}return'🔎 오늘 정오 그림자 길이는 '+shadow(mys,12).L.toFixed(1)+'칸! 내 기록표와 가장 비슷한 계절을 골라요.'},
+assist(){if(mode===0){hr=12;si=!recs.sum?6:!recs.eq?0:18;sHr.set(hr);sSi.set(si);toast('시각 12:00, 절기 '+JG[si]+'로 맞췄어요. 기록 버튼을 눌러요!')}else toast('힌트: 그림자가 가장 비슷한 기록은 '+BN[bk(mys)]+'이에요!')},
+hint(){hc++;hintSay(mode===0?'그림자는 정오에 가장 짧아지고 남북 눈금자(규) 위에 놓여요. 시각을 12:00에 맞추고, 절기를 하지(여름)·춘분·동지로 바꿔서 각각 기록해 보세요.':'하지 무렵엔 그림자가 가장 짧고, 동지 무렵엔 가장 길어요. 내가 기록한 값(오른쪽 표)과 지금 그림자 길이를 비교해 보세요.')},
+draw(){bgDay();const s=shadow(mode===0?si:mys,mode===0?hr:12);
+ const g=C.createLinearGradient(0,330,0,H);g.addColorStop(0,'#b8a98a');g.addColorStop(1,'#8a7a5c');C.fillStyle=g;C.beginPath();[[-30,-8],[30,-8],[30,25],[-30,25]].forEach((p,i)=>{const q=PR(p[0],p[1],0);i?C.lineTo(q[0],q[1]):C.moveTo(q[0],q[1])});C.fill();
+ C.strokeStyle='rgba(60,50,30,.25)';for(let k=-30;k<=30;k+=5){let a=PR(k,-8,0),b=PR(k,25,0);C.beginPath();C.moveTo(a[0],a[1]);C.lineTo(b[0],b[1]);C.stroke()}for(let k=-8;k<=25;k+=5){let a=PR(-30,k,0),b=PR(30,k,0);C.beginPath();C.moveTo(a[0],a[1]);C.lineTo(b[0],b[1]);C.stroke()}
+ C.fillStyle='#6f6246';C.beginPath();[[-1.6,0],[1.6,0],[1.6,20.5],[-1.6,20.5]].forEach((p,i)=>{const q=PR(p[0],p[1],0);i?C.lineTo(q[0],q[1]):C.moveTo(q[0],q[1])});C.fill();C.strokeStyle='#2a2216';C.lineWidth=1.2;
+ for(let k=0;k<=20;k++){const a=PR(-1.6,k,0),b=PR(k%5?-.6:.4,k,0);C.beginPath();C.moveTo(a[0],a[1]);C.lineTo(b[0],b[1]);C.stroke();if(k%2===0&&k>0){const q=PR(2.7,k,0);txt(k,q[0],q[1],12,'#fff','center','400')}}
+ txt('규(눈금자) — 북쪽',PR(5.5,21,0)[0],PR(5.5,21,0)[1],13,'#fff','left');
+ if(s){const b=PR(0,0,0),t=PR(s.e,s.n,0);C.strokeStyle='rgba(15,12,8,.55)';C.lineWidth=11;C.lineCap='round';C.beginPath();C.moveTo(b[0],b[1]);C.lineTo(t[0],t[1]);C.stroke();C.lineWidth=2;C.strokeStyle='#ffdd66';C.beginPath();C.arc(t[0],t[1],7,0,TAU);C.stroke()}
+ const b0=PR(0,0,0),b1=PR(0,0,HG);C.strokeStyle='#2a2a30';C.lineWidth=14;C.beginPath();C.moveTo(b0[0],b0[1]);C.lineTo(b1[0],b1[1]);C.stroke();C.strokeStyle='#c8ccd6';C.lineWidth=8;C.beginPath();C.moveTo(b0[0],b0[1]);C.lineTo(b1[0],b1[1]);C.stroke();ptc(b1[0],b1[1],8,'#d9b45a');txt('표(막대)',b1[0]-14,b1[1]-6,14,'#fff','right');
+ skyBox(600,76,310,120,mode===0?si:mys,mode===0?hr:12);
+ if(rd){const L=s?s.L.toFixed(1):'(해가 너무 낮아요)';rd.innerHTML=(mode===0?'절기 <b>'+JG[si]+'</b> · 시각 <b>'+hh(hr)+'</b><br>':'오늘의 시각 <b>정오(12:00)</b><br>')+'태양 고도 <b>'+(s?s.alt.toFixed(1)+'°':'-')+'</b> · 그림자 길이 <b>'+L+'</b>칸'}}}})();
+
+/* ================= ④ 앙부일구 ================= */
+sims.ang=(()=>{
+const RB=190,sT=.86,cT=.5,CX=450,CY=410,HL={6:'卯',8:'辰',10:'巳',12:'午',14:'未',16:'申',18:'酉'};
+let si,hr,mode,vis,sSi,sHr,sh,sl,q,okN,hc,rd,tgl;
+const PB=(e,n,u)=>[CX+e,CY-(n*sT+u*cT)];
+const hh=h=>Math.floor(h)+':'+('0'+Math.round((h%1)*60)).slice(-2);
+function newQ(){hc=0;if(mode===1){q={h:8+Math.floor(Math.random()*9),i:[0,6,12,18,3,9][Math.floor(Math.random()*6)]};si=q.i;hr=q.h}else{q={h:9+Math.floor(Math.random()*7),i:[6,18,0,12][Math.floor(Math.random()*4)]};si=q.i;hr=q.h}}
+function build(){pclear();
+ if(mode===0){pnote('<b>탐구:</b> 하지·동지의 정오 그림자, 그리고 아침(9시 이전)·저녁(15시 이후) 그림자를 살펴보세요.');
+  sHr=psl('태양의 시각',6,18,.25,hr,v=>{hr=v;chk()},hh);sSi=psl('절기',0,23,1,si,v=>{si=v;chk()},v=>JG[v]);
+  const r=prow();pbtn('시각선 보이기/숨기기',()=>{tgl.t=!tgl.t},'sec sm',r);pbtn('절기선 보이기/숨기기',()=>{tgl.j=!tgl.j},'sec sm',r);rd=pnote('');pnote('<div id="av"></div>');chk()}
+ else if(mode===1){pnote('그림자 끝이 가장 가까운 <b>시각선</b>의 시각을 고르세요. ('+okN+'/2)');rd=pnote('');const r=prow();for(let h=7;h<=17;h++)pbtn(h+'시',()=>ans1(h),'sec sm',r)}
+ else{pnote('오늘 정오 무렵, 그림자 끝이 놓인 <b>절기선</b>은 어느 계절일까요?');rd=pnote('');pbtn('☀ 하지선(여름)',()=>ans2(6),'sec');pbtn('🍂 춘분·추분선',()=>ans2(0),'sec');pbtn('❄ 동지선(겨울)',()=>ans2(18),'sec')}}
+function chk(){const n=Math.abs(hr-12)<.3;if(n&&si>=5&&si<=7)vis.sum=1;if(n&&si>=17&&si<=19)vis.win=1;if(hr<=9||hr>=15)vis.am=1;const a=$('#av');if(a)a.innerHTML='☑ 하지 정오: '+(vis.sum?'✔':'-')+' / ☑ 동지 정오: '+(vis.win?'✔':'-')+' / ☑ 아침·저녁: '+(vis.am?'✔':'-');
+ if(vis.sum&&vis.win&&vis.am&&mode===0){mode=1;okN=0;taskDone(0);setTimeout(()=>{newQ();build()},1800)}}
+function ans1(h){if(h===q.h){okS();okN++;if(okN>=2){taskDone(1);mode=2;setTimeout(()=>{newQ();build()},1500)}else{toast('정답! 한 문제 더!');newQ();build()}}else{badS();hc++;toast(hc>=2?'노란 선이 정답 시각이에요! 숫자를 확인해요.':'다시 살펴봐요. 그림자 끝(검은 점)에서 가장 가까운 세로선의 숫자는?')}}
+function ans2(i){if(i===q.i||(i===0&&q.i===12)){taskDone(2);say([{w:'j',e:'smile',t:'맞아요! 같은 시각이라도 계절에 따라 그림자 끝이 놓이는 가로선(절기선)이 달라져요. 여름엔 태양이 높아 그림자 끝이 영침 쪽으로 가까워지고, 겨울엔 멀어져요.'}])}else{badS();hc++;toast('다시 살펴보세요. 절기선은 가로로 둥글게 그려진 선이에요.')}}
+function shadowPts(s){const G=[0,-RB*Math.cos(LAT),-RB*Math.sin(LAT)],pts=[];for(let k=0;k<=30;k++){const u=k/30,qv=[G[0]*(1-u),G[1]*(1-u),G[2]*(1-u)],qs=dot(qv,s),t=qs+Math.sqrt(Math.max(0,qs*qs-dot(qv,qv)+RB*RB)),p=[qv[0]-t*s[0],qv[1]-t*s[1],qv[2]-t*s[2]];if(p[2]<=.5)pts.push(p)}return pts}
+return{
+init(){si=18;hr=9;mode=0;vis={};okN=0;hc=0;tgl={t:true,j:true};setMission('백성에게 지금이 몇 시인지 알려 주어라!',['탐구: 하지·동지 정오와 아침·저녁 그림자 관찰하기','시각 읽기: 그림자가 가리키는 시각 맞히기 (2문제)','절기 읽기: 그림자 끝이 놓인 절기선 찾기']);build()},
+tour(){const tip=()=>{const v=SUNV(si,hr);if(v[2]<=.02)return{x:CX,y:CY,r:30};const q=PB(-RB*v[0],-RB*v[1],-RB*v[2]);return{x:q[0],y:q[1],r:32}};const sw=p=>{hr=7+((p*1.3)%10);sHr.set(hr)};
+return[
+{chip:'전체',lab:'앙부일구',h:'앙부일구 = 솥 모양 해시계',big:1,at:()=>({x:CX,y:CY+30,r:225}),t:'<b>하늘을 올려다보는(앙) 솥(부) 모양 해시계(일구)</b>예요. 그림자가 그릇 안쪽에 생겨서, 닿은 선만 보면 시각을 알 수 있어요. 하나씩 가리킬게요!'},
+{chip:'솥',lab:'오목한 반구(솥)',h:'솥처럼 파인 그릇',at:()=>({x:CX+110,y:CY+95,r:60}),t:'둥글게 파인 그릇이에요. 이 안쪽 면에 시각선과 절기선이 새겨져 있고, 그림자가 떨어져요.'},
+{chip:'영침',lab:'여기는 영침(바늘)!',h:'영침 = 그림자를 만드는 바늘',at:()=>{const G=PB(0,-RB*Math.cos(LAT),-RB*Math.sin(LAT)),O=PB(0,0,0);return{x:(G[0]+O[0])/2,y:(G[1]+O[1])/2,r:42}},t:'그릇 가운데를 가로지르는 금색 바늘이에요. 북극성 쪽을 향해 비스듬히 세워져 있어요. 이 바늘 <b>끝의 그림자</b>가 시각을 알려 줘요.'},
+{chip:'그림자 끝',lab:'그림자 끝(검은 점)',h:'해가 움직이면 점도 움직여요',at:tip,on:()=>{si=0;sSi.set(0)},dm:sw,t:'바늘 끝의 그림자가 그릇 안쪽에 떨어진 <b>검은 점</b>이에요. 자동으로 해가 움직이는 동안 점이 어떻게 움직이는지 보세요!'},
+{chip:'시각선',lab:'시각선(세로선)',h:'세로선 = 시각',at:()=>{const s=EQV(-30,0),q=PB(-RB*s[0],-RB*s[1],-RB*s[2]);return{x:q[0],y:q[1],r:40}},dm:sw,t:'세로로 그어진 선이에요. 한 시간(15°)마다 한 줄이고, 옆에 시각이 써 있어요. 午·巳 같은 한자는 옛날 시간 이름(12지)이에요. 검은 점이 선 위에 오면 <b>그 시각</b>이에요!'},
+{chip:'절기선',lab:'절기선(가로선)',h:'가로선 = 계절',at:tip,dm:p=>{hr=12;sHr.set(12);si=[6,0,18][Math.floor(p/2.2)%3];sSi.set(si)},t:'12시에 <b>하지(여름) → 춘분 → 동지(겨울)</b> 순서로 보여 줄게요. 같은 시각이어도 계절에 따라 점이 가로선을 따라 위아래로 움직여요. 점이 놓인 가로선으로 계절을 알아요!'},
+{chip:'해 위치창',lab:'해의 위치',h:'지금 해는 하늘 어디?',at:()=>({x:740,y:76,w:190,h:120}),dm:sw,t:'해가 하늘 어디쯤인지 보여 줘요. 해가 움직이면 그림자도 같이 움직여요.'},
+{chip:'조작판',lab:'여기서 조작해요',h:'직접 시각과 계절을 바꿔 봐요',at:PNLALL,t:'슬라이더로 시각과 절기를 바꿔 보며 관찰한 뒤, 시각 문제와 절기 문제를 풀어요. 틀려도 힌트가 나와요!'}]},
+coach(){if(mode===0)return'👀 슬라이더로 시각과 절기를 바꿔 보세요! (관찰 '+Object.keys(vis).length+'/3)';if(mode===1)return'🕐 검은 그림자 끝에서 가장 가까운 세로선의 시각을 골라요! ('+okN+'/2)';return'🌡 그림자 끝이 놓인 가로선(절기선)을 골라요!'},
+assist(){if(mode===0){hr=!vis.sum||!vis.win?12:8;si=!vis.sum?6:!vis.win?18:si;sHr.set(hr);sSi.set(si);chk();toast('슬라이더를 맞춰 줬어요!')}else if(mode===1)toast('정답은 '+q.h+'시예요!');else toast('정답은 '+(q.i===18?'동지선':q.i===6?'하지선':'춘분·추분선')+'이에요!')},
+hint(){hc++;hintSay(mode===0?'슬라이더로 태양의 시각과 절기를 바꿔 보세요. 영침 끝의 그림자가 시각선을 따라 이동하는 것을 볼 수 있어요.':mode===1?'그림자 끝(검은 점)이 놓인 가장 가까운 세로선(시각선)의 숫자를 읽어요. 15°마다 한 시간이에요. 정오는 午(오)시 선이에요!':'가로로 둥근 선이 절기선이에요. 가장 바깥(영침에서 먼) 선이 동지선, 가운데가 춘·추분선, 영침 쪽이 하지선이에요.')},
+draw(){bgDay();C.fillStyle='rgba(0,0,0,.25)';C.fillRect(0,0,W,0);
+ const sunv=SUNV(si,hr),up=sunv[2]>.02;
+ C.beginPath();C.ellipse(CX,CY,RB,RB*sT,0,Math.PI,TAU);C.arc(CX,CY,RB,0,Math.PI);C.closePath();const bg=C.createRadialGradient(CX,CY+30,10,CX,CY+30,RB*1.1);bg.addColorStop(0,'#caa66a');bg.addColorStop(1,'#7a5628');C.fillStyle=bg;C.fill();
+ C.save();C.clip();
+ if(tgl.j||mode>0)for(let d=-24;d<=24;d+=4){C.strokeStyle=d===0?'rgba(120,30,20,.9)':'rgba(70,40,20,.55)';C.lineWidth=d===0?2.5:1.3;C.beginPath();let f=true;for(let H2=-90;H2<=90;H2+=3){const s=EQV(H2,d);if(s[2]<.02){f=true;continue}const p=PB(-RB*s[0],-RB*s[1],-RB*s[2]);f?C.moveTo(p[0],p[1]):C.lineTo(p[0],p[1]);f=false}C.stroke()}
+ if(tgl.t||mode>0)for(let h=6;h<=18;h++){C.strokeStyle=h===12?'rgba(110,20,16,.95)':'rgba(60,30,14,.65)';C.lineWidth=h%2?1.2:2;C.beginPath();let f=true;for(let d=-24;d<=24;d+=2){const s=EQV((h-12)*15,d);if(s[2]<.02){f=true;continue}const p=PB(-RB*s[0],-RB*s[1],-RB*s[2]);f?C.moveTo(p[0],p[1]):C.lineTo(p[0],p[1]);f=false}C.stroke()}
+ C.restore();
+ if(mode===1&&hc>=2){C.strokeStyle='rgba(255,230,60,.9)';C.lineWidth=5;C.beginPath();let f=true;for(let d=-24;d<=24;d+=2){const s=EQV((q.h-12)*15,d);if(s[2]<.02){f=true;continue}const p=PB(-RB*s[0],-RB*s[1],-RB*s[2]);f?C.moveTo(p[0],p[1]):C.lineTo(p[0],p[1]);f=false}C.stroke()}
+ for(let h=6;h<=18;h++){let best=null;for(let d=-24;d<=24;d+=2){const s=EQV((h-12)*15,d);if(s[2]>.03&&(!best||s[2]<best[2]))best=s}if(best){const p=PB(-RB*best[0],-RB*best[1],-RB*best[2]),dx=p[0]-CX,dy=p[1]-CY,l=Math.hypot(dx,dy)||1;txt(h+'시'+(HL[h]?'('+HL[h]+')':''),p[0]+dx/l*22,p[1]+dy/l*14,12,'#4a1a10','center','800')}}
+ [[6,'하지선'],[0,'춘·추분선'],[18,'동지선']].forEach(([i,n])=>{const s=EQV(0,DECL(i)),p=PB(-RB*s[0],-RB*s[1],-RB*s[2]);txt(n,p[0]+46,p[1],11,'#3a1208','center','800')});
+ ellipseStroke(CX,CY,RB,RB*sT,0,'#e0b95a',9);ellipseStroke(CX,CY,RB+6,RB*sT+6,0,'#6a4a20',3);
+ const G=PB(0,-RB*Math.cos(LAT),-RB*Math.sin(LAT)),O=PB(0,0,0);
+ if(up){const pts=shadowPts(sunv);if(pts.length>1){C.strokeStyle='rgba(10,8,4,.6)';C.lineWidth=7;C.lineCap='round';C.beginPath();pts.forEach((p,i)=>{const z=PB(p[0],p[1],p[2]);i?C.lineTo(z[0],z[1]):C.moveTo(z[0],z[1])});C.stroke()}}
+ C.strokeStyle='#222';C.lineWidth=9;C.beginPath();C.moveTo(G[0],G[1]);C.lineTo(O[0],O[1]);C.stroke();C.strokeStyle='#d9b45a';C.lineWidth=5;C.beginPath();C.moveTo(G[0],G[1]);C.lineTo(O[0],O[1]);C.stroke();ptc(O[0],O[1],5,'#fff6c0');txt('영침(바늘)',G[0]-48,G[1]+16,13,'#fff');
+ if(up){const t=PB(-RB*sunv[0],-RB*sunv[1],-RB*sunv[2]);ptc(t[0],t[1],10,'rgba(0,0,0,.35)');ptc(t[0],t[1],5.5,'#120a05');C.strokeStyle='#fff';C.lineWidth=1.5;C.beginPath();C.arc(t[0],t[1],10,0,TAU);C.stroke()}
+ skyBox(740,76,190,120,si,hr);
+ if(rd)rd.innerHTML=(mode===0?'시각 <b>'+hh(hr)+'</b> · 절기 <b>'+JG[si]+'</b>':'문제 풀이 중 — 그림자 끝(검은 점)을 보세요')+(up?'':'<br>해가 아직 뜨지 않았어요.')}}})();
+
+/* ================= ⑤ 자격루 ================= */
+sims.ja=(()=>{
+const CAP=60,AR=.4,TARGET=20,PATH=[[566,274],[640,290],[700,342],[790,354],[880,354]],STR=[[1,'b'],[1.7,'b'],[2.4,'b'],[3.1,'d'],[3.6,'d'],[4.3,'g']];
+let L1,L2,L3,hR,v,sp,run,tRun,fire,fireT,stable,ov,qq,hc,res,said,struck,sV,rd,spBtn,shake;
+function step(d){const k=.55,q1=k*Math.sqrt(Math.max(L1,0));L1=Math.max(0,L1-q1*d/16);
+ const q2=k*Math.sqrt(Math.max(L2,0));L2=cl(L2+(q1-q2)*d/3.5,0,100);
+ const q3=k*v*Math.sqrt(Math.max(L3,0));L3+=(q2-q3)*d/2.5;ov=0;if(L3>CAP){ov=(L3-CAP)*2.5/d;L3=CAP}L3=Math.max(L3,0);qq=[q1,q2,q3];
+ if(run&&!fire){hR+=q3*d/AR;tRun+=d;if(hR>=100){hR=100;fire=true;fireT=0;run=false;res=Math.abs(tRun-TARGET)<=3;said=false;struck=0}}}
+function reset(){fire=false;fireT=0;hR=0;run=false;tRun=0;said=true;struck=0}
+function start(){if(fire)return;hR=0;tRun=0;run=true;sp=1;spBtn.innerHTML='⏩ 빨리감기 ×4 (꺼짐)';toast('시보 측정 시작! 약속한 시각은 '+TARGET+'초 뒤예요.')}
+function tank(x,y,w,h,L,hmax,name,line){C.fillStyle='rgba(180,210,235,.12)';C.fillRect(x,y,w,h);const px=h/100*L;const g=C.createLinearGradient(0,y+h-px,0,y+h);g.addColorStop(0,'#6fb4e8');g.addColorStop(1,'#2f6ea8');C.fillStyle=g;C.fillRect(x+3,y+h-px,w-6,px);C.fillStyle='rgba(255,255,255,.35)';C.fillRect(x+3,y+h-px,w-6,3);
+ C.strokeStyle='#a8703a';C.lineWidth=6;C.strokeRect(x,y,w,h);C.fillStyle='#8a5a30';C.fillRect(x-8,y+h,w+16,10);
+ if(line){C.setLineDash([6,4]);C.strokeStyle='#9fe0a0';C.lineWidth=2;const ly=y+h-h/100*line;C.beginPath();C.moveTo(x-12,ly);C.lineTo(x+w+12,ly);C.stroke();C.setLineDash([]);txt('정수위',x-26,ly,11,'#9fe0a0','center','400')}
+ txt(name,x+w/2,y-14,14,'#f3ead2');txt(L.toFixed(0),x+w/2,y+h-px/2,13,'#fff')}
+function pipe(pts,flow){C.lineCap='round';C.lineJoin='round';C.strokeStyle='#5a4228';C.lineWidth=11;C.beginPath();pts.forEach((p,i)=>i?C.lineTo(p[0],p[1]):C.moveTo(p[0],p[1]));C.stroke();C.strokeStyle=flow>.15?'#6fb4e8':'#2a3a4a';C.lineWidth=6;if(flow>.15){C.setLineDash([10,8]);C.lineDashOffset=-T*60*Math.min(flow/3,1.5)}C.beginPath();pts.forEach((p,i)=>i?C.lineTo(p[0],p[1]):C.moveTo(p[0],p[1]));C.stroke();C.setLineDash([])}
+function doll(x,kind,arm,name){C.fillStyle='#7a5a38';C.fillRect(x-16,452,32,52);C.fillStyle='#c9503c';C.fillRect(x-16,452,32,16);ptc(x,438,13,'#f0cba5');C.fillStyle='#222';C.fillRect(x-14,422,28,8);
+ const sa=-.4+arm*1.7,ax=x+Math.sin(sa)*26,ay=458+Math.cos(sa)*26;C.strokeStyle='#f0cba5';C.lineWidth=7;C.lineCap='round';C.beginPath();C.moveTo(x+10,458);C.lineTo(ax+10,ay);C.stroke();C.strokeStyle='#4a3020';C.lineWidth=4;C.beginPath();C.moveTo(ax+10,ay);C.lineTo(ax+22,ay-10);C.stroke();
+ const hx=x+44,hy=470;
+ if(kind==='b'){C.strokeStyle='#5a4228';C.lineWidth=4;C.beginPath();C.moveTo(hx,432);C.lineTo(hx,444);C.stroke();C.fillStyle='#d9b45a';C.beginPath();C.moveTo(hx-14,478);C.quadraticCurveTo(hx-16,446,hx,444);C.quadraticCurveTo(hx+16,446,hx+14,478);C.fill()}
+ else if(kind==='d'){C.fillStyle='#a8433a';C.beginPath();C.ellipse(hx,470,18,22,0,0,TAU);C.fill();C.strokeStyle='#e0b95a';C.lineWidth=3;C.stroke();C.fillStyle='#5a4228';C.fillRect(hx-3,490,6,14)}
+ else{C.strokeStyle='#5a4228';C.lineWidth=3;C.beginPath();C.moveTo(hx-16,436);C.lineTo(hx+16,436);C.stroke();C.fillStyle='#caa24a';C.beginPath();C.arc(hx,462,19,0,TAU);C.fill();C.strokeStyle='#8a6a20';C.lineWidth=3;C.stroke()}
+ txt(name,x+20,520,13,'#f3ead2')}
+return{
+init(){L1=40;L2=60;L3=40;hR=0;v=.5;sp=4;run=false;tRun=0;fire=false;fireT=0;stable=0;ov=0;qq=[0,0,0];hc=0;res=false;said=true;struck=0;shake=0;
+ setMission('자격루를 작동시켜 정확한 시각에 종을 울려라!',['물을 채워 소파수호의 수위를 정수위로 맞추기','수수호 밸브를 조절해 '+TARGET+'초 뒤 정확히 종 울리기']);pclear();
+ pnote('<b>1단계</b> 대파수호(맨 위)를 <b>정수위선</b>까지 채우면 물이 아래 항아리로 차례로 내려가요. 소파수호가 정수위(초록 점선)까지 차오르면 성공!');
+ pbtn('🪣 대파수호 물 채우기 (가득)',()=>{L1=100;tone(400,.25,'sine',.1,0,300)},'');
+ spBtn=pbtn('⏩ 빨리감기 ×4 (켜짐)',()=>{if(run)return;sp=sp===1?4:1;spBtn.innerHTML=sp===1?'⏩ 빨리감기 ×4 (꺼짐)':'⏩ 빨리감기 ×4 (켜짐)'},'sec sm');
+ pnote('<b>2단계</b> 밸브로 수수호에 들어가는 물의 양을 조절해 <b>'+TARGET+'초(±3초)</b> 뒤에 살대가 맨 위에 닿게 하세요.');
+ sV=psl('밸브 (수수호로 가는 물의 양)',.1,1,.01,v,x=>v=x,x=>x.toFixed(2));
+ pbtn('⏱ 시보 시작 (수수호 비우고 측정)',start,'red');pbtn('🔄 장치 다시 세팅',()=>{reset();toast('수수호를 비우고 장치를 다시 세팅했어요.')},'sec sm');
+ rd=pnote('');pnote('<b>실제 vs 연출</b><br>실제 자격루는 여러 항아리의 물이 수수호로 들어가 잣대가 뜨면 구슬이 풀려 인형이 시각을 알렸어요. 이 게임의 항아리 수와 크기, 구슬 길은 이해를 돕기 위해 단순하게 표현한 연출이에요.');reset()},
+tour(){return[
+{chip:'전체',lab:'자격루',h:'자격루 = 스스로 종 치는 물시계',big:1,at:()=>({x:40,y:235,w:900,h:420}),t:'물이 위에서 아래로 흘러 수수호에 차오르고, 가득 차면 <b>인형이 스스로 종·북·징을 쳐서</b> 시각을 알려 줘요. 하나씩 가리킬게요!'},
+{chip:'대파수호',lab:'여기는 대파수호!',h:'대파수호 = 물이 시작되는 큰 항아리',at:()=>({x:55,y:255,w:110,h:135}),on:()=>{L1=40},dm:p=>{L1=Math.min(100,40+p*20)},t:'맨 위의 큰 항아리예요. 물을 채우는 모습을 보세요. 초록 점선(정수위)까지 채워 두면 아래로 물이 잘 내려가요.'},
+{chip:'중파수호',lab:'여기는 중파수호!',h:'물이 한 번 더 내려가요',at:()=>({x:195,y:395,w:110,h:110}),t:'위 항아리의 물이 줄어도 흐름이 크게 변하지 않게 도와줘요. 물총을 가득 채웠을 때와 조금 남았을 때 물줄기 세기가 다른 것과 같은 이유예요.'},
+{chip:'정수위선',lab:'초록 점선 = 정수위',h:'정수위 = 알맞은 물 높이',at:()=>({x:390,y:554,r:64}),on:()=>{L3=40},dm:p=>{L3=Math.min(CAP+8,40+p*8)},t:'소파수호가 이 초록 점선까지 차면, 넘치는 물은 옆 관으로 빠져요. 그래서 <b>높이가 늘 같고 흐르는 속도도 일정</b>해요. 시계에서 가장 중요한 부분!'},
+{chip:'밸브',lab:'밸브(물의 양)',h:'밸브 = 물의 양 조절',at:PNL(0),dm:p=>{v=Math.round((.5+.4*Math.sin(p*1.5))*100)/100;sV.set(v)},t:'수수호로 들어가는 물의 양을 정해요. 밸브를 많이 열면 빨리 차서 종이 일찍 울리고, 줄이면 늦게 울려요. 지금 자동으로 움직이고 있어요!'},
+{chip:'수수호·잣대',lab:'여기는 수수호와 잣대!',h:'물이 차면 잣대가 떠올라요',at:()=>({x:515,y:325,w:80,h:280}),on:()=>{fire=false;run=false;hR=0},dm:p=>{hR=Math.min(100,p*18)},t:'물을 받는 통이 <b>수수호</b>, 물에 둥둥 뜨는 막대가 <b>잣대</b>예요. 물이 차오르면 잣대가 떠올라요. 옆 눈금은 0~100이에요.'},
+{chip:'지렛대·구슬',lab:'지렛대와 구슬',h:'100에 닿으면 구슬이 굴러가요',at:()=>({x:560,y:292,r:56}),on:()=>{hR=100;run=false;fire=true;fireT=0;said=true;struck=0},t:'잣대가 맨 위에 닿으면 <b>지렛대</b>가 기울어서 <b>구슬</b>이 굴러가요. 구슬 길을 따라가 보세요!'},
+{chip:'시보 인형',lab:'종·북·징 인형',h:'인형이 시각을 알려 줘요',at:()=>({x:655,y:380,w:285,h:150}),dm:p=>{if(fireT>5.5){fire=true;fireT=0;said=true;struck=0}},t:'구슬이 닿으면 인형이 <b>종, 북, 징</b>을 쳐서 시각을 알려요. 사람이 없어도 정해진 때에 저절로 울려요!'},
+{chip:'조작판',lab:'여기서 조작해요',h:'1) 물 채우기 2) 밸브 3) 시보 시작',at:PNLALL,t:'<b>물 채우기</b>를 눌러 정수위를 맞추고, <b>밸브</b>를 정한 뒤 <b>시보 시작</b>! 목표 20초에 종이 울리게 해 봐요. 🤝 도움 버튼도 있어요.'}]},
+coach(){if(!tasks[0].d)return L1<75?'🪣 먼저 대파수호 물 채우기를 눌러요!':'💧 물이 아래 항아리로 내려가요. 소파수호가 초록 점선에 닿을 때까지 기다려요!';if(fire)return'🔔 종이 울려요!';return run?'⏱ 살대가 100에 닿으면 종이 울려요. 목표는 '+TARGET+'초!':'🎚 밸브를 조절하고 ⏱시보 시작을 눌러요. 목표 '+TARGET+'초! (밸브 0.47쯤이 알맞아요)'},
+assist(){if(!tasks[0].d){L1=100;L2=Math.max(L2,70);L3=CAP;toast('물을 가득 채워 줬어요!')}else{v=Math.round(100*AR/(TARGET*.55*Math.sqrt(CAP))*100)/100;sV.set(v);toast('밸브를 '+v.toFixed(2)+'로 맞췄어요. ⏱시보 시작을 눌러요!')}},
+hint(){hc++;if(!tasks[0].d)hintSay('대파수호의 물이 부족하면 아래로 흐르는 물도 줄어요. 먼저 대파수호를 정수위선까지 채워서 소파수호까지 물이 가득 차게 해 보세요. 빨리감기도 쓸 수 있어요.');else if(hc<3)hintSay('수수호에 들어가는 물이 일정해야 살대가 일정하게 올라가요. 밸브를 줄이면 천천히, 열면 빠르게 올라가요. 한 번 시험해 본 뒤 시간을 보고 조절해 보세요!');else hintSay('소파수호가 정수위일 때 살대가 100까지 오르는 시간은 약 '+(100*AR/(.55*v*Math.sqrt(CAP))).toFixed(1)+'초 (지금 밸브 기준)예요. 목표 '+TARGET+'초라면 밸브를 약 '+(100*AR/(TARGET*.55*Math.sqrt(CAP))).toFixed(2)+' 정도로 해 보세요.')},
+draw(dt){bgDay();C.fillStyle='rgba(20,14,10,.55)';C.fillRect(0,0,940,H);
+ const n=Math.ceil(dt*(run?1:sp)/.02);for(let i=0;i<n;i++)step(.02);
+ if(!tasks[0].d){if(L1>=75&&L3>=CAP-1.5)stable+=dt;else stable=0;if(stable>=2)taskDone(0)}
+ tank(60,262,100,118,L1,100,'대파수호',75);tank(200,400,100,100,L2,100,'중파수호');tank(340,520,100,84,L3,100,'소파수호',CAP);
+ pipe([[160,374],[250,374],[250,402]],qq[0]);pipe([[300,494],[390,494],[390,522]],qq[1]);pipe([[440,590],[520,590]],qq[2]);
+ if(ov>.05){C.strokeStyle='#6fb4e8';C.lineWidth=5;C.beginPath();C.moveTo(444,520+84-CAP*.84);C.lineTo(470,520+84-CAP*.84+16);C.lineTo(470,640);C.stroke();txt('넘치는 물',404,640,12,'#9cc8ff','left','400')}
+ /* 수수호 */
+ const rx=520,ry=330,rw=70,rh=270,px=hR*2.5;C.fillStyle='rgba(180,210,235,.12)';C.fillRect(rx,ry,rw,rh);const g=C.createLinearGradient(0,ry+rh-px,0,ry+rh);g.addColorStop(0,'#6fb4e8');g.addColorStop(1,'#2f6ea8');C.fillStyle=g;C.fillRect(rx+3,ry+rh-px,rw-6,px);C.strokeStyle='#a8703a';C.lineWidth=6;C.strokeRect(rx,ry,rw,rh);C.fillStyle='#8a5a30';C.fillRect(rx-8,ry+rh,rw+16,10);
+ for(let i=0;i<=10;i++){const y=ry+rh-i*25;C.strokeStyle='#fff';C.lineWidth=1;C.beginPath();C.moveTo(rx+rw,y);C.lineTo(rx+rw+(i%5?8:14),y);C.stroke();if(i%5===0)txt(i*10,rx+rw+28,y,12,'#fff','center','400')}
+ const sy=ry+rh-px;C.fillStyle='#e0b95a';C.fillRect(rx+18,sy-6,34,10);C.strokeStyle='#e8e0c0';C.lineWidth=6;C.beginPath();C.moveTo(rx+35,sy-6);C.lineTo(rx+35,sy-52);C.stroke();ptc(rx+35,sy-52,5,'#ff6a4a');txt('수수호',rx+35,ry+rh+28,14,'#f3ead2');txt('잣대(살대)',rx-8,ry+24,12,'#cfe0f5','right','400');
+ /* 지렛대 */
+ const tilt=fire?Math.min(fireT*2,1)*.5:0;C.save();C.translate(rx+35,292);C.rotate(tilt);C.strokeStyle='#d9b45a';C.lineWidth=7;C.beginPath();C.moveTo(-38,0);C.lineTo(46,0);C.stroke();C.restore();C.fillStyle='#8a5a30';C.fillRect(rx+30,292,10,16);
+ /* 구슬길 & 인형 */
+ C.strokeStyle='#7a5a38';C.lineWidth=8;C.beginPath();PATH.forEach((p,i)=>i?C.lineTo(p[0],p[1]):C.moveTo(p[0],p[1]));C.stroke();
+ C.fillStyle='#5a1f18';C.fillRect(650,410,280,10);roof(790,380,250,46,'#2a2a30','#8a2f22');C.fillStyle='#2a1812';C.fillRect(660,420,260,86);C.fillStyle='#5a3a22';C.fillRect(655,504,270,14);
+ if(fire){fireT+=dt;while(struck<STR.length&&fireT>=STR[struck][0]){const k=STR[struck][1];k==='b'?bell():k==='d'?drum():gong();shake=.3;struck++}
+  if(!said&&fireT>5){said=true;if(res){taskDone(1);say([{w:'s',e:'smile',t:'종과 북이 정확한 시각에 울렸구나! 하늘을 보지 않아도 시각을 알 수 있으니 참으로 대단하다.'},{w:'j',e:'smile',t:'물의 높이를 일정하게 유지한 것이 비결이에요. 같은 높이에서는 물이 일정하게 흐르니까요!'}])}else{badS();toast('종이 울렸지만 '+tRun.toFixed(1)+'초였어요. 약속한 시각은 '+TARGET+'초! 밸브를 조절해 다시 도전해요.',4200)}}}
+ const arm=(t)=>fire&&fireT>=t&&fireT<t+.4?Math.sin((fireT-t)/.4*Math.PI):0;
+ doll(712,'b',Math.max(arm(1),arm(1.7),arm(2.4)),'종 인형');doll(796,'d',Math.max(arm(3.1),arm(3.6)),'북 인형');doll(880,'g',arm(4.3),'징 인형');
+ if(fire&&fireT>.15){const s=cl((fireT-.15)/2.2,0,1);let tot=0,sg=[];for(let i=1;i<PATH.length;i++){const l=Math.hypot(PATH[i][0]-PATH[i-1][0],PATH[i][1]-PATH[i-1][1]);sg.push(l);tot+=l}let d=s*tot,i=0;while(i<sg.length-1&&d>sg[i]){d-=sg[i];i++}const f=d/sg[i],bx=PATH[i][0]+(PATH[i+1][0]-PATH[i][0])*f,by=PATH[i][1]+(PATH[i+1][1]-PATH[i][1])*f;ptc(bx,by-6,7,'#222');ptc(bx-2,by-8,2.5,'#aaa')}
+ if(fire&&fireT<5){txt('🔔 딩— 둥— 쾅—',790,350,28,'#ffe27a');}
+ rd.innerHTML='대파수호 <b>'+L1.toFixed(0)+'</b> · 중파수호 <b>'+L2.toFixed(0)+'</b> · 소파수호 <b>'+L3.toFixed(0)+'</b> (정수위 '+CAP+')<br>수수호 유입 <b>'+qq[2].toFixed(2)+'</b> · 살대 <b>'+hR.toFixed(0)+'/100</b> · 경과 <b>'+tRun.toFixed(1)+'초</b>'+(!run&&!fire&&tasks[0].d?'<br>👉 지금 밸브로 시작하면 약 <b>'+(100*AR/Math.max(.01,.55*v*Math.sqrt(Math.max(L3,1)))).toFixed(1)+'초</b> 뒤 종이 울려요':'')+(run?'<br>⏱ 지금 흐름이면 약 <b>'+(tRun+(100-hR)/Math.max(.01,qq[2]/AR)).toFixed(1)+'초</b>에 종이 울려요!':'')+(stable>0&&!tasks[0].d?'<br>정수위 유지 중… '+stable.toFixed(1)+'초':'')}}})();
+
+/* ================= ⑥ 일성정시의 ================= */
+sims.il=(()=>{
+const CX=520,CY=410,RO=200,RM=160,SN=['','',''];
+let ti,alpha,rr,H0,star,dateI,sA,sR,rd,hc,tt,aligned;
+const norm=a=>((a%360)+540)%360-180;
+const reading=()=>(((12+(alpha-rr)/15)%24)+24)%24;
+const hmm=h=>{const m=Math.round(h*60)%1440;return Math.floor(m/60)+'시 '+('0'+m%60).slice(-2)+'분'};
+function newQ(){hc=0;alpha=0;rr=0;if(ti===0){tt=8+Math.floor(Math.random()*17)/2;H0=(tt-12)*15;if(Math.abs(H0)<20)H0=40;tt=12+H0/15}
+ else{star=1+Math.floor(Math.random()*4);dateI=[0,6,12,18][Math.floor(Math.random()*4)];tt=[20.5,22,23.5,25.5][Math.floor(Math.random()*4)];H0=norm((tt-12)*15-STARS[star][1]+dateI*15)}
+ build()}
+function build(){pclear();
+ if(ti===0){pnote('<b>낮 관측:</b> 해가 보이는 방향으로 관측통을 돌려 햇빛이 구멍을 통과하게 하세요. 시각환 눈금이 시각을 알려 줘요. (화면을 드래그해도 돼요)')}
+ else{pnote('<b>밤 관측:</b> 별에 관측통을 맞춘 뒤, <b>날짜에 맞게 시각환을 돌려 보정</b>해야 해요.<br>별: <b>'+STARS[star][0]+'</b> (하늘 가로 위치 = 적경 '+Math.round(STARS[star][1])+'°)<br>오늘 날짜: <b>'+JG[dateI]+'</b> (태양의 가로 위치 = 적경 '+(dateI*15)+'°)')}
+ sA=psl('관측통(규형) 방향',-180,180,.5,0,x=>{alpha=x},x=>x.toFixed(1)+'°');
+ sR=psl('시각환 보정 (밤)',0,360,1,0,x=>{rr=x},x=>x+'°');sR.dis(ti===0);
+ rd=pnote('');pbtn('📝 시각 기록',rec,'')}
+function rec(){const al=Math.abs(norm(alpha-H0))<=6;if(!al){badS();toast((ti===0?'해':STARS[star][0])+' 방향이 아직 맞지 않아요. 빛이 구멍을 통과하게 돌려 보세요.');hc++;return}
+ const true_=((tt%24)+24)%24,e=Math.abs(((reading()-true_+36)%24)-12);
+ if(e<=.5){const k=ti;ti++;okS();taskDone(k);if(ti===1){newQ();say([{w:'j',e:'smile',t:'낮 시각을 맞혔어요! '+hmm(true_)+'. 해의 각도 그대로 시각이 되죠. 하지만 밤에는 해가 없으니 별을 이용해요.'}])}else say([{w:'j',e:'smile',t:'밤에도 시각을 맞혔어요! 별과 태양의 적경 차이만큼 시각환을 돌려 보정하면, 별로도 시각을 알 수 있어요.'}])}
+ else{badS();hc++;toast(ti===0?'시각환의 눈금을 다시 읽어 보세요.':'시각이 맞지 않아요. 날짜(태양 적경)와 별의 적경 차이만큼 시각환을 돌려야 해요.')}}
+function body(){const t=H0*R;return[CX+(RO+46)*Math.sin(t),CY-(RO+46)*Math.cos(t)]}
+return{
+init(){ti=0;hc=0;setMission('낮과 밤, 서로 다른 하늘로 시각을 알아내라!',['낮: 해를 겨눠 시각 읽기','밤: 별을 겨누고 시각환을 보정해 시각 읽기']);newQ()},
+ptr(t,x,y){if(t==='up')return;const dx=x-CX,dy=y-CY,d=Math.hypot(dx,dy);if(d<20||d>RO+90)return;alpha=norm(Math.atan2(dx,-dy)/R);sA.set(alpha)},
+tour(){const tipP=()=>{const t=alpha*R;return{x:CX+(RO+8)*Math.sin(t),y:CY-(RO+8)*Math.cos(t),r:34}};const goto=()=>{alpha=norm(alpha+norm(H0-alpha)*.04);sA.set(alpha)};
+return[
+{chip:'전체',lab:'일성정시의',h:'일성정시의 = 해와 별로 시각 알기',big:1,at:()=>({x:CX,y:CY,r:240}),t:'<b>낮엔 해, 밤엔 별</b>을 겨눠서 시각을 알아내는 하늘 시계예요. 해도 별도 하루에 한 바퀴(360°) 돌아서, 천체의 각도가 곧 시각이 돼요. 하나씩 가리킬게요!'},
+{chip:'각도 눈금',lab:'주천도분환(각도 눈금)',h:'바깥 고리 = 각도 눈금',at:()=>({x:CX+RO*Math.sin(.87),y:CY-RO*Math.cos(.87),r:38}),t:'바깥 갈색 고리예요. 각도(°) 눈금이 새겨져 있어요. 한 바퀴가 360°예요.'},
+{chip:'시각환',lab:'시각환(1~24시)',h:'시각환 = 시각 숫자 고리',at:()=>({x:CX+RM*Math.sin(-1.2),y:CY-RM*Math.cos(-1.2),r:44}),on:()=>{rr=0;sR.set(0)},dm:p=>{rr=Math.round((p*40)%360);sR.set(rr)},t:'1~24시 숫자가 써 있는 하얀 고리예요. 맨 위가 정오(12시)예요. <b>돌릴 수 있어요</b>. 지금 자동으로 돌아가고 있죠? 밤에 날짜에 맞춰 돌려서 쓸 거예요.'},
+{chip:'관측통',lab:'여기는 규형(관측통)!',h:'관측통 = 해·별을 겨누는 막대',at:tipP,on:()=>{rr=0;sR.set(0)},dm:p=>{alpha=-80+Math.sin(p)*50;sA.set(alpha)},t:'가운데서 뻗은 막대예요. 해나 별 쪽으로 돌려요. 끝에 작은 구멍이 있어서 <b>빛이 구멍을 통과하면 맞은 거예요</b>. 막대가 좌우로 움직이는 걸 보세요.'},
+{chip:'해',lab:'낮에는 해를 겨눠요',h:'낮: 해 쪽으로 돌려요',at:()=>{const b=body();return{x:b[0],y:b[1],r:42}},on:()=>{alpha=0;rr=0;sR.set(0)},dm:p=>goto(),t:'관측통이 해 쪽으로 돌아가고 있어요. 맞으면 <b>빛이 구멍을 통과해 반짝</b>여요! 해는 1시간에 15°씩 움직여요.'},
+{chip:'시각 읽기',lab:'가운데 시각',h:'맞추면 가운데에 시각이 나와요',at:()=>({x:CX,y:CY+50,r:95}),dm:p=>goto(),t:'해를 맞추면 가운데에 지금 시각이 나와요. 원리는 <b>각도 ÷ 15 = 정오에서 몇 시간 떨어졌는지</b>예요!'},
+{chip:'밤',lab:'밤에는 별을 겨눠요',h:'밤: 별 + 시각환 보정',at:()=>{const b=body();return{x:b[0],y:b[1],r:42}},on:()=>{ti=1;newQ()},dm:p=>goto(),t:'밤엔 별을 겨눠요. 그런데 별은 날짜마다 출발 위치가 달라서 <b>시각환을 돌려 보정</b>해야 해요. 보정각 = 태양의 가로 위치(적경) − 별의 가로 위치(적경). 어려우면 🤝 도움 버튼!'},
+{chip:'조작판',lab:'여기서 조작해요',h:'직접 돌려 보세요',at:PNLALL,t:'관측통 방향 슬라이더로 해(별)를 맞추고, 밤에는 시각환 보정도 돌려요. 맞으면 <b>📝 시각 기록</b>을 눌러요.'}]},
+coach(){const al=Math.abs(norm(alpha-H0))<=6;if(!al)return'🔆 '+(ti===0?'해':STARS[star][0])+' 쪽으로 관측통을 돌려요! (드래그 또는 슬라이더)';const need=ti===1?Math.round((((dateI*15-STARS[star][1])%360)+360)%360):0;if(ti===1&&Math.abs(norm(rr-need))>8)return'🌙 별을 맞췄어요! 이제 시각환 보정을 '+need+'° 근처로 돌려요. (태양 가로 위치 − 별 가로 위치)';return'🕐 좋아요! 가운데 시각을 확인하고 📝시각 기록을 눌러요!'},
+assist(){alpha=H0;sA.set(alpha);if(ti===1){rr=Math.round((((dateI*15-STARS[star][1])%360)+360)%360);sR.set(rr)}toast('장영실이 맞춰 줬어요! 📝시각 기록을 눌러요.')},
+hint(){hc++;if(ti===0)hintSay('관측통이 해 쪽을 향하면 빛이 통과해서 반짝여요. 그때 시각환의 눈금(맨 위가 정오)을 읽으면 돼요. 한 칸이 1시간이에요.');else if(hc<3)hintSay('밤에는 시각환을 돌려야 해요. 시각환 보정각 = 태양의 적경 − 별의 적경 이에요. (음수가 되면 360°를 더해요)');else{const v=(((dateI*15-STARS[star][1])%360)+360)%360;hintSay('이번엔 '+(dateI*15)+'° − '+Math.round(STARS[star][1])+'° 이니까 보정각은 약 '+v.toFixed(0)+'°예요. 관측통은 별 방향으로 맞추세요!')}},
+draw(){if(ti===0)bgDay();else bgNight();C.fillStyle='rgba(0,0,0,.25)';C.beginPath();C.arc(CX,CY,RO+18,0,TAU);C.fill();
+ C.strokeStyle='#8a5a30';C.lineWidth=16;C.beginPath();C.arc(CX,CY,RO,0,TAU);C.stroke();C.strokeStyle='#d9b45a';C.lineWidth=3;C.stroke();
+ for(let a=0;a<360;a+=5){const t=a*R,l=a%30?7:14;C.strokeStyle='#2a1a0a';C.lineWidth=a%30?1:2;C.beginPath();C.moveTo(CX+(RO-8)*Math.sin(t),CY-(RO-8)*Math.cos(t));C.lineTo(CX+(RO-8-l)*Math.sin(t),CY-(RO-8-l)*Math.cos(t));C.stroke()}
+ txt('주천도분환(각도 눈금)',CX,CY-RO-30,13,'#e8d6a0');
+ C.fillStyle='rgba(243,234,210,.88)';C.beginPath();C.arc(CX,CY,RM+22,0,TAU);C.arc(CX,CY,RM-22,0,TAU,true);C.fill();
+ for(let k=0;k<24;k++){const th=((k-12)*15+rr)*R,x=CX+RM*Math.sin(th),y=CY-RM*Math.cos(th);C.save();C.translate(x,y);C.rotate(th);txt(k===0?'24':k,0,0,k%6===0?19:14,k%6===0?'#a8231f':'#2a1a0a','center','800');C.restore();C.strokeStyle='#5a3a1a';C.lineWidth=1.5;const t2=th;C.beginPath();C.moveTo(CX+(RM+22)*Math.sin(t2+.13),CY-(RM+22)*Math.cos(t2+.13));C.lineTo(CX+(RM+16)*Math.sin(t2+.13),CY-(RM+16)*Math.cos(t2+.13));C.stroke()}
+ txt('시각환',CX,CY+RM-40,13,'#5a3a1a');
+ const b=body(),al=Math.abs(norm(alpha-H0))<=6;
+ if(ti===0){ptc(b[0],b[1],24,'rgba(255,210,80,.35)');ptc(b[0],b[1],14,'#ffd84a');txt('해',b[0],b[1]-30,13,'#fff')}else{star4(b[0],b[1],20+3*Math.sin(T*4),'#ffe27a');txt(STARS[star][0],b[0],b[1]-30,13,'#ffe27a')}
+ const ta=alpha*R,tx=CX+(RO+8)*Math.sin(ta),ty=CY-(RO+8)*Math.cos(ta);
+ if(al){C.strokeStyle='rgba(255,230,120,.8)';C.lineWidth=5;C.setLineDash([12,8]);C.lineDashOffset=-T*40;C.beginPath();C.moveTo(b[0],b[1]);C.lineTo(CX,CY);C.stroke();C.setLineDash([]);ptc(CX,CY,20,'rgba(255,230,120,.45)')}
+ C.strokeStyle='#222';C.lineWidth=16;C.lineCap='round';C.beginPath();C.moveTo(CX,CY);C.lineTo(tx,ty);C.stroke();C.strokeStyle='#efe6c6';C.lineWidth=10;C.beginPath();C.moveTo(CX,CY);C.lineTo(tx,ty);C.stroke();ptc(tx,ty,9,'#222');ptc(tx,ty,5,al?'#ffe27a':'#555');ptc(CX,CY,10,'#d9b45a');
+ C.fillStyle='#e0553f';C.beginPath();C.moveTo(CX+(RM-24)*Math.sin(ta),CY-(RM-24)*Math.cos(ta));C.lineTo(CX+(RM-40)*Math.sin(ta+.08),CY-(RM-40)*Math.cos(ta+.08));C.lineTo(CX+(RM-40)*Math.sin(ta-.08),CY-(RM-40)*Math.cos(ta-.08));C.fill();
+ txt('시각 읽기',CX,CY+30,14,'#e8d6a0');txt(hmm(reading()),CX,CY+64,26,'#ffe9a0');
+ if(rd)rd.innerHTML='관측통 방향 <b>'+alpha.toFixed(1)+'°</b>'+(al?' ✔ <b>정렬됨</b>':'')+'<br>시각환 보정 <b>'+rr+'°</b><br>시각환이 가리키는 시각 <b>'+hmm(reading())+'</b>'}}})();
+
+/* ================= ⑦ 측우기 ================= */
+sims.chu=(()=>{
+const REG=['한양','평양','동래(부산)'],X=[240,520,800],BY=560,PXMM=1.4;
+let mode,prof,lvl,t,run,tEnd,rd,hc,inp,target,sI,sD,single;
+function newProf(){const a=[];let am=[0,0,0];do{am=[0,1,2].map(()=>30+Math.floor(Math.random()*60))}while(Math.abs(am[0]-am[1])<9||Math.abs(am[1]-am[2])<9||Math.abs(am[0]-am[2])<9);
+ prof=am.map(m=>{const d=2+Math.floor(Math.random()*4),s=Math.floor(Math.random()*(6-d+1));return{s,d,I:m/d}});lvl=[0,0,0];t=0;run=false}
+function Icur(i){const p=prof[i];return(t>=p.s&&t<p.s+p.d&&run)?p.I:0}
+function build(){pclear();
+ if(mode===0){pnote('세 지역에 비가 내려요. <b>6시간</b> 동안 지켜본 뒤, 측우기 눈금을 읽어 아래에 적어 보세요. (단위 mm)');
+  pbtn('☔ 6시간 동안 비 내리기',()=>{if(run)return;newProf();run=true;tEnd=6},'');
+  const d=mk('','',$('#panel'));inp=[];REG.forEach((n,i)=>{const r=mk('<span>'+n+'</span><span><input type="number" min="0" max="150" step="1" value="0"> mm</span>','num',d);inp.push(r.querySelector('input'))});
+  pbtn('✅ 측정값 확인',()=>{if(run||t<6){toast('비가 다 그친 뒤에 눈금을 읽어요.');return}const bad=inp.some((e,i)=>Math.abs(+e.value-lvl[i])>5);if(bad){badS();hc++;toast('눈금을 다시 읽어 보세요. 물 표면의 높이를 눈금에 맞추어요. (±5mm까지 괜찮아요)')}else{taskDone(0);mode=1;setTimeout(build,1500)}},'');pnote('옛 사람들은 <b>촌(寸)·푼(分)</b> 단위로 기록했어요. (1촌=10푼) 이 게임에서는 mm로 읽어요.')}
+ else if(mode===1){pnote('내가 읽은 값을 비교해 <b>가장 비가 많이 내린 지역</b>을 고르세요.');rd=pnote(REG.map((n,i)=>n+': <b>'+inp[i].value+'mm</b>').join('<br>'));REG.forEach((n,i)=>pbtn(n,()=>{const m=lvl.indexOf(Math.max(...lvl));if(i===m){const amt=lvl[i];taskDone(1);mode=2;t=0;lvl=[0,0,0];run=false;setTimeout(()=>{newTarget();build()},1500);say([{w:'j',e:'smile',t:n+'에 가장 많은 비('+amt.toFixed(0)+'mm)가 내렸어요. 같은 규격의 그릇이라서 지역끼리 공정하게 비교할 수 있었죠!'}])}else{badS();toast('측정값을 다시 비교해 보세요. 숫자가 가장 큰 곳은?')}},'sec'))}
+ else{pnote('<b>직접 조절:</b> 강수량 <b>'+target+'mm</b>가 되도록 비의 세기와 내리는 시간을 정해 보세요. (강수량 = 세기 × 시간)');sI=psl('비의 세기',0,60,1,20,()=>{},v=>v+' mm/시');sD=psl('비가 내리는 시간',0,6,.5,2,()=>{},v=>v+' 시간');
+  pbtn('☔ 비 내리기',()=>{if(run)return;lvl=[0,0,0];t=0;prof=[{s:0,d:sD.get(),I:sI.get()},{s:0,d:0,I:0},{s:0,d:0,I:0}];run=true;tEnd=Math.max(sD.get(),.5);single=true},'');rd=pnote('')}}
+function newTarget(){target=[24,30,36,42,48][Math.floor(Math.random()*5)]}
+function gauge(x,i){const hmm=150,w=76,top=BY-hmm*PXMM,wl=lvl[i]*PXMM;
+ C.fillStyle='#6a6a70';C.fillRect(x-60,BY,120,18);C.fillStyle='#8a8a92';C.fillRect(x-70,BY+18,140,16);
+ C.fillStyle='rgba(180,210,235,.14)';C.fillRect(x-w/2,top,w,hmm*PXMM);const g=C.createLinearGradient(0,BY-wl,0,BY);g.addColorStop(0,'#78bdf0');g.addColorStop(1,'#2f6ea8');C.fillStyle=g;C.fillRect(x-w/2+3,BY-wl,w-6,wl);C.fillStyle='rgba(255,255,255,.45)';C.fillRect(x-w/2+3,BY-wl,w-6,3);
+ C.strokeStyle='#4a4a52';C.lineWidth=7;C.strokeRect(x-w/2,top,w,hmm*PXMM);C.fillStyle='#d9b45a';C.fillRect(x-w/2-4,top-6,w+8,8);
+ for(let m=0;m<=150;m+=10){const y=BY-m*PXMM;C.strokeStyle='#fff';C.lineWidth=m%50?1:2;C.beginPath();C.moveTo(x+w/2+2,y);C.lineTo(x+w/2+(m%50?10:18),y);C.stroke();if(m%10===0)txt(m,x+w/2+34,y,12,'#fff','center','400')}
+ C.setLineDash([4,4]);C.strokeStyle='#fff';C.lineWidth=1.5;C.beginPath();C.moveTo(x+w/2-4,BY-wl);C.lineTo(x+w/2+30,BY-wl);C.stroke();C.setLineDash([]);txt(mode===2?'한양 측우기':REG[i]+' 측우기',x,BY+58,17,'#f3ead2');if(hc>=1||mode===2)txt(lvl[i].toFixed(1)+' mm',x,top-34,15,'#9cc8ff')}
+function rain(x,I){C.fillStyle='rgba(30,38,52,.9)';[[-70,0],[-20,-12],[30,-6],[70,6]].forEach(a=>{C.beginPath();C.ellipse(x+a[0],130+a[1],46,26,0,0,TAU);C.fill()});
+ const n=Math.round(I*1.5);C.strokeStyle='rgba(180,215,255,.85)';C.lineWidth=2;for(let k=0;k<n;k++){const px=x-85+(k*37%170),py=160+((k*53+T*(500+k%5*60))%(BY-190));C.beginPath();C.moveTo(px,py);C.lineTo(px-3,py+14);C.stroke()}}
+return{
+init(){mode=0;hc=0;single=false;newProf();lvl=[0,0,0];t=0;run=false;tEnd=6;setMission('세 지역의 강수량을 측정하라!',['세 지역에 비를 내리고 눈금 읽어 적기','가장 비가 많이 내린 지역 찾기','목표 강수량만큼 직접 비를 내리기']);build()},
+tour(){const X1=520;return[
+{chip:'전체',lab:'측우기',h:'측우기 = 비를 재는 통',big:1,at:()=>({x:90,y:90,w:850,h:560}),t:'<b>같은 모양의 통</b>에 비를 받아서 물 높이로 <b>비가 얼마나 왔는지</b> 재요. 통이 모두 같아서 지역끼리 비교할 수 있어요. 하나씩 가리킬게요!'},
+{chip:'통',lab:'여기는 측우기 통!',h:'원통 모양 빗물 받이',at:()=>({x:200,y:350,w:80,h:212}),t:'투명하게 그린 원통이에요. 비가 내리면 이 통에 물이 고여요. 통의 크기와 모양이 언제나 같아야 공정해요.'},
+{chip:'눈금',lab:'눈금(10mm마다)',h:'눈금 = 물 높이를 읽는 자',at:()=>({x:276,y:340,w:52,h:226}),t:'통 옆의 눈금이에요. <b>10mm마다 숫자</b>가 있어요. 10mm는 1cm예요. 물 표면이 닿은 숫자를 읽어요!'},
+{chip:'받침',lab:'측우대',h:'측우대 = 돌받침',at:()=>({x:170,y:558,w:140,h:38}),t:'통을 올려 두는 돌받침이에요. 바닥이 평평해야 물 높이가 정확해요.'},
+{chip:'비구름',lab:'비구름과 빗방울',h:'비가 셀수록 빗방울이 많아요',at:()=>({x:520,y:150,r:110}),on:()=>{prof=[{s:0,d:6,I:14},{s:0,d:6,I:32},{s:0,d:6,I:8}];lvl=[0,0,0];t=0;run=true;tEnd=6},t:'세 지역에 서로 다른 비가 내리기 시작했어요. 가운데 지역이 비가 가장 세게 오고 있어요. 빗방울이 많을수록 비가 센 거예요!'},
+{chip:'물 높이',lab:'물 높이 = 강수량',h:'물 표면 눈금이 곧 강수량',at:()=>({x:X1,y:560-lvl[1]*1.4,r:46}),t:'통에 고이는 <b>물 높이가 곧 비의 양(강수량)</b>이에요. 물 표면에서 눈금으로 이어진 점선을 따라 숫자를 읽어요. 세 통을 비교하면 어느 곳에 비가 가장 많이 왔는지 알 수 있어요.'},
+{chip:'조작판',lab:'여기서 조작해요',h:'비를 내리고 눈금을 읽어요',at:PNLALL,t:'<b>☔ 6시간 동안 비 내리기</b>를 누르고, 비가 그치면 세 통의 눈금을 읽어 칸에 적어요. 어려우면 🤝 도움 버튼!'}]},
+coach(){if(mode===0){if(run)return'☔ 비가 내려요… 6시간이 지날 때까지 기다려요!';if(t<6)return'☔ 6시간 동안 비 내리기를 눌러요!';return'📏 물 표면이 닿은 눈금 숫자를 읽어 칸에 적고 ✅측정값 확인을 눌러요! (점선이 도와줘요)'}if(mode===1)return'🏆 숫자가 가장 큰 지역이 비가 가장 많이 온 곳이에요!';return'🎚 세기 × 시간 = 강수량! 목표 '+target+'mm가 되게 슬라이더를 맞추고 ☔비 내리기를 눌러요. (지금 설정: '+(sI.get()*sD.get())+'mm)'},
+assist(){if(mode===0){if(run||t<6){toast('먼저 비를 내려요!');return}inp.forEach((e,i)=>e.value=Math.round(lvl[i]));toast('눈금을 읽어 적어 줬어요. ✅측정값 확인을 눌러요!')}else if(mode===1)toast('정답은 '+REG[lvl.indexOf(Math.max(...lvl))]+'이에요!');else{sI.set(target/2);sD.set(2);toast('세기 '+target/2+' × 2시간 = '+target+'mm로 맞췄어요!')}},
+dbg(){return{lvl,t,run,mode,target}},
+hint(){hc++;hintSay(mode===0?'물 표면이 닿는 곳의 눈금 숫자를 읽어요. 눈금 한 칸은 10mm이고, 중간선은 5mm 정도예요. 위의 숫자가 mm 단위예요.':mode===1?'세 지역에서 읽은 숫자 중 가장 큰 곳이 비가 가장 많이 온 곳이에요.':'강수량은 비의 세기(mm/시)와 시간을 곱한 값이에요. 예를 들어 '+target+'mm라면 세기 '+(target/2)+'mm/시 × 2시간처럼 맞춰 볼 수 있어요!')},
+draw(dt){bgRain();C.fillStyle='rgba(60,70,60,.9)';C.fillRect(0,BY+34,W,H);
+ if(run){const rate=mode===2?1/1.0:1/1.4;const d=dt*rate;for(let i=0;i<3;i++)lvl[i]+=Icur(i)*d;t+=d;if(t>=tEnd){t=tEnd;run=false;if(mode===2){const e=Math.abs(lvl[0]-target);if(e<=5){taskDone(2);say([{w:'s',e:'smile',t:'원하는 만큼의 강수량을 만들어 냈구나. 비의 양을 정확히 아는 것이 얼마나 중요한지 알겠느냐?'}])}else{badS();toast('측우기에는 '+lvl[0].toFixed(0)+'mm가 찼어요. 목표는 '+target+'mm! 세기와 시간을 조절해 다시 해 보세요.',4200)}}}}
+ const idx=mode===2?[1]:[0,1,2];idx.forEach(i=>{const x=mode===2?X[1]:X[i];const sp=mode===2?0:i;if(mode===2){rain(x,Icur(0));gauge(x,0)}else{rain(x,Icur(i));gauge(x,i)}});
+
+ if(mode<2){txt('경과 시간 '+t.toFixed(1)+' / 6 시간',470,92,18,'#fff');if(rd)rd.innerHTML=REG.map((n,i)=>n+': <b>'+inp[i].value+'mm</b>').join('<br>')}
+ else{txt('경과 시간 '+t.toFixed(1)+' 시간 · 목표 '+target+'mm',470,92,18,'#fff')}}}})();
+
+/* ================= ⑧ 수표 ================= */
+sims.su=(()=>{
+const BED=620,PX=610,SC=33,G0=2;
+let h,rain,gate,mode,t,run,asked=0,asking,sR,sG,rd,hc,maxH,hiT,fail,bestLine,pend;
+const ZN=x=>x>=10?'범람':x>=9?'위험':x>=6?'주의':'안전',ZC={안전:'#7fe08a',주의:'#ffd45a',위험:'#ff6a4a',범람:'#ff3a2a'};
+function stormRain(tm){if(mode===1)return tm<8?30:tm<16?65:110;return Math.min(100,6*tm)}
+function build(){pclear();asking=false;
+ if(mode===0){pnote('<b>자유 관찰:</b> 비의 양을 늘려 수위를 <b>위험 수위(9척)</b>까지 올려 보세요. 수문을 열면 수위가 어떻게 달라지는지도 관찰해요.');sR=psl('비의 양',0,120,1,rain,v=>rain=v,v=>v+' mm/시');sG=psl('수문 열림',.5,3,.1,gate,v=>gate=v,v=>v.toFixed(1))}
+ else if(mode===1){pnote('폭풍우가 지나가요. 정해진 시각마다 <b>수표의 눈금</b>을 읽고 위험 단계를 판단하세요. (안전 6척 미만 / 주의 6~9척 / 위험 9척 이상)');rd=pnote('');}
+ else{pnote('<b>홍수를 막아라!</b> 폭우가 점점 거세져요. 수문 열림을 조절해 수위가 <b>9척 이상</b>이 되지 않게 30초를 버티세요. 수문을 <b>2.2 이상</b> 크게 열면 하류 논밭이 잠겨요!');sG=psl('수문 열림',.5,3,.1,gate,v=>gate=v,v=>v.toFixed(1));rd=pnote('');pbtn('🔄 처음부터 다시',()=>{t=0;h=G0;gate=1;sG.set(1);fail=false;hiT=0;run=true;maxH=0},'sec sm')}}
+function ask(){run=false;asking=true;const c=Math.floor(t/8);pend=c;pclear();pnote('⏸ <b>'+t.toFixed(0)+'시간째</b> — 수표 눈금을 읽고 지금의 위험 단계를 판단하세요. (지금 수위: 수표 눈금 참고)');['안전','주의','위험'].forEach(k=>pbtn(k==='안전'?'🟢 안전':k==='주의'?'🟡 주의':'🔴 위험',()=>{if(k===(ZN(h)==='범람'?'위험':ZN(h))){okS();asking=false;if(pend>=3){taskDone(1);pclear();pnote('모든 판단을 마쳤어요! 잠시 후 마지막 미션이 시작돼요.');setTimeout(()=>{mode=2;t=0;h=G0;gate=1;rain=0;fail=false;hiT=0;maxH=0;run=true;build()},2200)}else{build();run=true}}else{badS();hc++;toast('수표 눈금을 다시 보세요. 물 표면이 닿은 눈금은 약 '+h.toFixed(1)+'척이에요 — 6척 미만은 안전, 9척 이상은 위험(10척을 넘으면 범람)이에요.',4200)}},'sec'))}
+return{
+init(){h=G0;rain=0;gate=1;mode=0;t=0;run=true;hc=0;maxH=0;hiT=0;fail=false;asking=false;setMission('강물의 수위를 확인하고 홍수 위험을 판단하라!',['비를 내려 수위를 위험 수위 이상으로 올려 보기','폭풍우 속에서 수위를 읽고 위험 단계 판단하기 (3번)','수문을 조절해 홍수 막기']);build()},
+tour(){return[
+{chip:'전체',lab:'수표',h:'수표 = 강물 높이를 재는 눈금 기둥',big:1,at:()=>({x:300,y:200,w:640,h:440}),t:'강물 속에 세운 <b>눈금 기둥</b>이에요. 물이 눈금의 어디까지 올라왔는지 보고 <b>홍수가 날지 미리</b> 알 수 있어요. 하나씩 가리킬게요!'},
+{chip:'기둥',lab:'여기는 수표 기둥!',h:'돌기둥에 새긴 눈금',at:()=>({x:PX-20,y:BED-12*SC,w:40,h:12*SC}),t:'강 한가운데 세운 돌기둥이에요. 눈금 숫자는 <b>척(尺)</b>이라는 옛 길이 단위예요. (이 게임의 눈금이에요)'},
+{chip:'지금 수위',lab:'지금 수위',h:'화살표가 지금 물높이',at:()=>({x:PX+30,y:BED-h*SC,r:42}),on:()=>{h=G0;rain=0;sR.set(0)},dm:p=>{rain=Math.min(90,p*14);sR.set(Math.round(rain))},t:'화살표가 지금 물높이예요. 비가 내리면 물이 불어나서 화살표가 올라가는 걸 보세요. 비의 양이 자동으로 늘어나고 있어요!'},
+{chip:'주의선',lab:'노란 선 = 주의 (6척)',h:'6척부터 조심!',at:()=>({x:PX-135,y:BED-6*SC-14,w:270,h:28}),dm:p=>{rain=65;sR.set(65)},t:'물이 <b>노란 선(6척)</b>까지 오면 조심해야 해요. 제방을 살피고 준비를 시작해요.'},
+{chip:'위험선',lab:'빨간 선 = 위험 (9척)',h:'9척을 넘으면 위험!',at:()=>({x:PX-135,y:BED-9*SC-14,w:270,h:28}),dm:p=>{rain=100;sR.set(100)},t:'<b>빨간 선(9척)</b>을 넘으면 홍수 위험! 사람들을 안전한 곳으로 대피시켜야 해요.'},
+{chip:'마을',lab:'둑 위 마을',h:'10척을 넘으면 범람!',at:()=>({x:150,y:262,r:110}),on:()=>{rain=100;sR.set(100);h=10.4},dm:p=>{h=Math.max(h,10.2)},t:'둑 위의 마을이에요. 물이 <b>10척</b>을 넘으면 둑을 넘쳐 마을이 잠겨요. 빨갛게 변한 물을 보세요!'},
+{chip:'비구름',lab:'비의 양',h:'비구름 = 비의 양',at:()=>({x:700,y:100,r:100}),on:()=>{h=G0;rain=0;sR.set(0)},dm:p=>{rain=Math.round(55+55*Math.sin(p*1.3));sR.set(rain)},t:'비가 많이 올수록 빗방울이 많아지고 강물이 빨리 불어나요.'},
+{chip:'수문',lab:'수문 슬라이더',h:'수문 = 물을 빼는 문',at:PNL(1),on:()=>{rain=80;sR.set(80);h=8.8},dm:p=>{gate=Math.round((1+Math.abs(Math.sin(p*.8))*1.6)*10)/10;sG.set(gate)},t:'수문을 열면 물이 빠져서 수위가 내려가요. 하지만 너무 크게(2.2 넘게) 열면 아래 마을이 잠겨요! <b>1.6~2.0</b>쯤이 좋아요.'},
+{chip:'판정판',lab:'수위 판정판',h:'안전 · 주의 · 위험',at:()=>({x:350,y:70,w:330,h:64}),t:'현재 수위와 단계를 알려 줘요. <b>6척 미만은 안전, 6~9척은 주의, 9척 이상은 위험</b>이에요. 폭풍우 미션에서는 이 단계를 직접 판단해요.'},
+{chip:'조작판',lab:'여기서 조작해요',h:'비와 수문을 조절해 보세요',at:PNLALL,t:'비의 양 슬라이더를 올려 수위가 오르는 걸 직접 보세요. 빨간 선(9척)을 넘겨 보면 첫 미션 성공! 🤝 도움 버튼도 있어요.'}]},
+coach(){if(mode===0)return'☔ 비의 양 슬라이더를 올려서 수위(물높이)가 빨간 선(9척)을 넘게 해 봐요!';if(mode===1)return asking?'⏸ 수표 눈금을 보고 눌러요! 6척 아래=안전 / 6~9척=주의 / 9척 이상=위험':'🌧 폭풍우가 지나가요. 곧 질문이 나와요!';return'🚪 수문 열림 슬라이더를 1.6~2.0쯤으로 올려 물을 빼 주세요! (2.2를 넘으면 하류가 잠겨요) 남은 시간 '+Math.max(0,30-t).toFixed(0)+'초'},
+assist(){if(mode===0){sR.set(100);rain=100;toast('비를 100으로 올렸어요. 수위가 오르는 걸 지켜봐요!')}else if(mode===1){if(asking)toast('정답은 '+(ZN(h)==='범람'?'위험':ZN(h))+'이에요!');else toast('조금만 기다리면 질문이 나와요.')}else{gate=1.8;sG.set(1.8);toast('수문을 1.8로 열었어요!')}},
+dbg(){return{h,mode,t,asking}},
+hint(){hc++;hintSay(mode===0?'비의 양 슬라이더를 오른쪽으로 밀어 보세요. 수위는 시간이 지나면서 서서히 올라가요. 빨간 선(9척)을 넘으면 위험이에요.':mode===1?'수표 눈금의 숫자는 척(尺) 단위예요. 물 표면이 닿은 숫자를 읽어 노란 선(6척)·빨간 선(9척)과 비교해 보세요.':'수문을 더 열면 물이 빨리 빠져요. 비가 거세질수록 수문을 크게 열어야 하지만 2.2를 넘기면 하류가 잠겨요. 1.6~2.0 정도가 안전해요!')},
+draw(dt){bgRain();
+ if(mode===1&&!asking&&run&&!tasks[1].d){t+=dt;rain=stormRain(t);const c=Math.floor(t/8);if(c>asked&&c<=3){asked=c;t=c*8;ask()}}
+ else if(mode===2&&run){t+=dt;rain=stormRain(t);}
+ else if(mode===0&&run)t+=dt;
+ if(run||asking){}
+ if(run){const d=dt;h+=(0.02*rain-0.25*gate*(h-G0))*d;h=Math.max(G0*.8,h);if(mode===0&&h>=9&&!tasks[0].d){taskDone(0);mode=1;t=0;h=G0;asked=0;rain=0;gate=1;setTimeout(build,1800)}
+  if(mode===2){maxH=Math.max(maxH,h);if(gate>2.2)hiT+=d;if(h>=9){run=false;fail=true;badS();toast('수위가 위험 수위를 넘었어요! 수문을 더 일찍 열어야 해요. 다시 도전!',4200)}else if(hiT>6){run=false;fail=true;badS();toast('수문을 너무 크게 열어 하류 논밭이 잠겼어요! 2.2 이하로 조절해요.',4200)}else if(t>=30){run=false;taskDone(2);say([{w:'s',e:'smile',t:'수문을 알맞게 열어 홍수를 막았구나. 눈금 하나가 수많은 백성의 집을 지켰느니라.'},{w:'j',e:'smile',t:'수위를 미리 읽고 알맞게 대처하는 것, 이것이 수표의 힘이에요!'}])}}}
+ const ys=BED-h*SC,L=y=>430-100*(BED-y)/(BED-290),Rr=y=>800+100*(BED-y)/(BED-290);
+ C.fillStyle='#5a4a36';C.beginPath();C.moveTo(0,290);C.lineTo(330,290);C.lineTo(430,BED);C.lineTo(430,H);C.lineTo(0,H);C.fill();C.beginPath();C.moveTo(940,290);C.lineTo(900,290);C.lineTo(800,BED);C.lineTo(800,H);C.lineTo(940,H);C.fill();C.fillStyle='#3a5a30';C.fillRect(0,282,330,10);C.fillRect(900,282,40,10);C.fillStyle='#4a3a2a';C.fillRect(430,BED,370,H-BED);
+ for(let i=0;i<4;i++){const x=40+i*78;C.fillStyle='#e8d6a0';C.fillRect(x,246,56,36);roof(x+28,230,56,20,'#3a3a40','#e8d6a0');}
+ const fl=h>=10;C.fillStyle=fl?'rgba(190,60,40,.55)':'rgba(70,140,200,.72)';C.beginPath();if(!fl){C.moveTo(L(ys),ys);C.lineTo(Rr(ys),ys);C.lineTo(800,BED);C.lineTo(430,BED)}else{C.moveTo(0,ys);C.lineTo(940,ys);C.lineTo(940,H);C.lineTo(0,H)}C.closePath();C.fill();
+ C.strokeStyle='rgba(255,255,255,.5)';C.lineWidth=2;C.beginPath();const xa=fl?0:L(ys),xb=fl?940:Rr(ys);for(let x=xa;x<=xb;x+=14){const y=ys+Math.sin(x*.05+T*3)*2;x===xa?C.moveTo(x,y):C.lineTo(x,y)}C.stroke();
+ C.fillStyle='#b8b0a0';C.fillRect(PX-14,BED-12*SC,28,12*SC);C.fillStyle='#8a8272';C.fillRect(PX-18,BED-12*SC-8,36,10);
+ for(let k=0;k<=12;k++){const y=BED-k*SC;C.strokeStyle='#222';C.lineWidth=k%5===0?3:1.5;C.beginPath();C.moveTo(PX-14,y);C.lineTo(PX+(k%5===0?10:2),y);C.stroke();if(k>0)txt(k,PX-28,y,12,'#fff','center','400')}
+ [[6,'#ffd45a','주의 6척'],[9,'#ff4a3a','위험 9척'],[10,'#ff2a2a','범람 10척']].forEach(([k,col,n])=>{const y=BED-k*SC;C.strokeStyle=col;C.lineWidth=3;C.setLineDash([8,5]);C.beginPath();C.moveTo(PX-130,y);C.lineTo(PX+130,y);C.stroke();C.setLineDash([]);txt(n,PX+170,y,13,col,'center','800')});
+ const zn=ZN(h);C.fillStyle=ZC[zn];C.beginPath();C.moveTo(PX+16,ys);C.lineTo(PX+40,ys-10);C.lineTo(PX+40,ys+10);C.fill();txt('수표 '+h.toFixed(1)+'척',PX+86,ys-18,14,'#fff');
+ C.fillStyle='rgba(20,28,40,.75)';[[560,60],[640,50],[710,66],[780,50]].forEach(a=>{C.beginPath();C.ellipse(a[0]+60,a[1]+30,54,26,0,0,TAU);C.fill()});
+ C.strokeStyle='rgba(190,215,240,.85)';C.lineWidth=2;const n=Math.round(rain*1.8);for(let k=0;k<n;k++){const x=(k*53)%940,y=((k*89+T*(520+k%4*70))%(ys-100))+110;if(y<ys){C.beginPath();C.moveTo(x,y);C.lineTo(x-3,y+14);C.stroke()}}
+ C.fillStyle='rgba(8,14,34,.82)';C.fillRect(350,70,330,64);C.strokeStyle=ZC[zn];C.lineWidth=2;C.strokeRect(350,70,330,64);txt('현재 수위 '+h.toFixed(1)+'척 → '+zn,515,92,22,ZC[zn]);txt('비 '+rain.toFixed(0)+' mm/시 · 수문 '+gate.toFixed(1)+(mode>0?' · '+t.toFixed(0)+'초':''),515,120,14,'#fff','center','400');
+ if(rd)rd.innerHTML='수위 <b>'+h.toFixed(1)+'척</b> ('+zn+')<br>경과 <b>'+t.toFixed(0)+'/30</b>초 · 최고 수위 <b>'+maxH.toFixed(1)+'척</b>'+(fail?'<br>⚠ 실패 — 다시 도전하세요.':'')}}})();
+
+/* ================= 엔딩 ================= */
+const IC={};DEV.forEach(d=>{const c=document.createElement('canvas');c.width=160;c.height=120;icon(c.getContext('2d'),d.id,160,120);IC[d.id]=c});
+let endT=0,endSaid=false;
+const endScene={draw(dt){endT+=dt;bgNight();
+ const g=C.createRadialGradient(640,330,20,640,330,520);g.addColorStop(0,'rgba(217,180,90,.22)');g.addColorStop(1,'rgba(217,180,90,0)');C.fillStyle=g;C.fillRect(0,0,W,H);
+ DEV.forEach((d,i)=>{const t0=1.2+i*1.7,a=cl((endT-t0)/1.2,0,1);if(a<=0)return;const x=140+i*143,y=300+Math.sin(i*1.3)*60+Math.sin(T*1.4+i)*6;C.globalAlpha=a;ptc(x,y,70,'rgba(255,220,130,.16)');C.drawImage(IC[d.id],x-64,y-48,128,96);txt(d.n,x,y+64,18,'#ffe9a0');C.globalAlpha=1});
+ if(endT>16&&!endSaid){endSaid=true;say([
+  {w:'s',e:'n',t:'하늘을 읽어 때를 알고, 해와 별로 시각을 재고, 비와 강물의 높이를 기록하였구나.'},
+  {w:'j',e:'smile',t:'혼천의로 별을 찾고, 앙부일구와 자격루로 시각을 알렸고, 측우기와 수표로 비와 강물을 살폈어요!'},
+  {w:'s',e:'smile',t:'이제 백성들은 농사지을 때를 알고, 비와 홍수에도 미리 대비할 수 있게 되었다. 그대들이 해낸 일이니라.'},
+  {w:'s',e:'think',t:'하늘을 관찰하고, 시간을 측정하고, 비의 양을 기록한 까닭은 무엇이었을까?'},
+  {w:'j',e:'n',t:'…백성들의 삶을 더 나아지게 하고 싶어서였어요.'},
+  {w:'s',e:'smile',t:'그렇다. 과학은 단지 놀라운 도구를 만드는 일이 아니라, 사람들의 삶을 더 나아지게 만드는 일이었다.'}],showFinal)}}};
+function startEnding(){stopScene();hideAll();mdev=null;scene=endScene;endT=0;endSaid=false;renderTop();music(true);toast('🎵 조선의 하늘 위로 우리가 완성한 발명품들이 하나씩 떠오릅니다…',4500)}
+function showFinal(){const s=$('#scr');s.innerHTML='';mk('<div>“하늘을 관찰하고, 시간을 측정하고, 비의 양을 기록한 까닭은 무엇이었을까?”</div><div style="color:#ffe9a0;margin-top:6px">“과학은 단지 놀라운 도구를 만드는 일이 아니라,<br>사람들의 삶을 더 나아지게 만드는 일이었다.”</div>','fin',s);
+ const b=mk('','',s);b.style.cssText='position:absolute;left:0;right:0;bottom:16px;text-align:center';pbtn('📜 조선 과학자 연구 기록',showRecords,'',b);pbtn('🗺 지도로',()=>{music(false);goMap()},'sec',b);pbtn('🏠 처음 화면',()=>{music(false);showTitle()},'sec',b)}
+
+/* ================= 연구 기록 ================= */
+function showRecords(){if($('#recwrap'))return;const w=document.createElement('div');w.id='recwrap';w.style.cssText='position:absolute;inset:0;z-index:26;background:rgba(2,4,12,.7)';$('#stage').appendChild(w);
+ const box=mk('<div class="gl"></div><div class="dt"></div>','rec',w),gl=box.querySelector('.gl'),dt=box.querySelector('.dt');
+ const cb=pbtn('✖ 닫기',()=>w.remove(),'red',w);cb.style.cssText='position:absolute;right:50px;top:16px;z-index:2';
+ function show(id){const d=DEVm[id];gl.querySelectorAll('.gi').forEach(e=>e.classList.toggle('sel',e.dataset.id===id));
+  if(!S.done[id]){dt.innerHTML='<h2>❔ 아직 연구하지 않았어요</h2><p>'+DEV.find(x=>x.id===id).lab+'번 연구소에서 이 발명품을 체험하면 연구 기록이 채워져요.</p>';return}
+  dt.innerHTML='<h2>'+d.n+' <small style="font-size:16px;color:#bbb">'+d.h+'</small></h2><canvas id="rc" width="200" height="140" style="background:#0006;border-radius:10px;float:right;margin:0 0 10px 14px"></canvas><p style="background:#ffffff14;padding:8px 12px;border-radius:8px">💡 <b>쉽게 말하면</b> '+d.kid+'</p><b>용도</b><p>'+d.use+'</p><b>작동 원리</b><p>'+d.how+'</p><b>역사적 의미</b><p>'+d.help+'</p><b>📜 제작 시기와 사람</b><p>'+d.hist+'</p>';icon($('#rc').getContext('2d'),id,200,140)}
+ DEV.forEach(d=>{const g=mk('<canvas width="130" height="86"></canvas><div>'+(S.done[d.id]?d.n:'???')+'</div>','gi'+(S.done[d.id]?'':' lk'),gl);g.dataset.id=d.id;const c=g.querySelector('canvas').getContext('2d');icon(c,d.id,130,86);g.onclick=()=>show(d.id)});
+ const done=DEV.filter(d=>S.done[d.id]).length;mk('<div style="grid-column:1/3;text-align:center;color:#9fe0a0;font-size:14px;margin-top:4px">조선 과학자 연구 기록 '+done+'/'+DEV.length+'</div>','',gl);
+ const f=DEV.find(d=>S.done[d.id]);if(f)show(f.id);else dt.innerHTML='<h2>📜 조선 과학자 연구 기록</h2><p>발명품을 체험하고 미션을 마치면 이곳에 이미지·이름·용도·작동 원리·역사적 의미가 차곡차곡 기록돼요.</p>'}
+
+/* ================= 시작 ================= */
+load();showTitle();requestAnimationFrame(loop);
+</script>
+</body>
+</html>
